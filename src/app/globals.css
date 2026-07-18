@@ -1,26 +1,837 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy-950: #000a16;
+  --navy-900: #001229;
+  --navy-800: #001e42;
+  --navy-700: #0a2c56;
+  --navy-600: #163d6e;
+  --navy-500: #2a5488;
+  --navy-400: #4d729f;
+
+  --orange-600: #e05400;
+  --orange-500: #fc6500;
+  --orange-400: #ff8a3d;
+  --orange-300: #ffb073;
+
+  --ink-100: #f4f7fb;
+  --ink-200: #dde5ef;
+  --ink-300: #b9c6d9;
+  --ink-400: #8ea0ba;
+
+  --background: var(--navy-950);
+  --foreground: var(--ink-100);
+
+  /* On-accent text (e.g. orange buttons) — stays dark in both themes */
+  --on-accent: #000a16;
+  /* RGB triplet of the page background, for translucent veils/gradients */
+  --veil-rgb: 0, 10, 22;
+  --grid-line: rgba(185, 198, 217, 0.08);
+
+  color-scheme: dark;
+}
+
+/*
+ * Light theme: the "navy" ramp flips to light surfaces and the "ink" ramp
+ * flips to dark text, so every token-based utility adapts automatically.
+ * Oranges darken to keep contrast on light backgrounds (300 = strongest,
+ * mirroring how 300 is the brightest accent in dark mode).
+ */
+:root[data-theme="light"] {
+  --navy-950: #f3f6fa;
+  --navy-900: #ffffff;
+  --navy-800: #e4ebf4;
+  --navy-700: #d2dcea;
+  --navy-600: #b6c5da;
+  --navy-500: #8fa5c2;
+  --navy-400: #91a5bf;
+
+  --orange-600: #a63e00;
+  --orange-500: #e05400;
+  --orange-400: #c24a00;
+  --orange-300: #9a3c00;
+
+  --ink-100: #0c1a2e;
+  --ink-200: #22334d;
+  --ink-300: #3c5170;
+  --ink-400: #5b7191;
+
+  --veil-rgb: 243, 246, 250;
+  --grid-line: rgba(12, 26, 46, 0.06);
+
+  color-scheme: light;
 }
 
 @theme inline {
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-navy-600: var(--navy-600);
+  --color-navy-500: var(--navy-500);
+  --color-navy-400: var(--navy-400);
+
+  --color-orange-600: var(--orange-600);
+  --color-orange-500: var(--orange-500);
+  --color-orange-400: var(--orange-400);
+  --color-orange-300: var(--orange-300);
+
+  --color-ink-100: var(--ink-100);
+  --color-ink-200: var(--ink-200);
+  --color-ink-300: var(--ink-300);
+  --color-ink-400: var(--ink-400);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-display: var(--font-poppins);
+  --font-sans: var(--font-inter);
+
+  --animate-marquee: marquee 32s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  scroll-behavior: auto;
+}
+
+html.no-scroll {
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* First-load brand screen. Hidden by default so content remains accessible
+   if client-side JavaScript is unavailable. */
+.site-loader {
+  display: none;
+}
+
+html[data-loader-ready] .site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--navy-950);
+  border-bottom: 1px solid color-mix(in srgb, var(--orange-500) 55%, transparent);
+  transform: translateY(0);
+  transition: transform 0.68s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.site-loader__content {
+  width: min(23rem, calc(100vw - 3rem));
+  transition:
+    opacity 0.24s ease,
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-loader__logo {
+  display: flex;
+  width: fit-content;
+  margin-inline: auto;
+  transform: translateY(0);
+}
+
+.site-loader__meter {
+  margin-top: 2.75rem;
+}
+
+.site-loader__track {
+  height: 1px;
+  overflow: hidden;
+  background: var(--navy-700);
+}
+
+.site-loader__bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--orange-400);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+.site-loader__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+  color: var(--ink-400);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.site-loader__progress {
+  min-width: 3.2rem;
+  color: var(--ink-100);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+html[data-loader-ready] .site-loader.is-exiting .site-loader__content {
+  opacity: 0;
+  transform: translateY(-0.75rem);
+}
+
+html[data-loader-ready] .site-loader.is-exiting {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-loader-ready] .site-loader,
+  .site-loader__content {
+    transition-duration: 0.01ms;
+  }
+}
+
+::selection {
+  background: var(--orange-500);
+  color: var(--on-accent);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy-600);
+  border-radius: 999px;
+  border: 2px solid var(--navy-950);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-500);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  /* Poppins ExtraBold sets wide; pull tracking in slightly at all sizes */
+  letter-spacing: -0.015em;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .wrap {
+    padding-inline: 4rem;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--orange-400);
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px var(--ink-300);
+  color: transparent;
+}
+
+/*
+ * Film-grain texture. Painted normally at low opacity — a blend mode here
+ * would make this fixed full-viewport layer re-blend against the entire
+ * page on every scroll frame in Safari, for a nearly invisible difference.
+ */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+:root[data-theme="light"] .grain {
+  opacity: 0.028;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 100% at 50% 0%,
+    transparent 40%,
+    rgba(var(--veil-rgb), 0.55) 100%
+  );
+}
+
+/* Lightweight hero airflow: the former WebGL scene rebuilt as CSS layers. */
+.hero-airflow {
+  overflow: hidden;
+  background:
+    radial-gradient(70% 70% at 74% 48%, rgba(224, 84, 0, 0.16), transparent 58%),
+    radial-gradient(55% 60% at 58% 46%, rgba(42, 84, 136, 0.22), transparent 68%);
+}
+
+.hero-airflow__wash {
+  position: absolute;
+  inset: -8%;
+  background:
+    linear-gradient(90deg, transparent 0 30%, rgba(77, 114, 159, 0.08) 42%, transparent 64%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(185, 198, 217, 0.025) 0 1px,
+      transparent 1px 72px
+    );
+}
+
+/* Pleated air filter rendered with CSS 3D — one sawtooth-gradient plane plus
+   thin edge faces, so the whole panel is a handful of composited layers. */
+.hero-filter {
+  position: absolute;
+  top: 50%;
+  right: 7%;
+  width: min(26rem, 36vw);
+  aspect-ratio: 3 / 4;
+  transform: translateY(-52%);
+  perspective: 1100px;
+}
+
+.hero-filter__panel {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateY(-34deg) rotateX(7deg);
+  animation: filter-sway 14s ease-in-out infinite;
+}
+
+@keyframes filter-sway {
+  50% {
+    transform: rotateY(-27deg) rotateX(5deg);
+  }
+}
+
+.hero-filter__media,
+.hero-filter__back {
+  position: absolute;
+  inset: 0;
+  /* Sawtooth: lit pleat face falling to a dark fold, hard reset per period */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.09),
+      transparent 26%,
+      rgba(0, 0, 0, 0.18)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--orange-300) 68%, transparent) 0px,
+      color-mix(in srgb, var(--orange-600) 34%, transparent) 12px,
+      rgba(0, 0, 0, 0.5) 13px,
+      color-mix(in srgb, var(--orange-500) 26%, transparent) 15px,
+      color-mix(in srgb, var(--orange-400) 46%, transparent) 26px
+    );
+  opacity: 0.8;
+}
+
+.hero-filter__back {
+  transform: translateZ(-26px);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--navy-500) 60%, transparent) 0px,
+      color-mix(in srgb, var(--navy-700) 70%, transparent) 12px,
+      rgba(0, 0, 0, 0.6) 13px,
+      color-mix(in srgb, var(--navy-600) 55%, transparent) 26px
+    );
+  opacity: 0.8;
+}
+
+.hero-filter__edge {
+  position: absolute;
+  background: linear-gradient(
+    180deg,
+    var(--navy-600),
+    var(--navy-800) 60%,
+    var(--navy-900)
+  );
+  backface-visibility: hidden;
+}
+
+.hero-filter__edge--left,
+.hero-filter__edge--right {
+  top: 0;
+  width: 26px;
+  height: 100%;
+}
+
+.hero-filter__edge--left {
+  left: 0;
+  transform-origin: left center;
+  transform: rotateY(-90deg);
+}
+
+.hero-filter__edge--right {
+  right: 0;
+  transform-origin: right center;
+  transform: rotateY(90deg);
+}
+
+.hero-filter__edge--top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 26px;
+  transform-origin: center top;
+  transform: rotateX(-90deg);
+  background: linear-gradient(90deg, var(--navy-700), var(--navy-600));
+}
+
+.hero-filter__frame {
+  position: absolute;
+  inset: -2px;
+  border: 2px solid color-mix(in srgb, var(--navy-400) 55%, transparent);
+  border-radius: 2px;
+  transform: translateZ(1px);
+  box-shadow:
+    0 0 60px color-mix(in srgb, var(--orange-500) 14%, transparent),
+    inset 0 0 30px rgba(0, 0, 0, 0.35);
+}
+
+.hero-airflow__particles {
+  position: absolute;
+  inset: 0;
+}
+
+/* Dust flows right → left; crossing the filter (~52% of travel) it turns
+   from warm dust into small, pale "clean air" dots. */
+.hero-airflow__particles span {
+  position: absolute;
+  left: 100%;
+  top: var(--y);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 999px;
+  background: var(--orange-400);
+  opacity: 0;
+  animation: hero-flow var(--dur) linear var(--d) infinite;
+}
+
+@keyframes hero-flow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+    background-color: var(--orange-400);
+  }
+  7% {
+    opacity: var(--o);
+  }
+  46% {
+    background-color: var(--orange-400);
+    transform: translate3d(calc(var(--t) * -0.46), -1px, 0) scale(1);
+  }
+  54% {
+    background-color: #9db8e8;
+    transform: translate3d(calc(var(--t) * -0.54), -2px, 0) scale(0.65);
+  }
+  88% {
+    opacity: calc(var(--o) * 0.45);
+  }
+  100% {
+    transform: translate3d(calc(var(--t) * -1), -6px, 0) scale(0.55);
+    opacity: 0;
+    background-color: #9db8e8;
+  }
+}
+
+:root[data-theme="light"] .hero-airflow {
+  background:
+    radial-gradient(70% 70% at 74% 48%, rgba(224, 84, 0, 0.13), transparent 58%),
+    radial-gradient(55% 60% at 58% 46%, rgba(42, 84, 136, 0.14), transparent 68%);
+}
+
+:root[data-theme="light"] .hero-filter__media {
+  opacity: 0.85;
+}
+
+:root[data-theme="light"] .hero-filter__frame {
+  box-shadow: 0 0 60px color-mix(in srgb, var(--orange-500) 10%, transparent);
+}
+
+@media (max-width: 767px) {
+  .hero-filter {
+    right: -6%;
+    width: 62vw;
+    opacity: 0.6;
+  }
+
+  .hero-airflow__particles {
+    opacity: 0.45 !important;
+  }
+
+  .hero-airflow__particles span:nth-child(3n) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-filter__panel {
+    animation: none;
+  }
+
+  .hero-airflow__particles span {
+    animation: none;
+    opacity: calc(var(--o) * 0.5);
+    transform: translate3d(calc(var(--t) * -0.4), 0, 0);
+  }
+}
+
+/* Buttons — layered so Tailwind utilities (e.g. `hidden`) can override them */
+@layer components {
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 0.9rem 1.8rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-130%) skewX(-18deg);
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 80%
+  );
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.btn:hover::before {
+  transform: translateX(130%) skewX(-18deg);
+}
+.btn-primary {
+  background: var(--orange-500);
+  color: var(--on-accent);
+}
+.btn-primary:hover {
+  background: var(--orange-400);
+  box-shadow: 0 8px 32px -8px color-mix(in srgb, var(--orange-500) 55%, transparent);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-100);
+  border: 1px solid var(--navy-500);
+}
+.btn-ghost:hover {
+  border-color: var(--orange-400);
+  color: var(--orange-300);
+}
+}
+
+.magnetic {
+  will-change: transform;
+}
+
+/* Cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange-500);
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--orange-400);
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+.card-grid-line {
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Fades the marquee out at its edges */
+.marquee-mask {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+/* One-pass entrance motion: a single observer reveals transform/opacity only. */
+[data-reveal],
+[data-reveal-group] > [data-hero-item] {
+  opacity: 1;
+  transform: none;
+}
+
+html[data-reveal-ready] [data-reveal],
+html[data-reveal-ready] [data-reveal-group] > [data-hero-item] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 20px));
+  transition:
+    opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+    transform 0.68s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+}
+
+html[data-reveal-ready] [data-reveal].is-revealed,
+html[data-reveal-ready] [data-reveal-group].is-revealed > [data-hero-item],
+html[data-reveal-ready] [data-reveal-group].is-revealed > [data-reveal] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-reveal-ready] [data-reveal],
+  html[data-reveal-ready] [data-reveal-group] > [data-hero-item] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
+ * Scroll-drawn flow ribbon below the hero. The glow is a feathered stack of
+ * strokes (wide + faint → thin + bright) and a radial-gradient head orb —
+ * never blur filters or blend modes (see the Safari note above .grain).
+ */
+.flow-ribbon {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.flow-ribbon.is-ready {
+  opacity: 1;
+}
+.flow-ribbon svg {
+  display: block;
+}
+.flow-ribbon path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.flow-ribbon {
+  --fr-hot: #ffd27a;
+  --fr-red: #f0452c;
+  --fr-magenta: #d9367c;
+  --fr-violet: #7a3df0;
+  --fr-blue: #2b46c8;
+  --fr-dim: 1;
+}
+:root[data-theme="light"] .flow-ribbon {
+  --fr-hot: #ff9d3d;
+  --fr-red: #d63a20;
+  --fr-magenta: #c02a6c;
+  --fr-violet: #6a2fd8;
+  --fr-dim: 0.72;
+}
+
+.fr-wash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fr-core {
+  opacity: calc(var(--fr-dim, 1) * 0.85);
+}
+
+.fr-head {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40rem;
+  height: 40rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  /* closest-side radii so every layer fades out inside the box — larger
+     radii get clipped by the element edge into a visible rectangle */
+  background:
+    radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--fr-hot) 34%, transparent),
+      color-mix(in srgb, var(--fr-hot) 12%, transparent) 11%,
+      transparent 24%
+    ),
+    radial-gradient(
+      closest-side at 52% 52%,
+      color-mix(in srgb, var(--orange-500) 18%, transparent),
+      color-mix(in srgb, var(--fr-red) 11%, transparent) 22%,
+      color-mix(in srgb, var(--fr-magenta) 7%, transparent) 38%,
+      transparent 62%
+    ),
+    radial-gradient(
+      closest-side at 53% 53%,
+      color-mix(in srgb, var(--fr-violet) 10%, transparent),
+      color-mix(in srgb, var(--fr-violet) 7%, transparent) 40%,
+      color-mix(in srgb, var(--fr-blue) 4%, transparent) 62%,
+      transparent 92%
+    );
+}
+
+:root[data-theme="light"] .flow-ribbon .fr-head {
+  background:
+    radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--orange-500) 22%, transparent),
+      transparent 24%
+    ),
+    radial-gradient(
+      closest-side at 52% 52%,
+      color-mix(in srgb, var(--fr-red) 10%, transparent),
+      color-mix(in srgb, var(--fr-magenta) 6%, transparent) 40%,
+      transparent 70%
+    );
+}
+
+@media (max-width: 767px) {
+  .fr-head {
+    width: 24rem;
+    height: 24rem;
+  }
+}
+
+/* Thin reading-progress bar under the header */
+.scroll-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 55;
+  height: 2px;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--orange-600), var(--orange-400));
+  pointer-events: none;
+}
+
+/* Hero scroll cue */
+.scroll-cue {
+  position: relative;
+  width: 1px;
+  height: 3.5rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--ink-400) 30%, transparent);
+}
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 40%;
+  background: var(--orange-400);
+  animation: cue-drop 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes cue-drop {
+  0% {
+    transform: translateY(-110%);
+  }
+  60%,
+  100% {
+    transform: translateY(280%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue::after,
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--navy-600);
+  color: var(--ink-300);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.theme-toggle:hover {
+  color: var(--orange-400);
+  border-color: var(--orange-400);
+  transform: rotate(15deg);
 }
