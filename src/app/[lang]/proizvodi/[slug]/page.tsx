@@ -14,8 +14,8 @@ import {
   productSlugs,
   type ProductItem,
 } from "@/data/products";
-import { productPath, routes } from "@/data/nav";
-import { localePath, resolveLocale } from "@/i18n/config";
+import { productItemPath, productPath, routes } from "@/data/nav";
+import { localePath, resolveLocale, type Locale } from "@/i18n/config";
 import { alternatesFor, getDictionary } from "@/i18n/dictionaries";
 
 export function generateStaticParams() {
@@ -27,22 +27,32 @@ export function generateStaticParams() {
  * appears in. Categories whose items carry no `group` come back as one
  * unlabelled block, so short ranges still render as a plain grid.
  */
-function ItemGrid({ items }: { items: ProductItem[] }) {
+function ItemGrid({
+  items,
+  locale,
+  categorySlug,
+}: {
+  items: ProductItem[];
+  locale: Locale;
+  categorySlug: string;
+}) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item, i) => (
-        <Reveal
-          key={item.slug}
-          delay={(i % 4) * 0.07}
-          className="flex h-full flex-col rounded-2xl border border-navy-700/70 bg-navy-900/50 p-5"
-        >
-          <ProductMedia src={item.image} alt={item.name} />
-          <span className="mt-5 text-xs font-semibold uppercase tracking-widest text-orange-400">
-            {item.label}
-          </span>
-          <h3 className="mt-2 font-display text-base font-extrabold leading-snug text-ink-100">
-            {item.name}
-          </h3>
+        <Reveal key={item.slug} delay={(i % 4) * 0.07}>
+          <Link
+            href={localePath(locale, productItemPath(categorySlug, item.slug))}
+            data-cursor="link"
+            className="group flex h-full flex-col rounded-2xl border border-navy-700/70 bg-navy-900/50 p-5 transition-colors hover:border-orange-500/50"
+          >
+            <ProductMedia src={item.image} alt={item.name} />
+            <span className="mt-5 text-xs font-semibold uppercase tracking-widest text-orange-400">
+              {item.label}
+            </span>
+            <h3 className="mt-2 font-display text-base font-extrabold leading-snug text-ink-100">
+              {item.name}
+            </h3>
+          </Link>
         </Reveal>
       ))}
     </div>
@@ -160,12 +170,21 @@ export default async function ProductCategoryPage({
                 count: block.items.length,
               }))}
               panels={blocks.map((block) => (
-                <ItemGrid key={block.group} items={block.items} />
+                <ItemGrid
+                  key={block.group}
+                  items={block.items}
+                  locale={locale}
+                  categorySlug={slug}
+                />
               ))}
             />
           ) : (
             <div className="mt-12">
-              <ItemGrid items={blocks[0].items} />
+              <ItemGrid
+                items={blocks[0].items}
+                locale={locale}
+                categorySlug={slug}
+              />
             </div>
           )}
         </section>

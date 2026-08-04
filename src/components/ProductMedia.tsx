@@ -11,10 +11,15 @@ export default function ProductMedia({
   src,
   alt,
   className = "",
+  sizes = "(min-width: 1024px) 22vw, (min-width: 640px) 44vw, 88vw",
+  priority = false,
 }: {
   src?: string;
   alt: string;
   className?: string;
+  /** Override for slots wider than a catalogue card, e.g. the detail page. */
+  sizes?: string;
+  priority?: boolean;
 }) {
   return (
     <div
@@ -27,7 +32,8 @@ export default function ProductMedia({
           src={src}
           alt={alt}
           fill
-          sizes="(min-width: 1024px) 22vw, (min-width: 640px) 44vw, 88vw"
+          sizes={sizes}
+          priority={priority}
           className="object-cover"
         />
       ) : (

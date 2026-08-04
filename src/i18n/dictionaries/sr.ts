@@ -277,6 +277,20 @@ export const sr = {
       "Pošaljite nam dimenzije, klasu filtracije i količine — pripremamo ponudu u roku od 24 časa.",
   },
 
+  productItemPage: {
+    breadcrumbHome: "Početna",
+    back: (category: string) => `← ${category}`,
+    highlightsEyebrow: "Karakteristike",
+    specsEyebrow: "Tehnički podaci",
+    standardsEyebrow: "Standardi i sertifikati",
+    quote: "Zatražite ponudu",
+    siblingsEyebrow: "Iz iste kategorije",
+    siblingsHeading: "Ostale varijante",
+    ctaTitle: (product: string) => `Zatražite ponudu za: ${product}`,
+    ctaText:
+      "Pošaljite nam dimenzije, klasu filtracije i količine — pripremamo ponudu u roku od 24 časa.",
+  },
+
   industriesPage: {
     eyebrow: "Industrije",
     heading: "Rešenja namenjena specifičnim zahtevima svake industrije.",

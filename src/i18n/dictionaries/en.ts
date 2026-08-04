@@ -275,6 +275,20 @@ export const en: Dictionary = {
       "Send us the dimensions, filtration class and quantities — we prepare a quote within 24 hours.",
   },
 
+  productItemPage: {
+    breadcrumbHome: "Home",
+    back: (category: string) => `← ${category}`,
+    highlightsEyebrow: "Highlights",
+    specsEyebrow: "Technical data",
+    standardsEyebrow: "Standards and certificates",
+    quote: "Request a quote",
+    siblingsEyebrow: "From the same category",
+    siblingsHeading: "Other variants",
+    ctaTitle: (product: string) => `Request a quote for: ${product}`,
+    ctaText:
+      "Send us the dimensions, filtration class and quantities — we prepare a quote within 24 hours.",
+  },
+
   industriesPage: {
     eyebrow: "Industries",
     heading: "Solutions built around the specific demands of each industry.",

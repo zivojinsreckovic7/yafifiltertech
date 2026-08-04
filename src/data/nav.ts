@@ -18,3 +18,8 @@ export function industryPath(slug: string) {
 export function productPath(slug: string) {
   return `${routes.products}/${slug}`;
 }
+
+/** Detail page for one variant, nested under the category it belongs to. */
+export function productItemPath(categorySlug: string, itemSlug: string) {
+  return `${productPath(categorySlug)}/${itemSlug}`;
+}

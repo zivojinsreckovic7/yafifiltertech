@@ -1,6 +1,14 @@
 import type { Locale } from "@/i18n/config";
 
-/** One variant inside a category — the cards on a category page. */
+/**
+ * One variant inside a category — a card on the category page and a detail
+ * page of its own at `/proizvodi/<category>/<item>`.
+ *
+ * Everything below `image` is detail-page content and every field is optional:
+ * a variant with nothing but a slug, name, label and image still renders a
+ * complete page, falling back to its category's copy. Add fields here as the
+ * catalogue grows rather than special-casing them in the page.
+ */
 export type ProductItem = {
   /** Locale-independent. */
   slug: string;
@@ -18,6 +26,14 @@ export type ProductItem = {
    * the dark surface; the card reserves the space until one is supplied.
    */
   image?: string;
+  /** Detail-page lead paragraph. Falls back to the category intro. */
+  intro?: string;
+  /** Short selling points listed under the lead. */
+  highlights?: string[];
+  /** Spec rows, rendered in the order given. */
+  specs?: { label: string; value: string }[];
+  /** Classification and certification chips. Falls back to the category's. */
+  standards?: string[];
 };
 
 export type ProductCategory = {
@@ -1560,3 +1576,49 @@ export function getProduct(locale: Locale, slug: string) {
 
 /** Slugs are shared across locales — used by `generateStaticParams`. */
 export const productSlugs = sr.map((category) => category.slug);
+
+/**
+ * Every `<category, variant>` pair in the catalogue, for the detail route's
+ * `generateStaticParams`. Slugs are locale-independent, so one list covers
+ * both languages.
+ */
+export const productItemParams = sr.flatMap((category) =>
+  (category.items ?? []).map((item) => ({
+    slug: category.slug,
+    item: item.slug,
+  }))
+);
+
+/** A variant together with the category it was reached through. */
+export function getProductItem(
+  locale: Locale,
+  categorySlug: string,
+  itemSlug: string
+) {
+  const category = getProduct(locale, categorySlug);
+  const item = category?.items?.find((entry) => entry.slug === itemSlug);
+  if (!category || !item) return undefined;
+  return { category, item };
+}
+
+/**
+ * A handful of variants are listed under two categories — the paint-shop media
+ * also sit under filter materials — which would give one product two URLs.
+ * Catalogue order decides: the first category holding the slug owns it, and
+ * the duplicate points its canonical there.
+ */
+export function primaryCategorySlug(itemSlug: string): string | undefined {
+  return sr.find((category) =>
+    category.items?.some((item) => item.slug === itemSlug)
+  )?.slug;
+}
+
+/** Other variants in the same category, for the detail page's siblings row. */
+export function getSiblingItems(
+  locale: Locale,
+  categorySlug: string,
+  itemSlug: string
+): ProductItem[] {
+  const category = getProduct(locale, categorySlug);
+  return (category?.items ?? []).filter((item) => item.slug !== itemSlug);
+}
