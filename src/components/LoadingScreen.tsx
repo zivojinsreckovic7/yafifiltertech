@@ -11,7 +11,13 @@ function easeOutCubic(value: number) {
   return 1 - Math.pow(1 - value, 3);
 }
 
-export default function LoadingScreen() {
+export default function LoadingScreen({
+  aria,
+  label,
+}: {
+  aria: string;
+  label: string;
+}) {
   const screenRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLSpanElement>(null);
@@ -101,7 +107,7 @@ export default function LoadingScreen() {
       ref={screenRef}
       className="site-loader"
       role="status"
-      aria-label="Učitavanje sajta"
+      aria-label={aria}
     >
       <div className="site-loader__content">
         <Logo className="site-loader__logo" markClassName="h-14 w-14" />
@@ -111,7 +117,7 @@ export default function LoadingScreen() {
             <span ref={barRef} className="site-loader__bar" />
           </div>
           <div className="site-loader__meta">
-            <span>Učitavanje</span>
+            <span>{label}</span>
             <span ref={progressRef} className="site-loader__progress">
               0%
             </span>

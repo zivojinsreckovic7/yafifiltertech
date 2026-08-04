@@ -1,7 +1,20 @@
-export { industries } from "./industries";
+/**
+ * Locale-agnostic route paths. Run every one through `localePath(locale, path)`
+ * before using it as an href — labels come from the dictionary.
+ */
+export const routes = {
+  home: "/",
+  products: "/proizvodi",
+  industries: "/industrije",
+  about: "/#o-nama",
+  deltrian: "/deltrian",
+  contact: "/kontakt",
+} as const;
 
-export const navLinks = [
-  { href: "/proizvodi", label: "Proizvodi" },
-  { href: "/industrije", label: "Industrije" },
-  { href: "/#o-nama", label: "O nama" },
-];
+export function industryPath(slug: string) {
+  return `${routes.industries}/${slug}`;
+}
+
+export function productPath(slug: string) {
+  return `${routes.products}/${slug}`;
+}

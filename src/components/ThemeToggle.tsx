@@ -19,7 +19,15 @@ function getSnapshot(): Theme {
     : "dark";
 }
 
-export default function ThemeToggle({ className = "" }: { className?: string }) {
+export default function ThemeToggle({
+  toDark,
+  toLight,
+  className = "",
+}: {
+  toDark: string;
+  toLight: string;
+  className?: string;
+}) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, () => "dark" as Theme);
 
   const toggle = () => {
@@ -36,7 +44,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
     <button
       type="button"
       onClick={toggle}
-      aria-label={theme === "light" ? "Tamni režim" : "Svetli režim"}
+      aria-label={theme === "light" ? toDark : toLight}
       className={`theme-toggle ${className}`}
     >
       {theme === "light" ? (

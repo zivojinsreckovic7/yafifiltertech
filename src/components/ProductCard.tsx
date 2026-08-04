@@ -1,17 +1,24 @@
 import Link from "next/link";
 import PleatIcon from "./PleatIcon";
 import type { ProductCategory } from "@/data/products";
+import { productPath } from "@/data/nav";
+import { localePath, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
 export default function ProductCard({
   product,
   index,
+  locale,
+  dict,
 }: {
   product: ProductCategory;
   index?: number;
+  locale: Locale;
+  dict: Dictionary;
 }) {
   return (
     <Link
-      href={`/proizvodi#${product.slug}`}
+      href={localePath(locale, productPath(product.slug))}
       id={product.slug}
       data-cursor="link"
       className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-navy-700/70 bg-navy-900/60 p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-orange-500/50 hover:bg-navy-800/80 scroll-mt-32"
@@ -36,8 +43,9 @@ export default function ProductCard({
         <p className="mt-3 text-sm leading-relaxed text-ink-400">
           {product.description}
         </p>
+        {/* Capped so cards stay level — the category page lists them all. */}
         <ul className="mt-5 flex flex-wrap gap-2">
-          {product.applications.map((a) => (
+          {product.applications.slice(0, 3).map((a) => (
             <li
               key={a}
               className="rounded-full border border-navy-600 px-3 py-1 text-xs text-ink-300"
@@ -49,7 +57,7 @@ export default function ProductCard({
       </div>
 
       <div className="relative mt-6 flex items-center gap-2 text-sm font-semibold text-ink-200 transition-colors group-hover:text-orange-300">
-        Pogledaj specifikacije
+        {dict.productCard.cta}
         <span className="transition-transform duration-500 group-hover:translate-x-1.5">
           →
         </span>

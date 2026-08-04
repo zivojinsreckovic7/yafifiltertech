@@ -1,10 +1,21 @@
 import Link from "next/link";
 import type { Industry } from "@/data/industries";
+import { industryPath } from "@/data/nav";
+import { localePath, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export default function IndustryCard({ industry }: { industry: Industry }) {
+export default function IndustryCard({
+  industry,
+  locale,
+  dict,
+}: {
+  industry: Industry;
+  locale: Locale;
+  dict: Dictionary;
+}) {
   return (
     <Link
-      href={`/industrije/${industry.slug}`}
+      href={localePath(locale, industryPath(industry.slug))}
       data-cursor="link"
       className="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-2xl border border-navy-700/70 bg-gradient-to-br from-navy-900 to-navy-950 p-8 transition-all duration-500 hover:border-orange-500/50"
     >
@@ -25,7 +36,7 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
         </p>
       </div>
       <div className="relative mt-8 flex items-center gap-2 text-sm font-semibold text-ink-200 transition-colors group-hover:text-orange-300">
-        Rešenje za ovu industriju
+        {dict.industryCard.cta}
         <span className="transition-transform duration-500 group-hover:translate-x-1.5">
           →
         </span>

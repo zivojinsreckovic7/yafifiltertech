@@ -687,19 +687,33 @@ html[data-reveal-ready] [data-reveal-group].is-revealed > [data-reveal] {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/*
+ * Ribbon-local ramp, brightest core → deepest outer wash. Scoped here (not
+ * pulled from the global brand scale) so the beam can run cool while the rest
+ * of the site stays orange. paintWash() reads these with getPropertyValue and
+ * parses them as hex — keep them literal 6-digit hex, no color-mix().
+ */
 .flow-ribbon {
-  --fr-hot: #ffd27a;
-  --fr-red: #f0452c;
-  --fr-magenta: #d9367c;
-  --fr-violet: #7a3df0;
-  --fr-blue: #2b46c8;
+  --fr-hot: #dcf4ff;
+  --fr-ice: #a9e2ff;
+  --fr-sky: #6ccdff;
+  --fr-cyan: #23b2ff;
+  --fr-azure: #0e90ee;
+  --fr-blue: #1b6bdc;
+  --fr-indigo: #3a55e0;
+  --fr-deep: #2b46c8;
   --fr-dim: 1;
 }
+/* Light theme inverts the ramp: the inner tiers go dark so the beam still
+   reads against a pale page. */
 :root[data-theme="light"] .flow-ribbon {
-  --fr-hot: #ff9d3d;
-  --fr-red: #d63a20;
-  --fr-magenta: #c02a6c;
-  --fr-violet: #6a2fd8;
+  --fr-hot: #2f9fe0;
+  --fr-ice: #0a5c96;
+  --fr-sky: #0d6fae;
+  --fr-cyan: #1183cb;
+  --fr-azure: #1a6fc4;
+  --fr-blue: #1a58b4;
+  --fr-indigo: #2a44b8;
   --fr-dim: 0.72;
 }
 
@@ -733,16 +747,16 @@ html[data-reveal-ready] [data-reveal-group].is-revealed > [data-reveal] {
     ),
     radial-gradient(
       closest-side at 52% 52%,
-      color-mix(in srgb, var(--orange-500) 18%, transparent),
-      color-mix(in srgb, var(--fr-red) 11%, transparent) 22%,
-      color-mix(in srgb, var(--fr-magenta) 7%, transparent) 38%,
+      color-mix(in srgb, var(--fr-cyan) 18%, transparent),
+      color-mix(in srgb, var(--fr-azure) 11%, transparent) 22%,
+      color-mix(in srgb, var(--fr-blue) 7%, transparent) 38%,
       transparent 62%
     ),
     radial-gradient(
       closest-side at 53% 53%,
-      color-mix(in srgb, var(--fr-violet) 10%, transparent),
-      color-mix(in srgb, var(--fr-violet) 7%, transparent) 40%,
-      color-mix(in srgb, var(--fr-blue) 4%, transparent) 62%,
+      color-mix(in srgb, var(--fr-indigo) 10%, transparent),
+      color-mix(in srgb, var(--fr-indigo) 7%, transparent) 40%,
+      color-mix(in srgb, var(--fr-deep) 4%, transparent) 62%,
       transparent 92%
     );
 }
@@ -751,13 +765,13 @@ html[data-reveal-ready] [data-reveal-group].is-revealed > [data-reveal] {
   background:
     radial-gradient(
       closest-side,
-      color-mix(in srgb, var(--orange-500) 22%, transparent),
+      color-mix(in srgb, var(--fr-cyan) 22%, transparent),
       transparent 24%
     ),
     radial-gradient(
       closest-side at 52% 52%,
-      color-mix(in srgb, var(--fr-red) 10%, transparent),
-      color-mix(in srgb, var(--fr-magenta) 6%, transparent) 40%,
+      color-mix(in srgb, var(--fr-azure) 10%, transparent),
+      color-mix(in srgb, var(--fr-blue) 6%, transparent) 40%,
       transparent 70%
     );
 }
@@ -834,4 +848,206 @@ html[data-reveal-ready] [data-reveal-group].is-revealed > [data-reveal] {
   color: var(--orange-400);
   border-color: var(--orange-400);
   transform: rotate(15deg);
+}
+
+/* Catalogue group switcher */
+.group-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--navy-600);
+  background: transparent;
+  color: var(--ink-300);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+.group-tab:hover {
+  color: var(--ink-100);
+  border-color: var(--navy-500);
+}
+.group-tab[aria-selected="true"] {
+  border-color: var(--orange-400);
+  background: color-mix(in srgb, var(--orange-500) 12%, transparent);
+  color: var(--orange-300);
+}
+.group-tab__count {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ink-400);
+}
+.group-tab[aria-selected="true"] .group-tab__count {
+  color: var(--orange-400);
+}
+
+/* Nav dropdown (product catalogue) */
+.nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: var(--ink-300);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.nav-trigger:hover,
+.nav-trigger[aria-expanded="true"] {
+  color: var(--ink-100);
+}
+.nav-trigger__chevron {
+  transition: transform 0.3s ease;
+}
+.nav-trigger[aria-expanded="true"] .nav-trigger__chevron {
+  transform: rotate(180deg);
+}
+
+.nav-menu {
+  position: absolute;
+  left: -0.75rem;
+  top: calc(100% + 1.15rem);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  min-width: 17rem;
+  max-width: 22rem;
+  padding: 0.4rem;
+  border-radius: 1rem;
+  border: 1px solid var(--navy-700);
+  /* Solid surface — no backdrop blur, which is expensive in Safari */
+  background: var(--navy-900);
+  box-shadow: 0 26px 55px -26px rgba(0, 0, 0, 0.7);
+  animation: lang-menu-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-menu__label {
+  padding: 0.5rem 0.75rem 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+.nav-menu__item {
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink-300);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.nav-menu__item:hover {
+  background: var(--navy-800);
+  color: var(--ink-100);
+}
+.nav-menu__all {
+  margin-top: 0.35rem;
+  padding: 0.7rem 0.75rem 0.55rem;
+  border-top: 1px solid var(--navy-700);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--orange-400);
+  transition: color 0.2s ease;
+}
+.nav-menu__all:hover {
+  color: var(--orange-300);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu {
+    animation: none;
+  }
+}
+
+/* Language switcher */
+.lang-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 2.5rem;
+  padding-inline: 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--navy-600);
+  background: transparent;
+  color: var(--ink-300);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.lang-trigger:hover,
+.lang-trigger[aria-expanded="true"] {
+  color: var(--orange-400);
+  border-color: var(--orange-400);
+}
+.lang-trigger__chevron {
+  transition: transform 0.3s ease;
+}
+.lang-trigger[aria-expanded="true"] .lang-trigger__chevron {
+  transform: rotate(180deg);
+}
+
+.lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.6rem);
+  z-index: 60;
+  min-width: 10.5rem;
+  padding: 0.3rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--navy-700);
+  /* Solid surface — no backdrop blur, which is expensive in Safari */
+  background: var(--navy-900);
+  box-shadow: 0 22px 45px -22px rgba(0, 0, 0, 0.7);
+  animation: lang-menu-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes lang-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.6rem;
+  color: var(--ink-300);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.lang-option:hover {
+  background: var(--navy-800);
+  color: var(--ink-100);
+}
+.lang-option[aria-current="true"] {
+  color: var(--orange-400);
+}
+.lang-option__code {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ink-400);
+}
+.lang-option[aria-current="true"] .lang-option__code {
+  color: var(--orange-400);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-menu {
+    animation: none;
+  }
 }

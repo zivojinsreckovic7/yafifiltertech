@@ -4,8 +4,20 @@ import HeroIntro from "@/components/HeroIntro";
 import ProductSearch from "@/components/ProductSearch";
 import { MagneticLink } from "@/components/Magnetic";
 import StatCounter from "@/components/StatCounter";
+import { routes } from "@/data/nav";
+import { localePath, localeTags, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export default function Hero() {
+export default function Hero({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const { hero } = dict;
+  const numberLocale = localeTags[locale];
+
   return (
     <section
       id="hero"
@@ -37,7 +49,7 @@ export default function Hero() {
       <div className="wrap relative z-10 flex flex-1 flex-col justify-center pt-28">
         <HeroIntro className="max-w-2xl">
           <span data-hero-item className="eyebrow block">
-            Regionalni distributer — Deltrian program
+            {hero.eyebrow}
           </span>
 
           <SplitHeading
@@ -46,28 +58,36 @@ export default function Hero() {
             delay={0.08}
             className="mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink-100 sm:text-5xl lg:text-6xl"
           >
-            Filtracija vazduha koja štiti proces, ne samo prostor.
+            {hero.heading}
           </SplitHeading>
 
           <p
             data-hero-item
             className="mt-6 max-w-lg text-base leading-relaxed text-ink-300 sm:text-lg"
           >
-            Projektujemo i isporučujemo industrijske sisteme filtracije
-            vazduha usklađene sa ISO 16890 standardom — za farmaciju,
-            hotelijerstvo, auto-industriju i aerodrome širom Ex-Yu regiona.
+            {hero.lead}
           </p>
 
           <div data-hero-item className="mt-9 max-w-xl">
-            <ProductSearch />
+            <ProductSearch
+              action={localePath(locale, routes.products)}
+              placeholder={dict.search.placeholder}
+              submitLabel={dict.search.submit}
+            />
           </div>
 
           <div data-hero-item className="mt-6 flex flex-wrap items-center gap-4">
-            <MagneticLink href="/kontakt" className="btn-primary">
-              Zatražite ponudu
+            <MagneticLink
+              href={localePath(locale, routes.contact)}
+              className="btn-primary"
+            >
+              {hero.ctaPrimary}
             </MagneticLink>
-            <MagneticLink href="/deltrian" className="btn-ghost">
-              Istražite Deltrian program
+            <MagneticLink
+              href={localePath(locale, routes.deltrian)}
+              className="btn-ghost"
+            >
+              {hero.ctaSecondary}
             </MagneticLink>
           </div>
         </HeroIntro>
@@ -78,7 +98,7 @@ export default function Hero() {
           className="text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-400"
           style={{ writingMode: "vertical-rl" }}
         >
-          Skrolujte
+          {hero.scroll}
         </span>
         <span className="scroll-cue" />
       </div>
@@ -88,19 +108,32 @@ export default function Hero() {
           data-hero-item
           className="grid grid-cols-2 gap-8 border-t border-navy-700/60 py-8 sm:grid-cols-4"
         >
-          <StatCounter value={15} suffix="+" label="godina iskustva" delay={2} />
+          <StatCounter
+            value={15}
+            suffix="+"
+            label={hero.stats.experience}
+            numberLocale={numberLocale}
+            delay={2}
+          />
           <StatCounter
             value={1200}
             suffix="+"
-            label="realizovanih projekata"
+            label={hero.stats.projects}
+            numberLocale={numberLocale}
             delay={2.1}
           />
           <StatCounter
             value={16890}
-            label="ISO standard kvaliteta vazduha"
+            label={hero.stats.standard}
+            numberLocale={numberLocale}
             delay={2.2}
           />
-          <StatCounter value={5} label="tržišta u Ex-Yu regionu" delay={2.3} />
+          <StatCounter
+            value={5}
+            label={hero.stats.markets}
+            numberLocale={numberLocale}
+            delay={2.3}
+          />
         </div>
       </HeroIntro>
     </section>

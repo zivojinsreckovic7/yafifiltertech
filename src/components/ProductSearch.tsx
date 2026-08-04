@@ -3,14 +3,25 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function ProductSearch({ className = "" }: { className?: string }) {
+export default function ProductSearch({
+  action,
+  placeholder,
+  submitLabel,
+  className = "",
+}: {
+  /** Locale-resolved products route the query is submitted to. */
+  action: string;
+  placeholder: string;
+  submitLabel: string;
+  className?: string;
+}) {
   const [value, setValue] = useState("");
   const router = useRouter();
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const q = value.trim();
-    router.push(q ? `/proizvodi?q=${encodeURIComponent(q)}` : "/proizvodi");
+    router.push(q ? `${action}?q=${encodeURIComponent(q)}` : action);
   };
 
   return (
@@ -36,14 +47,14 @@ export default function ProductSearch({ className = "" }: { className?: string }
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Pretražite filtere (HEPA, kasetni, džepasti...)"
+        placeholder={placeholder}
         className="w-full bg-transparent py-2.5 text-sm text-ink-100 outline-none placeholder:text-ink-400"
       />
       <button
         type="submit"
         className="shrink-0 rounded-full bg-orange-500 px-5 py-2.5 text-xs font-semibold text-navy-950 transition-colors hover:bg-orange-400"
       >
-        Pretraži
+        {submitLabel}
       </button>
     </form>
   );

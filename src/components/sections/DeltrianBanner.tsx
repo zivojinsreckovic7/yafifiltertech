@@ -1,7 +1,18 @@
 import Reveal from "@/components/Reveal";
 import { MagneticLink } from "@/components/Magnetic";
+import { routes } from "@/data/nav";
+import { localePath, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export default function DeltrianBanner() {
+export default function DeltrianBanner({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const banner = dict.deltrianBanner;
+
   return (
     <section className="py-8 md:py-12">
       <div className="wrap">
@@ -33,34 +44,28 @@ export default function DeltrianBanner() {
 
             <div className="relative flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
               <div className="max-w-xl">
-                <span className="eyebrow">Ekskluzivno partnerstvo</span>
+                <span className="eyebrow">{banner.eyebrow}</span>
                 <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl">
-                  Deltrian program filtera — zvanično, za ceo Ex-Yu region.
+                  {banner.heading}
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-ink-300">
-                  Yafi Filtertech je zvanični regionalni distributer
-                  Deltrian programa filtera. Kompletna paleta industrijske
-                  filtracije, razvijena u skladu sa evropskim standardima
-                  kvaliteta vazduha, dostupna direktno kroz naš tim.
+                  {banner.lead}
                 </p>
                 <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ink-300">
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-                    Zvaničan regionalni distributer
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-                    Kompletan program filtera
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-                    Tehnička podrška na terenu
-                  </li>
+                  {banner.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
+                      {bullet}
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              <MagneticLink href="/deltrian" className="btn-primary shrink-0">
-                Otvorite Deltrian program →
+              <MagneticLink
+                href={localePath(locale, routes.deltrian)}
+                className="btn-primary shrink-0"
+              >
+                {banner.cta}
               </MagneticLink>
             </div>
           </div>

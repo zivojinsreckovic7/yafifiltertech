@@ -1,5 +1,26 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Languages
+
+Serbian is the primary language and is served from the root (`/proizvodi`);
+English is served from a prefixed path (`/en/proizvodi`). `src/proxy.ts`
+rewrites unprefixed requests onto the `app/[lang]` tree as `/sr/...` so the
+default prefix never appears in a URL, and redirects `/sr/...` back to the
+clean path.
+
+- **UI copy** lives in `src/i18n/dictionaries/{sr,en}.ts`. `sr.ts` is the source
+  of truth: its shape becomes the `Dictionary` type that every other locale has
+  to satisfy, so a missing translation is a type error.
+- **Content** (filters, industries, testimonials) lives in `src/data/*.ts`,
+  keyed by locale. Slugs are shared across languages so a URL maps to the same
+  page in every locale.
+- **Links** are written as locale-agnostic paths from `src/data/nav.ts` and
+  resolved with `localePath(locale, path)`.
+
+To add a locale: add it to `locales` in `src/i18n/config.ts`, add its names and
+BCP 47 tag next to the existing ones, add a dictionary and a data block per
+`src/data` file, and register it in `src/i18n/dictionaries.ts`.
+
 ## Getting Started
 
 First, run the development server:

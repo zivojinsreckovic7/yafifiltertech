@@ -2,9 +2,15 @@
 
 import { useState } from "react";
 import { MagneticButton } from "./Magnetic";
-import { productCategories } from "@/data/products";
+import type { Dictionary } from "@/i18n/dictionaries/sr";
 
-export default function QuoteForm() {
+export default function QuoteForm({
+  dict,
+  productNames,
+}: {
+  dict: Dictionary["quoteForm"];
+  productNames: string[];
+}) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,11 +30,10 @@ export default function QuoteForm() {
           ✓
         </span>
         <h3 className="mt-6 font-display text-2xl font-extrabold text-ink-100">
-          Upit je poslat
+          {dict.sentTitle}
         </h3>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-400">
-          Hvala na interesovanju. Naš tim će vam odgovoriti sa predlogom
-          rešenja u najkraćem roku.
+          {dict.sentText}
         </p>
       </div>
     );
@@ -39,37 +44,37 @@ export default function QuoteForm() {
       onSubmit={handleSubmit}
       className="grid grid-cols-1 gap-5 rounded-2xl border border-navy-700 bg-navy-900/60 p-8 sm:grid-cols-2"
     >
-      <Field label="Ime i prezime" name="name" required />
-      <Field label="Kompanija" name="company" />
-      <Field label="Email" name="email" type="email" required />
-      <Field label="Telefon" name="phone" type="tel" />
+      <Field label={dict.name} name="name" required />
+      <Field label={dict.company} name="company" />
+      <Field label={dict.email} name="email" type="email" required />
+      <Field label={dict.phone} name="phone" type="tel" />
 
       <label className="flex flex-col gap-2 text-sm sm:col-span-2">
-        <span className="font-medium text-ink-200">Tip filtera</span>
+        <span className="font-medium text-ink-200">{dict.filterType}</span>
         <select
           name="filterType"
           className="rounded-lg border border-navy-600 bg-navy-950/60 px-4 py-3 text-ink-100 outline-none transition-colors focus:border-orange-400"
           defaultValue=""
         >
           <option value="" disabled>
-            Izaberite kategoriju
+            {dict.selectCategory}
           </option>
-          {productCategories.map((p) => (
-            <option key={p.slug} value={p.name}>
-              {p.name}
+          {productNames.map((name) => (
+            <option key={name} value={name}>
+              {name}
             </option>
           ))}
-          <option value="deltrian">Deltrian program</option>
-          <option value="ostalo">Nisam siguran / drugo</option>
+          <option value="deltrian">{dict.deltrianOption}</option>
+          <option value="ostalo">{dict.otherOption}</option>
         </select>
       </label>
 
       <label className="flex flex-col gap-2 text-sm sm:col-span-2">
-        <span className="font-medium text-ink-200">Poruka</span>
+        <span className="font-medium text-ink-200">{dict.message}</span>
         <textarea
           name="message"
           rows={4}
-          placeholder="Opišite objekat, protok vazduha ili trenutni sistem ventilacije..."
+          placeholder={dict.messagePlaceholder}
           className="resize-none rounded-lg border border-navy-600 bg-navy-950/60 px-4 py-3 text-ink-100 placeholder:text-ink-400 outline-none transition-colors focus:border-orange-400"
         />
       </label>
@@ -79,12 +84,9 @@ export default function QuoteForm() {
           type="submit"
           className="btn-primary w-full sm:w-auto"
         >
-          {status === "sending" ? "Slanje..." : "Pošaljite upit"}
+          {status === "sending" ? dict.sending : dict.submit}
         </MagneticButton>
-        <p className="mt-4 text-xs text-ink-400">
-          Odgovaramo u roku od 24 časa radnim danima. Slanjem upita
-          saglasni ste da vas kontaktiramo radi pripreme ponude.
-        </p>
+        <p className="mt-4 text-xs text-ink-400">{dict.note}</p>
       </div>
     </form>
   );

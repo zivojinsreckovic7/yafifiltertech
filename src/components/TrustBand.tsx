@@ -1,15 +1,4 @@
-const items = [
-  "ISO 16890",
-  "EN 1822 · H13–H14",
-  "GMP / ISO 14644",
-  "Deltrian Partner Program",
-  "Farmaceutska industrija",
-  "Hotelijerstvo",
-  "Auto-industrija",
-  "Aerodromi",
-];
-
-export default function TrustBand() {
+export default function TrustBand({ items }: { items: string[] }) {
   return (
     <div className="marquee-mask overflow-hidden border-y border-navy-800 bg-navy-900/40 py-5">
       <div className="flex w-max animate-marquee items-center gap-16">

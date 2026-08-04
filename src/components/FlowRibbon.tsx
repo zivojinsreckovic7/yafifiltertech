@@ -13,12 +13,12 @@ const SWEEP_PX = 1400;
  * canvas wash underneath.
  */
 const EDGE_LAYERS = [
-  { w: 160, dx: 22, dy: 14, color: "color-mix(in oklab, var(--fr-red) 55%, var(--fr-magenta))", alpha: 0.07 },
-  { w: 124, dx: 16, dy: 10, color: "var(--fr-red)", alpha: 0.09 },
-  { w: 96, dx: 11, dy: 7, color: "color-mix(in oklab, var(--orange-500) 55%, var(--fr-red))", alpha: 0.11 },
-  { w: 72, dx: 7, dy: 4.5, color: "var(--orange-500)", alpha: 0.14 },
-  { w: 52, dx: 4, dy: 2.5, color: "var(--orange-400)", alpha: 0.18 },
-  { w: 36, dx: 2, dy: 1, color: "color-mix(in oklab, var(--fr-hot) 60%, var(--orange-400))", alpha: 0.22 },
+  { w: 160, dx: 22, dy: 14, color: "color-mix(in oklab, var(--fr-azure) 55%, var(--fr-blue))", alpha: 0.07 },
+  { w: 124, dx: 16, dy: 10, color: "var(--fr-azure)", alpha: 0.09 },
+  { w: 96, dx: 11, dy: 7, color: "color-mix(in oklab, var(--fr-cyan) 55%, var(--fr-azure))", alpha: 0.11 },
+  { w: 72, dx: 7, dy: 4.5, color: "var(--fr-cyan)", alpha: 0.14 },
+  { w: 52, dx: 4, dy: 2.5, color: "var(--fr-sky)", alpha: 0.18 },
+  { w: 36, dx: 2, dy: 1, color: "color-mix(in oklab, var(--fr-hot) 60%, var(--fr-sky))", alpha: 0.22 },
   { w: 22, dx: 0, dy: 0, color: "var(--fr-hot)", alpha: 0.3 },
 ];
 
@@ -30,11 +30,11 @@ const EDGE_LAYERS = [
  * outside the band so the light appears to tint the room, not float on it.
  */
 const WASH_BANDS = [
-  { color: "--fr-blue", r: 850, dx: 240, dy: 150, spacing: 620, a: 0.05, seed: 11 },
-  { color: "--fr-blue", r: 420, dx: 150, dy: 95, spacing: 48, a: 0.028, seed: 2 },
-  { color: "--fr-violet", r: 290, dx: 95, dy: 60, spacing: 42, a: 0.03, seed: 5 },
-  { color: "--fr-magenta", r: 190, dx: 55, dy: 34, spacing: 36, a: 0.03, seed: 8 },
-  { color: "--fr-red", r: 120, dx: 28, dy: 18, spacing: 32, a: 0.025, seed: 13 },
+  { color: "--fr-deep", r: 850, dx: 240, dy: 150, spacing: 620, a: 0.05, seed: 11 },
+  { color: "--fr-deep", r: 420, dx: 150, dy: 95, spacing: 48, a: 0.028, seed: 2 },
+  { color: "--fr-indigo", r: 290, dx: 95, dy: 60, spacing: 42, a: 0.03, seed: 5 },
+  { color: "--fr-blue", r: 190, dx: 55, dy: 34, spacing: 36, a: 0.03, seed: 8 },
+  { color: "--fr-azure", r: 120, dx: 28, dy: 18, spacing: 32, a: 0.025, seed: 13 },
 ];
 
 /**
@@ -313,7 +313,7 @@ export default function FlowRibbon() {
           <defs>
             <linearGradient id="fr-grad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stopColor="var(--fr-hot)" />
-              <stop offset="0.5" stopColor="var(--orange-300)" />
+              <stop offset="0.5" stopColor="var(--fr-ice)" />
               <stop offset="1" stopColor="var(--fr-hot)" />
             </linearGradient>
           </defs>

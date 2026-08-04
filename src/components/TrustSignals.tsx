@@ -1,14 +1,21 @@
 import { rating } from "@/data/testimonials";
+import type { Dictionary } from "@/i18n/dictionaries";
 
 /**
  * Subtle one-line trust row used near CTAs: rating, response time, track
  * record. Intentionally quiet — small type, muted color.
  */
-export default function TrustSignals({ className = "" }: { className?: string }) {
+export default function TrustSignals({
+  dict,
+  className = "",
+}: {
+  dict: Dictionary;
+  className?: string;
+}) {
   const items = [
-    `${rating.score}/${rating.outOf} prosečna ocena saradnje`,
-    "Odgovor u roku od 24h",
-    "1.200+ realizovanih projekata",
+    dict.trustSignals.rating(rating.score, rating.outOf),
+    dict.trustSignals.response,
+    dict.trustSignals.projects,
   ];
 
   return (

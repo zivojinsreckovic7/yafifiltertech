@@ -1,9 +1,28 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import Reveal from "./Reveal";
-import { industries } from "@/data/nav";
+import { getIndustries } from "@/data/industries";
+import { industryPath, routes } from "@/data/nav";
+import { localePath, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export default function Footer() {
+export default function Footer({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const { footer, nav } = dict;
+
+  const navItems = [
+    { href: routes.products, label: nav.products },
+    { href: routes.industries, label: nav.industries },
+    { href: routes.deltrian, label: nav.deltrian },
+    { href: routes.about, label: nav.about },
+    { href: routes.contact, label: nav.contact },
+  ];
+
   return (
     <footer className="relative overflow-hidden border-t border-navy-700/60 bg-navy-950">
       <div
@@ -17,50 +36,33 @@ export default function Footer() {
           <Reveal>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-400">
-              Projektujemo i isporučujemo industrijske sisteme filtracije
-              vazduha za Ex-Yu tržište. Regionalni distributer Deltrian
-              programa filtera.
+              {footer.description}
             </p>
           </Reveal>
 
           <Reveal delay={0.06}>
-            <h3 className="eyebrow mb-5">Navigacija</h3>
+            <h3 className="eyebrow mb-5">{footer.navHeading}</h3>
             <ul className="flex flex-col gap-3 text-sm text-ink-300">
-              <li>
-                <Link href="/proizvodi" className="hover:text-orange-300">
-                  Proizvodi
-                </Link>
-              </li>
-              <li>
-                <Link href="/industrije" className="hover:text-orange-300">
-                  Industrije
-                </Link>
-              </li>
-              <li>
-                <Link href="/deltrian" className="hover:text-orange-300">
-                  Deltrian program
-                </Link>
-              </li>
-              <li>
-                <Link href="/#o-nama" className="hover:text-orange-300">
-                  O nama
-                </Link>
-              </li>
-              <li>
-                <Link href="/kontakt" className="hover:text-orange-300">
-                  Kontakt
-                </Link>
-              </li>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={localePath(locale, item.href)}
+                    className="hover:text-orange-300"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </Reveal>
 
           <Reveal delay={0.12}>
-            <h3 className="eyebrow mb-5">Industrije</h3>
+            <h3 className="eyebrow mb-5">{footer.industriesHeading}</h3>
             <ul className="flex flex-col gap-3 text-sm text-ink-300">
-              {industries.map((i) => (
+              {getIndustries(locale).map((i) => (
                 <li key={i.slug}>
                   <Link
-                    href={`/industrije/${i.slug}`}
+                    href={localePath(locale, industryPath(i.slug))}
                     className="hover:text-orange-300"
                   >
                     {i.short}
@@ -71,7 +73,7 @@ export default function Footer() {
           </Reveal>
 
           <Reveal delay={0.18}>
-            <h3 className="eyebrow mb-5">Kontakt</h3>
+            <h3 className="eyebrow mb-5">{footer.contactHeading}</h3>
             <ul className="flex flex-col gap-3 text-sm text-ink-300">
               <li>
                 <a href="mailto:info@yafi.co.rs" className="hover:text-orange-300">
@@ -83,14 +85,14 @@ export default function Footer() {
                   +381 00 000 0000
                 </a>
               </li>
-              <li className="text-ink-400">Srbija · Ex-Yu region</li>
+              <li className="text-ink-400">{footer.regionValue}</li>
             </ul>
           </Reveal>
         </div>
 
         <Reveal className="mt-16 flex flex-col gap-4 border-t border-navy-800 pt-8 text-xs text-ink-400 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Yafi Filtertech. Sva prava zadržana.</p>
-          <p>Industrijska filtracija vazduha · ISO 16890</p>
+          <p>{footer.rights(new Date().getFullYear())}</p>
+          <p>{footer.tagline}</p>
         </Reveal>
       </div>
     </footer>
