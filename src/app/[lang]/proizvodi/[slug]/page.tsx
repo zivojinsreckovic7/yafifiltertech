@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import PleatIcon from "@/components/PleatIcon";
-import ProductMedia from "@/components/ProductMedia";
+import ProductItemCard from "@/components/ProductItemCard";
 import ProductGroupTabs from "@/components/ProductGroupTabs";
 import TrustSignals from "@/components/TrustSignals";
 import CTABanner from "@/components/CTABanner";
@@ -14,7 +14,7 @@ import {
   productSlugs,
   type ProductItem,
 } from "@/data/products";
-import { productItemPath, productPath, routes } from "@/data/nav";
+import { productPath, routes } from "@/data/nav";
 import { localePath, resolveLocale, type Locale } from "@/i18n/config";
 import { alternatesFor, getDictionary } from "@/i18n/dictionaries";
 
@@ -31,28 +31,26 @@ function ItemGrid({
   items,
   locale,
   categorySlug,
+  fallback,
+  cta,
 }: {
   items: ProductItem[];
   locale: Locale;
   categorySlug: string;
+  fallback: string;
+  cta: string;
 }) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item, i) => (
         <Reveal key={item.slug} delay={(i % 4) * 0.07}>
-          <Link
-            href={localePath(locale, productItemPath(categorySlug, item.slug))}
-            data-cursor="link"
-            className="group flex h-full flex-col rounded-2xl border border-navy-700/70 bg-navy-900/50 p-5 transition-colors hover:border-orange-500/50"
-          >
-            <ProductMedia src={item.image} alt={item.name} />
-            <span className="mt-5 text-xs font-semibold uppercase tracking-widest text-orange-400">
-              {item.label}
-            </span>
-            <h3 className="mt-2 font-display text-base font-extrabold leading-snug text-ink-100">
-              {item.name}
-            </h3>
-          </Link>
+          <ProductItemCard
+            item={item}
+            categorySlug={categorySlug}
+            locale={locale}
+            fallback={fallback}
+            cta={cta}
+          />
         </Reveal>
       ))}
     </div>
@@ -175,6 +173,8 @@ export default async function ProductCategoryPage({
                   items={block.items}
                   locale={locale}
                   categorySlug={slug}
+                  fallback={category.description}
+                  cta={dict.productCard.cta}
                 />
               ))}
             />
@@ -184,6 +184,8 @@ export default async function ProductCategoryPage({
                 items={blocks[0].items}
                 locale={locale}
                 categorySlug={slug}
+                fallback={category.description}
+                cta={dict.productCard.cta}
               />
             </div>
           )}

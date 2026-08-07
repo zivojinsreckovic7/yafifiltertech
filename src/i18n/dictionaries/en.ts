@@ -90,6 +90,7 @@ export const en: Dictionary = {
   },
 
   contactRows: {
+    address: "Address",
     email: "Email",
     phone: "Phone",
     hours: "Office hours",
@@ -279,8 +280,12 @@ export const en: Dictionary = {
     breadcrumbHome: "Home",
     back: (category: string) => `← ${category}`,
     highlightsEyebrow: "Highlights",
-    specsEyebrow: "Technical data",
+    specsEyebrow: "Key features",
     standardsEyebrow: "Standards and certificates",
+    skuLabel: "Product code",
+    categoryLabel: "Category",
+    categoriesLabel: "Categories",
+    descriptionEyebrow: "Product description",
     quote: "Request a quote",
     siblingsEyebrow: "From the same category",
     siblingsHeading: "Other variants",

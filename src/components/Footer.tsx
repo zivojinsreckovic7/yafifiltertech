@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import Reveal from "./Reveal";
+import { addressLine, contact } from "@/data/contact";
 import { getIndustries } from "@/data/industries";
 import { industryPath, routes } from "@/data/nav";
 import { localePath, type Locale } from "@/i18n/config";
@@ -75,16 +76,27 @@ export default function Footer({
           <Reveal delay={0.18}>
             <h3 className="eyebrow mb-5">{footer.contactHeading}</h3>
             <ul className="flex flex-col gap-3 text-sm text-ink-300">
-              <li>
-                <a href="mailto:info@yafi.co.rs" className="hover:text-orange-300">
-                  info@yafi.co.rs
-                </a>
+              <li className="text-ink-400">
+                <address className="not-italic">{addressLine(locale)}</address>
               </li>
               <li>
-                <a href="tel:+381000000000" className="hover:text-orange-300">
-                  +381 00 000 0000
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="hover:text-orange-300"
+                >
+                  {contact.email}
                 </a>
               </li>
+              {contact.phones.map((phone) => (
+                <li key={phone.tel}>
+                  <a
+                    href={`tel:${phone.tel}`}
+                    className="hover:text-orange-300"
+                  >
+                    {phone.label}
+                  </a>
+                </li>
+              ))}
               <li className="text-ink-400">{footer.regionValue}</li>
             </ul>
           </Reveal>

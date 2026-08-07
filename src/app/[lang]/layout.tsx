@@ -8,6 +8,7 @@ import RevealManager from "@/components/RevealManager";
 import LoadingScreen from "@/components/LoadingScreen";
 import { alternatesFor, getDictionary } from "@/i18n/dictionaries";
 import { localePath, locales, localeTags, resolveLocale } from "@/i18n/config";
+import { contact } from "@/data/contact";
 import { getProducts } from "@/data/products";
 import { productPath } from "@/data/nav";
 
@@ -73,10 +74,14 @@ export default async function RootLayout({
     name: "Yafi Filtertech",
     description: dict.meta.jsonLdDescription,
     url: "https://yafi.co.rs",
-    email: "info@yafi.co.rs",
+    email: contact.email,
+    telephone: contact.phones.map((phone) => phone.tel),
     areaServed: dict.meta.areaServed,
     address: {
       "@type": "PostalAddress",
+      streetAddress: contact.street,
+      postalCode: contact.postalCode,
+      addressLocality: contact.city,
       addressCountry: "RS",
     },
   };

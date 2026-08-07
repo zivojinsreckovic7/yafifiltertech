@@ -92,6 +92,7 @@ export const sr = {
   },
 
   contactRows: {
+    address: "Adresa",
     email: "Email",
     phone: "Telefon",
     hours: "Radno vreme",
@@ -281,8 +282,12 @@ export const sr = {
     breadcrumbHome: "Početna",
     back: (category: string) => `← ${category}`,
     highlightsEyebrow: "Karakteristike",
-    specsEyebrow: "Tehnički podaci",
+    specsEyebrow: "Posebne osobine",
     standardsEyebrow: "Standardi i sertifikati",
+    skuLabel: "Šifra proizvoda",
+    categoryLabel: "Kategorija",
+    categoriesLabel: "Kategorije",
+    descriptionEyebrow: "Opis proizvoda",
     quote: "Zatražite ponudu",
     siblingsEyebrow: "Iz iste kategorije",
     siblingsHeading: "Ostale varijante",

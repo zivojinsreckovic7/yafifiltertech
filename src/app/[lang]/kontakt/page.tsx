@@ -6,6 +6,7 @@ import ContactRow from "@/components/ContactRow";
 import MiniQuote from "@/components/MiniQuote";
 import TrustSignals from "@/components/TrustSignals";
 import { getTestimonials } from "@/data/testimonials";
+import { addressLine, contact } from "@/data/contact";
 import { getProducts } from "@/data/products";
 import { routes } from "@/data/nav";
 import { resolveLocale } from "@/i18n/config";
@@ -69,16 +70,20 @@ export default async function KontaktPage({
               </p>
             </Reveal>
             <Reveal delay={0.2} className="mt-10 flex flex-col gap-6">
+              <ContactRow label={rows.address} value={addressLine(locale)} />
               <ContactRow
                 label={rows.email}
-                value="info@yafi.co.rs"
-                href="mailto:info@yafi.co.rs"
+                value={contact.email}
+                href={`mailto:${contact.email}`}
               />
-              <ContactRow
-                label={rows.phone}
-                value="+381 00 000 0000"
-                href="tel:+381000000000"
-              />
+              {contact.phones.map((phone) => (
+                <ContactRow
+                  key={phone.tel}
+                  label={rows.phone}
+                  value={phone.label}
+                  href={`tel:${phone.tel}`}
+                />
+              ))}
               <ContactRow label={rows.hours} value={rows.hoursValue} />
               <ContactRow label={rows.region} value={rows.regionValue} />
             </Reveal>

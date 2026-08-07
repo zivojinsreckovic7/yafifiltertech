@@ -4,10 +4,13 @@ import { notFound } from "next/navigation";
 import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import ProductMedia from "@/components/ProductMedia";
+import ProductItemCard from "@/components/ProductItemCard";
+import ProductSections from "@/components/ProductSections";
 import TrustSignals from "@/components/TrustSignals";
 import CTABanner from "@/components/CTABanner";
 import { MagneticLink } from "@/components/Magnetic";
 import {
+  getItemCategories,
   getProductItem,
   getSiblingItems,
   primaryCategorySlug,
@@ -63,6 +66,8 @@ export default async function ProductItemPage({
   const highlights = item.highlights ?? [];
   const specs = item.specs ?? [];
   const standards = item.standards ?? category.standards ?? [];
+  const sections = item.sections ?? [];
+  const categories = getItemCategories(locale, itemSlug);
   const siblings = getSiblingItems(locale, slug, itemSlug);
 
   return (
@@ -130,6 +135,40 @@ export default async function ProductItemPage({
                 {item.intro ?? category.intro ?? category.description}
               </p>
             </Reveal>
+
+            {/* Catalogue meta, as it is printed on the product sheet. */}
+            {item.sku && (
+              <Reveal delay={0.12} className="mt-6">
+                <dl className="flex flex-col gap-1.5 text-sm">
+                  <div className="flex flex-wrap items-baseline gap-x-2">
+                    <dt className="text-ink-400">{page.skuLabel}:</dt>
+                    <dd className="font-medium text-ink-200">{item.sku}</dd>
+                  </div>
+                  {/* A variant can sit in more than one range — list each. */}
+                  <div className="flex flex-wrap items-baseline gap-x-2">
+                    <dt className="text-ink-400">
+                      {categories.length > 1
+                        ? page.categoriesLabel
+                        : page.categoryLabel}
+                      :
+                    </dt>
+                    {categories.map((entry, i) => (
+                      <dd key={entry.slug}>
+                        <Link
+                          href={localePath(locale, productPath(entry.slug))}
+                          className="font-medium text-ink-200 transition-colors hover:text-orange-300"
+                        >
+                          {entry.title ?? entry.name}
+                        </Link>
+                        {i < categories.length - 1 && (
+                          <span className="text-ink-400">,</span>
+                        )}
+                      </dd>
+                    ))}
+                  </div>
+                </dl>
+              </Reveal>
+            )}
 
             {highlights.length > 0 && (
               <Reveal delay={0.15} className="mt-8">
@@ -210,6 +249,17 @@ export default async function ProductItemPage({
         </div>
       </section>
 
+      {sections.length > 0 && (
+        <section className="wrap pb-24 md:pb-28">
+          <div className="border-t border-navy-800 pt-14">
+            <Reveal>
+              <span className="eyebrow">{page.descriptionEyebrow}</span>
+            </Reveal>
+            <ProductSections sections={sections} className="mt-10" />
+          </div>
+        </section>
+      )}
+
       {siblings.length > 0 && (
         <section className="wrap pb-24 md:pb-28">
           <Reveal>
@@ -221,22 +271,13 @@ export default async function ProductItemPage({
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {siblings.map((sibling, i) => (
               <Reveal key={sibling.slug} delay={(i % 4) * 0.07}>
-                <Link
-                  href={localePath(
-                    locale,
-                    productItemPath(category.slug, sibling.slug)
-                  )}
-                  data-cursor="link"
-                  className="group flex h-full flex-col rounded-2xl border border-navy-700/70 bg-navy-900/50 p-5 transition-colors hover:border-orange-500/50"
-                >
-                  <ProductMedia src={sibling.image} alt={sibling.name} />
-                  <span className="mt-5 text-xs font-semibold uppercase tracking-widest text-orange-400">
-                    {sibling.label}
-                  </span>
-                  <h3 className="mt-2 font-display text-base font-extrabold leading-snug text-ink-100">
-                    {sibling.name}
-                  </h3>
-                </Link>
+                <ProductItemCard
+                  item={sibling}
+                  categorySlug={category.slug}
+                  locale={locale}
+                  fallback={category.description}
+                  cta={dict.productCard.cta}
+                />
               </Reveal>
             ))}
           </div>
