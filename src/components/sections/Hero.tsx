@@ -56,7 +56,7 @@ export default function Hero({
             as="h1"
             trigger="load"
             delay={0.08}
-            className="mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink-100 sm:text-5xl lg:text-6xl"
+            className="mt-5 font-display text-4xl font-bold leading-[1.08] tracking-tight text-ink-100 sm:text-5xl lg:text-6xl"
           >
             {hero.heading}
           </SplitHeading>

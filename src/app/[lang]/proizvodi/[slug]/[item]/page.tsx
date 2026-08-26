@@ -125,7 +125,7 @@ export default async function ProductItemPage({
             <span className="eyebrow block">{item.label}</span>
             <SplitHeading
               as="h1"
-              className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl"
+              className="mt-4 font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl"
             >
               {item.name}
             </SplitHeading>
@@ -264,7 +264,7 @@ export default async function ProductItemPage({
         <section className="wrap pb-24 md:pb-28">
           <Reveal>
             <span className="eyebrow">{page.siblingsEyebrow}</span>
-            <h2 className="mt-4 font-display text-2xl font-extrabold text-ink-100 md:text-3xl">
+            <h2 className="mt-4 font-display text-2xl font-bold text-ink-100 md:text-3xl">
               {page.siblingsHeading}
             </h2>
           </Reveal>

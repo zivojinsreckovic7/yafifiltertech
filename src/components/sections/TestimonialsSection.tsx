@@ -21,7 +21,7 @@ export default function TestimonialsSection({
             <span className="eyebrow">{section.eyebrow}</span>
             <SplitHeading
               as="h2"
-              className="mt-4 max-w-2xl font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl"
+              className="mt-4 max-w-2xl font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl"
             >
               {section.heading}
             </SplitHeading>
@@ -31,7 +31,7 @@ export default function TestimonialsSection({
               ★★★★★
             </span>
             <span>
-              <strong className="font-display font-extrabold text-ink-100">
+              <strong className="font-display font-bold text-ink-100">
                 {rating.score}/{rating.outOf}
               </strong>{" "}
               {section.ratingLabel}

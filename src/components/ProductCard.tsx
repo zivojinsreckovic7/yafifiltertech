@@ -37,7 +37,7 @@ export default function ProductCard({
         <span className="text-xs font-semibold uppercase tracking-widest text-orange-400">
           {product.class}
         </span>
-        <h3 className="mt-2 font-display text-xl font-extrabold text-ink-100">
+        <h3 className="mt-2 font-display text-xl font-bold text-ink-100">
           {product.name}
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-ink-400">

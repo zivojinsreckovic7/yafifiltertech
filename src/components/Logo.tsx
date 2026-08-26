@@ -36,7 +36,7 @@ export function Logo({
     <span className={`inline-flex items-center gap-3 ${className}`}>
       <LogoMark className={markClassName} />
       <span className="flex flex-col leading-none">
-        <span className="font-display text-base font-extrabold tracking-tight text-ink-100">
+        <span className="font-display text-base font-bold tracking-tight text-ink-100">
           YAFI
         </span>
         <span className="text-[9px] font-semibold tracking-[0.28em] text-ink-400">

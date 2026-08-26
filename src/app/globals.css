@@ -84,7 +84,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-display: var(--font-poppins);
+  --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-inter);
 
   --animate-marquee: marquee 32s linear infinite;
@@ -233,7 +233,7 @@ html[data-loader-ready] .site-loader.is-exiting {
 
 .font-display {
   font-family: var(--font-display);
-  /* Poppins ExtraBold sets wide; pull tracking in slightly at all sizes */
+  /* Space Grotesk sets wide at display sizes; pull tracking in slightly */
   letter-spacing: -0.015em;
 }
 
@@ -688,32 +688,33 @@ html[data-reveal-ready] [data-reveal-group].is-revealed > [data-reveal] {
   stroke-linejoin: round;
 }
 /*
- * Ribbon-local ramp, brightest core → deepest outer wash. Scoped here (not
- * pulled from the global brand scale) so the beam can run cool while the rest
- * of the site stays orange. paintWash() reads these with getPropertyValue and
+ * Ribbon-local ramp, brightest core → deepest outer wash. Runs on the brand
+ * orange: the middle four tiers are the global --orange-300…600 values, with
+ * two warm tints above the core and two deeper shades below the wash. Kept as
+ * ribbon-local vars because paintWash() reads them with getPropertyValue and
  * parses them as hex — keep them literal 6-digit hex, no color-mix().
  */
 .flow-ribbon {
-  --fr-hot: #dcf4ff;
-  --fr-ice: #a9e2ff;
-  --fr-sky: #6ccdff;
-  --fr-cyan: #23b2ff;
-  --fr-azure: #0e90ee;
-  --fr-blue: #1b6bdc;
-  --fr-indigo: #3a55e0;
-  --fr-deep: #2b46c8;
+  --fr-hot: #fff2e6;
+  --fr-ice: #ffd9b8;
+  --fr-sky: #ffb073;
+  --fr-cyan: #ff8a3d;
+  --fr-azure: #fc6500;
+  --fr-blue: #e05400;
+  --fr-indigo: #cc4a00;
+  --fr-deep: #b34000;
   --fr-dim: 1;
 }
 /* Light theme inverts the ramp: the inner tiers go dark so the beam still
    reads against a pale page. */
 :root[data-theme="light"] .flow-ribbon {
-  --fr-hot: #2f9fe0;
-  --fr-ice: #0a5c96;
-  --fr-sky: #0d6fae;
-  --fr-cyan: #1183cb;
-  --fr-azure: #1a6fc4;
-  --fr-blue: #1a58b4;
-  --fr-indigo: #2a44b8;
+  --fr-hot: #f07a1e;
+  --fr-ice: #8a3200;
+  --fr-sky: #a03b00;
+  --fr-cyan: #b84400;
+  --fr-azure: #c24a00;
+  --fr-blue: #b04200;
+  --fr-indigo: #9c3a00;
   --fr-dim: 0.72;
 }
 

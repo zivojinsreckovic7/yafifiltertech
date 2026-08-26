@@ -115,7 +115,7 @@ export default async function ProductCategoryPage({
         <span className="eyebrow mt-6 block">{category.class}</span>
         <SplitHeading
           as="h1"
-          className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight text-ink-100 md:text-5xl"
+          className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight text-ink-100 md:text-5xl"
         >
           {category.title ?? category.name}
         </SplitHeading>
@@ -152,7 +152,7 @@ export default async function ProductCategoryPage({
         <section className="wrap pb-24 md:pb-28">
           <Reveal>
             <span className="eyebrow">{page.rangeEyebrow}</span>
-            <h2 className="mt-4 font-display text-2xl font-extrabold text-ink-100 md:text-3xl">
+            <h2 className="mt-4 font-display text-2xl font-bold text-ink-100 md:text-3xl">
               {page.rangeHeading}
             </h2>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-ink-400">
@@ -196,7 +196,7 @@ export default async function ProductCategoryPage({
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
             <span className="eyebrow">{page.applicationsEyebrow}</span>
-            <h2 className="mt-4 font-display text-2xl font-extrabold text-ink-100 md:text-3xl">
+            <h2 className="mt-4 font-display text-2xl font-bold text-ink-100 md:text-3xl">
               {page.applicationsHeading}
             </h2>
             <Reveal delay={0.1}>
@@ -231,7 +231,7 @@ export default async function ProductCategoryPage({
       <section className="wrap pb-24 md:pb-28">
         <Reveal>
           <span className="eyebrow">{page.relatedEyebrow}</span>
-          <h2 className="mt-4 font-display text-2xl font-extrabold text-ink-100 md:text-3xl">
+          <h2 className="mt-4 font-display text-2xl font-bold text-ink-100 md:text-3xl">
             {page.relatedHeading}
           </h2>
         </Reveal>
@@ -248,7 +248,7 @@ export default async function ProductCategoryPage({
                   <span className="text-xs font-semibold uppercase tracking-widest text-orange-400">
                     {c.class}
                   </span>
-                  <h3 className="mt-2 font-display text-base font-extrabold leading-snug text-ink-100">
+                  <h3 className="mt-2 font-display text-base font-bold leading-snug text-ink-100">
                     {c.name}
                   </h3>
                 </div>

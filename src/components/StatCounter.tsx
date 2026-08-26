@@ -15,7 +15,7 @@ export default function StatCounter({
 }) {
   return (
     <div className="flex flex-col gap-1">
-      <div className="font-display text-4xl font-extrabold text-ink-100 md:text-5xl">
+      <div className="font-display text-4xl font-bold text-ink-100 md:text-5xl">
         {prefix}
         <span>{Math.floor(value).toLocaleString(numberLocale)}</span>
         {suffix}

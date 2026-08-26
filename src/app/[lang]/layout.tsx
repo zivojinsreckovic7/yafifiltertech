@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Inter } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "../globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -12,15 +12,21 @@ import { contact } from "@/data/contact";
 import { getProducts } from "@/data/products";
 import { productPath } from "@/data/nav";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+// Variable fonts: one self-hosted woff2 per subset covers the whole weight
+// range, so headings cost one preloaded file instead of one per weight.
+// No `fallback` array on purpose — passing one replaces Next's generated
+// `<family> Fallback` face (Arial with ascent/descent/size-adjust overrides),
+// which is what keeps `display: "swap"` from shifting layout on swap-in.
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin", "latin-ext"],
-  weight: ["600", "700", "800"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
+  display: "swap",
 });
 
 export function generateStaticParams() {
@@ -89,7 +95,7 @@ export default async function RootLayout({
   return (
     <html
       lang={localeTags[locale]}
-      className={`${poppins.variable} ${inter.variable}`}
+      className={`${spaceGrotesk.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <body className="bg-navy-950 font-sans text-ink-100 antialiased">

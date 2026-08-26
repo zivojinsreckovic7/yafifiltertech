@@ -32,7 +32,7 @@ export default function ProductItemCard({
       <span className="mt-5 text-xs font-semibold uppercase tracking-widest text-orange-400">
         {item.label}
       </span>
-      <h3 className="mt-2 font-display text-base font-extrabold leading-snug text-ink-100">
+      <h3 className="mt-2 font-display text-base font-bold leading-snug text-ink-100">
         {item.name}
       </h3>
       {/* Catalogue leads run to a paragraph; the card shows the opening of it. */}

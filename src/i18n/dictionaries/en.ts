@@ -325,7 +325,7 @@ export const en: Dictionary = {
   },
 
   deltrianPage: {
-    eyebrow: "Official regional distributor · Ex-Yu market",
+    eyebrow: "Regional distributor · Ex-Yu market",
     heading: "The Deltrian filter range.",
     lead: "Yafi Filtertech is the exclusive representative of the Deltrian industrial filter range on the Ex-Yu market — from pre-filtration to HEPA class, with full technical support from a local team.",
     ctaPrimary: "Request a Deltrian quote",
@@ -350,6 +350,19 @@ export const en: Dictionary = {
     rangeHeading: "What the Deltrian range covers.",
     rangeLead:
       "A complete filter portfolio for industrial and commercial ventilation, available through Yafi Filtertech as the regional distributor.",
+    /** PLACEHOLDER — see the note on the Serbian dictionary. */
+    rangeGroups: [
+      { class: "Deltrian · group 01", name: "Filter group name" },
+      { class: "Deltrian · group 02", name: "Filter group name" },
+      { class: "Deltrian · group 03", name: "Filter group name" },
+      { class: "Deltrian · group 04", name: "Filter group name" },
+      { class: "Deltrian · group 05", name: "Filter group name" },
+      { class: "Deltrian · group 06", name: "Filter group name" },
+    ],
+    rangeGroupBadge: "Coming soon",
+    rangeGroupsNote:
+      "The Deltrian range breakdown is being prepared. For the YAFI filter range, see our product catalogue.",
+    rangeGroupsLink: "See the YAFI filter range",
     ctaTitle: "Request a quote for the Deltrian filter range.",
     ctaText:
       "Tell us which facility and ventilation system needs covering — we prepare a proposal from the Deltrian range within 24 hours.",

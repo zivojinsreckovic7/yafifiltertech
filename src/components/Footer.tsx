@@ -28,7 +28,7 @@ export default function Footer({
     <footer className="relative overflow-hidden border-t border-navy-700/60 bg-navy-950">
       <div
         aria-hidden="true"
-        className="text-stroke pointer-events-none absolute inset-x-0 bottom-0 translate-y-[32%] select-none whitespace-nowrap text-center font-display text-[17vw] font-extrabold leading-none opacity-[0.05]"
+        className="text-stroke pointer-events-none absolute inset-x-0 bottom-0 translate-y-[32%] select-none whitespace-nowrap text-center font-display text-[17vw] font-bold leading-none opacity-[0.05]"
       >
         FILTERTECH
       </div>

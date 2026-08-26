@@ -327,7 +327,7 @@ export const sr = {
   },
 
   deltrianPage: {
-    eyebrow: "Zvanični regionalni distributer · Ex-Yu tržište",
+    eyebrow: "Regionalni distributer · Ex-Yu tržište",
     heading: "Deltrian program filtera.",
     lead: "Yafi Filtertech ekskluzivno zastupa Deltrian program industrijskih filtera na Ex-Yu tržištu — od predfiltracije do HEPA klase, uz punu tehničku podršku lokalnog tima.",
     ctaPrimary: "Zatražite Deltrian ponudu",
@@ -352,6 +352,24 @@ export const sr = {
     rangeHeading: "Šta obuhvata Deltrian program.",
     rangeLead:
       "Kompletna paleta filtera za industrijsku i komercijalnu ventilaciju, dostupna kroz Yafi Filtertech kao regionalnog distributera.",
+    /**
+     * PLACEHOLDER — čeka se zvanična podela Deltrian programa. Ovde NE idu
+     * YAFI grupe filtera: one su Yafi Filtertech sopstveni katalog i žive na
+     * `/proizvodi`. Kada stignu prave grupe, zameniti unose ispod i u
+     * `deltrian/page.tsx` kartice vratiti na `<Link>` ka njihovim stranicama.
+     */
+    rangeGroups: [
+      { class: "Deltrian · grupa 01", name: "Naziv grupe filtera" },
+      { class: "Deltrian · grupa 02", name: "Naziv grupe filtera" },
+      { class: "Deltrian · grupa 03", name: "Naziv grupe filtera" },
+      { class: "Deltrian · grupa 04", name: "Naziv grupe filtera" },
+      { class: "Deltrian · grupa 05", name: "Naziv grupe filtera" },
+      { class: "Deltrian · grupa 06", name: "Naziv grupe filtera" },
+    ],
+    rangeGroupBadge: "Uskoro",
+    rangeGroupsNote:
+      "Podela Deltrian programa se trenutno priprema. Za YAFI program filtera pogledajte naš katalog proizvoda.",
+    rangeGroupsLink: "Pogledajte YAFI program filtera",
     ctaTitle: "Zatražite ponudu za Deltrian program filtera.",
     ctaText:
       "Recite nam koji objekat i sistem ventilacije treba pokriti — pripremamo predlog rešenja iz Deltrian programa u roku od 24 časa.",

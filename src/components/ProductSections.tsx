@@ -96,7 +96,7 @@ export default function ProductSections({
       {sections.map((section, i) => (
         <Reveal key={section.heading ?? i} delay={0.05}>
           {section.heading && (
-            <h2 className="font-display text-xl font-extrabold leading-snug text-ink-100 md:text-2xl">
+            <h2 className="font-display text-xl font-bold leading-snug text-ink-100 md:text-2xl">
               {section.heading}
             </h2>
           )}

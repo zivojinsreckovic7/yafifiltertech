@@ -63,7 +63,7 @@ export default async function IndustryPage({
         <span className="eyebrow mt-6 block">{industry.eyebrow}</span>
         <SplitHeading
           as="h1"
-          className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight text-ink-100 md:text-5xl"
+          className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight text-ink-100 md:text-5xl"
         >
           {industry.name}
         </SplitHeading>
@@ -105,7 +105,7 @@ export default async function IndustryPage({
         <section className="wrap pb-28 md:pb-36">
           <Reveal>
             <span className="eyebrow">{page.filtersEyebrow}</span>
-            <h2 className="mt-4 font-display text-2xl font-extrabold text-ink-100 md:text-3xl">
+            <h2 className="mt-4 font-display text-2xl font-bold text-ink-100 md:text-3xl">
               {page.filtersHeading(industry.shortAcc)}
             </h2>
           </Reveal>
@@ -118,7 +118,7 @@ export default async function IndustryPage({
                   className="group block h-full rounded-2xl border border-navy-700/70 bg-navy-900/50 p-6 transition-colors hover:border-orange-500/50"
                 >
                   <PleatIcon className="h-8 w-8" />
-                  <h3 className="mt-4 font-display text-lg font-extrabold text-ink-100">
+                  <h3 className="mt-4 font-display text-lg font-bold text-ink-100">
                     {p.name}
                   </h3>
                   <p className="mt-2 text-xs uppercase tracking-widest text-orange-400">

@@ -45,7 +45,7 @@ export default function DeltrianBanner({
             <div className="relative flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
               <div className="max-w-xl">
                 <span className="eyebrow">{banner.eyebrow}</span>
-                <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl">
+                <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl">
                   {banner.heading}
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-ink-300">

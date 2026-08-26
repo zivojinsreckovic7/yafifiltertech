@@ -139,7 +139,7 @@ export default function Nav({
               type="button"
               aria-expanded={productsOpen}
               onClick={() => setProductsOpen((v) => !v)}
-              className="flex items-center gap-3 font-display text-4xl font-extrabold text-ink-100"
+              className="flex items-center gap-3 font-display text-4xl font-bold text-ink-100"
             >
               {nav.products}
               <svg
@@ -194,7 +194,7 @@ export default function Nav({
               href={l.href}
               data-menu-item
               onClick={closeMenu}
-              className="font-display text-4xl font-extrabold text-ink-100"
+              className="font-display text-4xl font-bold text-ink-100"
             >
               {l.label}
             </Link>
@@ -203,7 +203,7 @@ export default function Nav({
             href={deltrianHref}
             data-menu-item
             onClick={closeMenu}
-            className="font-display text-4xl font-extrabold text-orange-400"
+            className="font-display text-4xl font-bold text-orange-400"
           >
             {nav.deltrian}
           </Link>

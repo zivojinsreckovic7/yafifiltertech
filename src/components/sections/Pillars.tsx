@@ -13,7 +13,7 @@ export default function Pillars({ dict }: { dict: Dictionary }) {
             <span className="eyebrow">{pillars.eyebrow}</span>
             <SplitHeading
               as="h2"
-              className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl"
+              className="mt-4 font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl"
             >
               {pillars.heading}
             </SplitHeading>
@@ -33,10 +33,10 @@ export default function Pillars({ dict }: { dict: Dictionary }) {
                   i === 2 ? "sm:col-span-2" : ""
                 }`}
               >
-                <span className="font-display text-sm font-extrabold text-orange-400">
+                <span className="font-display text-sm font-bold text-orange-400">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-4 font-display text-xl font-extrabold text-ink-100">
+                <h3 className="mt-4 font-display text-xl font-bold text-ink-100">
                   {p.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-400">

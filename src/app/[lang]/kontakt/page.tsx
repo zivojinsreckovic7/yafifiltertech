@@ -42,7 +42,7 @@ export default async function KontaktPage({
         <span className="eyebrow">{page.eyebrow}</span>
         <SplitHeading
           as="h1"
-          className="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-tight text-ink-100 md:text-5xl"
+          className="mt-4 max-w-2xl font-display text-4xl font-bold leading-tight text-ink-100 md:text-5xl"
         >
           {page.heading}
         </SplitHeading>
@@ -60,7 +60,7 @@ export default async function KontaktPage({
             <span className="eyebrow">{page.whyEyebrow}</span>
             <SplitHeading
               as="h2"
-              className="mt-4 font-display text-2xl font-extrabold text-ink-100 md:text-3xl"
+              className="mt-4 font-display text-2xl font-bold text-ink-100 md:text-3xl"
             >
               {page.whyHeading}
             </SplitHeading>

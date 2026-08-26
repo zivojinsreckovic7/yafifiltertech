@@ -37,7 +37,7 @@ export default async function IndustrijePage({
         <span className="eyebrow">{page.eyebrow}</span>
         <SplitHeading
           as="h1"
-          className="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-tight text-ink-100 md:text-5xl"
+          className="mt-4 max-w-2xl font-display text-4xl font-bold leading-tight text-ink-100 md:text-5xl"
         >
           {page.heading}
         </SplitHeading>

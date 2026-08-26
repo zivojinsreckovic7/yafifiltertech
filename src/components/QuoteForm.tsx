@@ -29,7 +29,7 @@ export default function QuoteForm({
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-navy-950">
           ✓
         </span>
-        <h3 className="mt-6 font-display text-2xl font-extrabold text-ink-100">
+        <h3 className="mt-6 font-display text-2xl font-bold text-ink-100">
           {dict.sentTitle}
         </h3>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-400">

@@ -33,7 +33,7 @@ export default function ProductsSection({
             <span className="eyebrow">{section.eyebrow}</span>
             <SplitHeading
               as="h2"
-              className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl"
+              className="mt-4 font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl"
             >
               {section.heading}
             </SplitHeading>

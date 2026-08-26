@@ -11,7 +11,7 @@ export default function ProcessSection({ dict }: { dict: Dictionary }) {
       >
         <Reveal className="mb-14 max-w-xl">
           <span className="eyebrow">{process.eyebrow}</span>
-          <h2 className="mt-3 font-display text-3xl font-extrabold text-ink-100 md:text-4xl">
+          <h2 className="mt-3 font-display text-3xl font-bold text-ink-100 md:text-4xl">
             {process.heading}
           </h2>
         </Reveal>
@@ -24,11 +24,11 @@ export default function ProcessSection({ dict }: { dict: Dictionary }) {
               delay={index * 0.07}
               className="flex min-h-[320px] flex-col justify-between rounded-2xl border border-navy-700 bg-navy-950/60 p-8"
             >
-              <span className="font-display text-5xl font-extrabold text-navy-600">
+              <span className="font-display text-5xl font-bold text-navy-600">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div className="mt-10">
-                <h3 className="font-display text-xl font-extrabold text-ink-100">
+                <h3 className="font-display text-xl font-bold text-ink-100">
                   {s.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-400">

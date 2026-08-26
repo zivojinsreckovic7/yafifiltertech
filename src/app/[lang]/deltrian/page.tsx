@@ -7,8 +7,7 @@ import PleatIcon from "@/components/PleatIcon";
 import { MagneticLink } from "@/components/Magnetic";
 import TrustSignals from "@/components/TrustSignals";
 import CTABanner from "@/components/CTABanner";
-import { getProducts } from "@/data/products";
-import { productPath, routes } from "@/data/nav";
+import { routes } from "@/data/nav";
 import { localePath, resolveLocale } from "@/i18n/config";
 import { alternatesFor, getDictionary } from "@/i18n/dictionaries";
 
@@ -68,7 +67,7 @@ export default async function DeltrianPage({
             </span>
             <SplitHeading
               as="h1"
-              className="mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink-100 sm:text-5xl lg:text-6xl"
+              className="mt-5 font-display text-4xl font-bold leading-[1.08] tracking-tight text-ink-100 sm:text-5xl lg:text-6xl"
             >
               {page.heading}
             </SplitHeading>
@@ -100,7 +99,7 @@ export default async function DeltrianPage({
           <span className="eyebrow">{page.whyEyebrow}</span>
           <SplitHeading
             as="h2"
-            className="mt-4 max-w-2xl font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl"
+            className="mt-4 max-w-2xl font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl"
           >
             {page.whyHeading}
           </SplitHeading>
@@ -112,10 +111,10 @@ export default async function DeltrianPage({
                 delay={i * 0.1}
                 className="rounded-2xl border border-navy-700/70 bg-navy-900/50 p-8"
               >
-                <span className="font-display text-sm font-extrabold text-orange-400">
+                <span className="font-display text-sm font-bold text-orange-400">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-4 font-display text-xl font-extrabold text-ink-100">
+                <h3 className="mt-4 font-display text-xl font-bold text-ink-100">
                   {p.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-400">
@@ -132,7 +131,7 @@ export default async function DeltrianPage({
           <span className="eyebrow">{page.rangeEyebrow}</span>
           <SplitHeading
             as="h2"
-            className="mt-4 max-w-2xl font-display text-3xl font-extrabold leading-tight text-ink-100 md:text-4xl"
+            className="mt-4 max-w-2xl font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl"
           >
             {page.rangeHeading}
           </SplitHeading>
@@ -142,27 +141,48 @@ export default async function DeltrianPage({
             </p>
           </Reveal>
 
+          {/*
+            Placeholder cards for the Deltrian groups. This grid used to render
+            `getProducts(locale)` — the YAFI catalogue — which belongs to Yafi
+            Filtertech itself and lives on `/proizvodi`, not here. Cards are
+            inert until the real groups arrive; turn them back into `<Link>`s
+            once each group has a page of its own.
+          */}
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {getProducts(locale).map((p, i) => (
-              <Reveal key={p.slug} delay={(i % 4) * 0.06}>
-                <Link
-                  href={localePath(locale, productPath(p.slug))}
-                  data-cursor="link"
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-navy-700/70 bg-navy-950/50 p-6 transition-colors hover:border-orange-500/50"
-                >
-                  <PleatIcon className="h-8 w-8 transition-transform duration-500 group-hover:scale-110" />
-                  <div className="mt-6">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-orange-400">
-                      {p.class}
+            {page.rangeGroups.map((group, i) => (
+              <Reveal key={group.class} delay={(i % 4) * 0.06}>
+                <div className="flex h-full flex-col justify-between rounded-2xl border border-dashed border-navy-700/70 bg-navy-950/30 p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <PleatIcon className="h-8 w-8 opacity-40" />
+                    <span className="rounded-full border border-navy-700/70 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-ink-400">
+                      {page.rangeGroupBadge}
                     </span>
-                    <h3 className="mt-2 font-display text-base font-extrabold text-ink-100">
-                      {p.name}
+                  </div>
+                  <div className="mt-6">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-orange-400/60">
+                      {group.class}
+                    </span>
+                    <h3 className="mt-2 font-display text-base font-bold text-ink-400">
+                      {group.name}
                     </h3>
                   </div>
-                </Link>
+                </div>
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.2} className="mt-10 max-w-xl">
+            <p className="text-sm leading-relaxed text-ink-400">
+              {page.rangeGroupsNote}{" "}
+              <Link
+                href={localePath(locale, routes.products)}
+                data-cursor="link"
+                className="font-semibold text-orange-400 transition-colors hover:text-orange-300"
+              >
+                {page.rangeGroupsLink} →
+              </Link>
+            </p>
+          </Reveal>
         </div>
       </section>
 

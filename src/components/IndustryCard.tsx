@@ -28,7 +28,7 @@ export default function IndustryCard({
       />
       <div className="relative">
         <span className="eyebrow">{industry.eyebrow}</span>
-        <h3 className="mt-3 font-display text-2xl font-extrabold text-ink-100">
+        <h3 className="mt-3 font-display text-2xl font-bold text-ink-100">
           {industry.name}
         </h3>
         <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-400">
