@@ -18,7 +18,7 @@ export const en: Dictionary = {
     ],
     ogLocale: "en_GB",
     ogDescription:
-      "Regional distributor of the Deltrian filter range for the Ex-Yu market. Solutions for pharmaceutical production, hospitality, automotive plants and airports.",
+      "Regional distributor of the Deltrian filter range for the Ex-Yu market. Solutions for pharmaceutical production and hospitals, automotive plants, hospitality and heavy industry.",
     jsonLdDescription:
       "Industrial air filtration and regional distributor of the Deltrian filter range for the Ex-Yu market.",
     areaServed: [
@@ -36,7 +36,7 @@ export const en: Dictionary = {
     industries: {
       title: "Industries",
       description:
-        "Dedicated air filtration solutions for pharmaceutical manufacturing, hospitality, the automotive industry and airports.",
+        "Dedicated air filtration solutions for pharmaceutical manufacturing and hospitals, the automotive industry and paint shops, hospitality and commercial buildings, heavy industry and energy.",
     },
     contact: {
       title: "Contact",
@@ -51,9 +51,11 @@ export const en: Dictionary = {
   },
 
   nav: {
+    home: "Home",
     products: "Products",
     productCategories: "Filter categories",
     allProducts: "The full filter range →",
+    catalogues: "Catalogues",
     industries: "Industries",
     about: "About us",
     deltrian: "Deltrian range",
@@ -101,15 +103,17 @@ export const en: Dictionary = {
 
   hero: {
     eyebrow: "Regional distributor — Deltrian range",
-    heading: "Air filtration that protects the process, not just the room.",
-    lead: "We design and supply industrial air filtration systems compliant with ISO 16890 — for pharmaceutical production, hospitality, automotive plants and airports across the Ex-Yu region.",
+    heading: "Everyone has a right to clean air.",
+    imageAlt:
+      "A woman with her eyes closed breathing clean air by an open window, wearing a Yafi Filtertech shirt.",
+    lead: "We design and supply industrial air filtration systems compliant with ISO 16890 — for pharmaceutical production and hospitals, automotive plants, hospitality and heavy industry across the Ex-Yu region.",
     ctaPrimary: "Request a quote",
     ctaSecondary: "Explore the Deltrian range",
     scroll: "Scroll",
     stats: {
       experience: "years of experience",
       projects: "completed projects",
-      standard: "ISO air quality standard",
+      standard: "air quality standard",
       markets: "markets across the Ex-Yu region",
     },
   },
@@ -120,27 +124,30 @@ export const en: Dictionary = {
     "GMP / ISO 14644",
     "Deltrian Partner Program",
     "Pharmaceutical industry",
+    "Automotive and paint shops",
     "Hospitality",
-    "Automotive industry",
-    "Airports",
+    "Heavy industry and energy",
   ],
 
   pillars: {
     eyebrow: "About us",
-    heading: "An industrial partner, not just a filter supplier.",
-    lead: "Yafi Filtertech is the regional distributor of the Deltrian filter range for the Ex-Yu market. We work with production plants, healthcare institutions, hotels and infrastructure facilities where clean air is part of the operating standard — not an extra line in the budget.",
+    heading: "Engineering precision and more than 25 years in air filtration.",
+    lead: "With more than two and a half decades on the market, Yafi Filtertech has built manufacturing and distribution capacity that meets the strictest European clean air standards. As a domestic manufacturer and the regional distributor of the Deltrian filter range for the Ex-Yu market, we deliver complete filtration solutions — with Eurovent certification and the energy efficiency of Deltrian filters — bringing the whole air system together in one place.",
+    leadSecondary:
+      "We work with production plants, healthcare institutions, hotels and infrastructure facilities where clean air is part of the operating standard — not an extra line in the budget.",
+    itemsIntro: "Our approach rests on three core values.",
     items: [
       {
-        title: "Energy savings",
-        desc: "A lower pressure drop across the filter media means less load on the fans and measurably lower HVAC energy consumption.",
+        title: "In-house manufacturing, engineered solutions",
+        desc: "We build pre-filters and fine filters (classes G2 to F9 / ISO 16890) in both standard and non-standard sizes — matched exactly to the dimensions and demands of your HVAC systems.",
       },
       {
-        title: "ISO 16890 air quality",
-        desc: "Every recommendation follows the current standard that classifies filters by their real particulate capture efficiency.",
+        title: "Global quality with local support",
+        desc: "Through our partnership with the American-Belgian company Deltrian we bring top European HVAC filtration technology to the local market — EUROVENT certification and energy efficiency with substantial savings, backed by fast delivery, dependable lead times and direct factory and technical support.",
       },
       {
-        title: "Process safety",
-        desc: "In pharmaceuticals, food production and cleanrooms, filtration is not a detail — it is a precondition for a safe, validated production process.",
+        title: "Expert system optimization",
+        desc: "There is no such thing as a \u201cuniversal filter\u201d. For every facility we assess the air flow and the pressure drop to find the ideal balance between maximum filtration efficiency and minimum energy consumption. That is exactly why we began working with Deltrian two years ago — the partnership that unlocked the highest level of filtration available.",
       },
     ],
   },
@@ -201,8 +208,21 @@ export const en: Dictionary = {
 
   testimonialsSection: {
     eyebrow: "What clients say",
-    heading: "Trust is built on delivery, not promises.",
+    /** Rendered as two lines: the second one drops to the muted ink. */
+    heading: "Trust is built on delivery,",
+    headingMuted: "not on promises.",
+    lead: "Production plants, hospitals, hotel groups and paint shops across the Ex-Yu region keep their systems running on our filters.",
     ratingLabel: "average client rating",
+    previous: "Previous testimonial",
+    next: "Next testimonial",
+    goTo: (n: string) => `Show testimonial ${n}`,
+  },
+
+  locationMap: {
+    eyebrow: "Where to find us",
+    heading: "Peščarska 10, Novi Beograd",
+    directions: "Open in maps →",
+    frameTitle: "Map of the Yafi Filtertech location",
   },
 
   ctaSection: {

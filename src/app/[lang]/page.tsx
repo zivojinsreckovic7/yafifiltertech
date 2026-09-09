@@ -32,7 +32,8 @@ export default async function Home({
   return (
     <>
       <Hero locale={locale} dict={dict} />
-      <div className="relative">
+      {/* Opaque and above the pinned hero, so it scrolls up over the panel. */}
+      <div className="relative z-10 bg-navy-950">
         <FlowRibbon />
         <div className="relative z-[1]">
           <TrustBand items={dict.trustBand} />

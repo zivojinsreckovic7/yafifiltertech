@@ -269,6 +269,53 @@ html[data-loader-ready] .site-loader.is-exiting {
 }
 
 /*
+ * A panel that is a dark surface in both themes — the hero photo frame. It
+ * re-pins the ramps to their dark-theme values, so every token-based utility
+ * inside it (text-ink-*, .btn-ghost, .eyebrow, the veil gradients) resolves
+ * for dark without any per-element overrides.
+ */
+/*
+ * Hero copy while the page scrolls over the pinned panel: it lifts and fades
+ * out rather than being sliced in half by the incoming section. `HeroParallax`
+ * publishes --hero-progress (0 → 1 across the first viewport).
+ */
+.hero-recede {
+  opacity: calc(1 - var(--hero-progress, 0) * 0.9);
+  transform: translate3d(0, calc(var(--hero-progress, 0) * -3rem), 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-recede {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.on-dark {
+  --navy-950: #000a16;
+  --navy-900: #001229;
+  --navy-800: #001e42;
+  --navy-700: #0a2c56;
+  --navy-600: #163d6e;
+  --navy-500: #2a5488;
+  --navy-400: #4d729f;
+
+  --orange-600: #e05400;
+  --orange-500: #fc6500;
+  --orange-400: #ff8a3d;
+  --orange-300: #ffb073;
+
+  --ink-100: #f4f7fb;
+  --ink-200: #dde5ef;
+  --ink-300: #b9c6d9;
+  --ink-400: #8ea0ba;
+
+  --on-accent: #000a16;
+  --veil-rgb: 0, 10, 22;
+
+  color-scheme: dark;
+}
+
+/*
  * Film-grain texture. Painted normally at low opacity — a blend mode here
  * would make this fixed full-viewport layer re-blend against the entire
  * page on every scroll frame in Safari, for a nearly invisible difference.
@@ -651,6 +698,15 @@ html[data-reveal-ready] [data-reveal-group].is-revealed > [data-hero-item],
 html[data-reveal-ready] [data-reveal-group].is-revealed > [data-reveal] {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Already on screen when it mounted — shown, not animated. See RevealManager. */
+html[data-reveal-ready] [data-reveal][data-reveal-instant],
+html[data-reveal-ready] [data-reveal-group][data-reveal-instant] > [data-hero-item],
+html[data-reveal-ready] [data-reveal-group][data-reveal-instant] > [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

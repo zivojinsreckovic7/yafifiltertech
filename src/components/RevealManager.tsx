@@ -23,6 +23,19 @@ export default function RevealManager() {
       element.classList.add("is-revealed");
     };
 
+    const inViewport = (element: HTMLElement) => {
+      const box = element.getBoundingClientRect();
+      return box.bottom > 0 && box.top < window.innerHeight;
+    };
+
+    /*
+     * The entrance choreography is for arriving at the site, and the loading
+     * screen covers it. A client-side navigation back to a page has no such
+     * cover, so anything already on screen when it mounts is shown at once
+     * instead of fading in behind the content that rendered instantly.
+     */
+    let firstPass = true;
+
     const observer = reducedMotion || !("IntersectionObserver" in window)
       ? null
       : new IntersectionObserver(
@@ -73,11 +86,17 @@ export default function RevealManager() {
           reveal(element);
           return;
         }
+        if (!firstPass && inViewport(element)) {
+          element.setAttribute("data-reveal-instant", "");
+          reveal(element);
+          return;
+        }
         observer.observe(element);
       });
     };
 
     register(document);
+    firstPass = false;
 
     const mutationObserver = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {

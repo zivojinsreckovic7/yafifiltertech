@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Industry } from "@/data/industries";
 import { industryPath } from "@/data/nav";
@@ -14,24 +15,43 @@ export default function IndustryCard({
   dict: Dictionary;
 }) {
   return (
+    /* `on-dark` keeps the copy on its dark-theme ramp over the photo, in both
+       site themes — the same treatment the hero panel uses. */
     <Link
       href={localePath(locale, industryPath(industry.slug))}
       data-cursor="link"
-      className="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-2xl border border-navy-700/70 bg-gradient-to-br from-navy-900 to-navy-950 p-8 transition-all duration-500 hover:border-orange-500/50"
+      className="on-dark group relative isolate flex min-h-[300px] flex-col justify-between overflow-hidden rounded-2xl border border-navy-700/70 p-8 transition-colors duration-500 hover:border-orange-500/50"
     >
+      <Image
+        src={industry.image}
+        alt=""
+        fill
+        sizes="(min-width: 640px) 50vw, 100vw"
+        className="-z-10 object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+      />
+      {/* Heavy under the copy on the left, thinning to the right where the
+          photo has room to read. */}
       <div
-        className="absolute -right-[8.5rem] -top-[8.5rem] h-[22rem] w-[22rem] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(closest-side, color-mix(in srgb, var(--orange-500) 20%, transparent), color-mix(in srgb, var(--orange-500) 8%, transparent) 55%, transparent)",
+            "linear-gradient(105deg, rgba(var(--veil-rgb),0.9) 0%, rgba(var(--veil-rgb),0.76) 40%, rgba(var(--veil-rgb),0.48) 72%, rgba(var(--veil-rgb),0.28) 100%)",
         }}
       />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(var(--veil-rgb),0.72) 0%, transparent 100%)",
+        }}
+      />
+
       <div className="relative">
         <span className="eyebrow">{industry.eyebrow}</span>
         <h3 className="mt-3 font-display text-2xl font-bold text-ink-100">
           {industry.name}
         </h3>
-        <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-400">
+        <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-300">
           {industry.teaser}
         </p>
       </div>

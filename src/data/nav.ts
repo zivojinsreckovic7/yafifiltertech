@@ -5,6 +5,7 @@
 export const routes = {
   home: "/",
   products: "/proizvodi",
+  catalogues: "/katalozi",
   industries: "/industrije",
   about: "/#o-nama",
   deltrian: "/deltrian",

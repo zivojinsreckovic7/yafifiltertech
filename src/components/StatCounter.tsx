@@ -5,7 +5,8 @@ export default function StatCounter({
   label,
   numberLocale,
 }: {
-  value: number;
+  /** A count to format, or a literal to print as-is (a standard number, say). */
+  value: number | string;
   suffix?: string;
   prefix?: string;
   label: string;
@@ -13,11 +14,16 @@ export default function StatCounter({
   numberLocale: string;
   delay?: number;
 }) {
+  const shown =
+    typeof value === "number"
+      ? Math.floor(value).toLocaleString(numberLocale)
+      : value;
+
   return (
     <div className="flex flex-col gap-1">
       <div className="font-display text-4xl font-bold text-ink-100 md:text-5xl">
         {prefix}
-        <span>{Math.floor(value).toLocaleString(numberLocale)}</span>
+        <span>{shown}</span>
         {suffix}
       </div>
       <div className="text-sm text-ink-400">{label}</div>

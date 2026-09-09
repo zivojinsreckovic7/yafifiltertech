@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HashLink from "./HashLink";
 import { Logo } from "./Logo";
 import Reveal from "./Reveal";
 import { addressLine, contact } from "@/data/contact";
@@ -46,12 +47,12 @@ export default function Footer({
             <ul className="flex flex-col gap-3 text-sm text-ink-300">
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <Link
+                  <HashLink
                     href={localePath(locale, item.href)}
                     className="hover:text-orange-300"
                   >
                     {item.label}
-                  </Link>
+                  </HashLink>
                 </li>
               ))}
             </ul>

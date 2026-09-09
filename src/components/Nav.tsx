@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import HashLink from "./HashLink";
 import { Logo } from "./Logo";
 import { MagneticLink } from "./Magnetic";
 import ThemeToggle from "./ThemeToggle";
@@ -27,9 +28,14 @@ export default function Nav({
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
 
-  const navLinks = [
-    { href: localePath(locale, routes.industries), label: nav.industries },
+  /** Main menu order: Naslovna | O nama | Proizvodi | Katalozi | Industrije | Deltrian. */
+  const leadLinks = [
+    { href: localePath(locale, routes.home), label: nav.home },
     { href: localePath(locale, routes.about), label: nav.about },
+  ];
+  const trailLinks = [
+    { href: localePath(locale, routes.catalogues), label: nav.catalogues },
+    { href: localePath(locale, routes.industries), label: nav.industries },
   ];
   const productsHref = localePath(locale, routes.products);
   const deltrianHref = localePath(locale, routes.deltrian);
@@ -73,6 +79,15 @@ export default function Nav({
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
+            {leadLinks.map((l) => (
+              <HashLink
+                key={l.href}
+                href={l.href}
+                className="text-sm font-medium text-ink-300 transition-colors hover:text-ink-100"
+              >
+                {l.label}
+              </HashLink>
+            ))}
             <ProductsMenu
               label={nav.products}
               regionLabel={nav.productCategories}
@@ -80,14 +95,14 @@ export default function Nav({
               allHref={productsHref}
               allLabel={nav.allProducts}
             />
-            {navLinks.map((l) => (
-              <Link
+            {trailLinks.map((l) => (
+              <HashLink
                 key={l.href}
                 href={l.href}
                 className="text-sm font-medium text-ink-300 transition-colors hover:text-ink-100"
               >
                 {l.label}
-              </Link>
+              </HashLink>
             ))}
             <Link
               href={deltrianHref}
@@ -134,6 +149,18 @@ export default function Nav({
         aria-hidden={!open}
       >
         <div className="wrap flex min-h-full flex-col justify-center gap-6 py-28">
+          {leadLinks.map((l) => (
+            <HashLink
+              key={l.href}
+              href={l.href}
+              data-menu-item
+              onClick={closeMenu}
+              className="font-display text-4xl font-bold text-ink-100"
+            >
+              {l.label}
+            </HashLink>
+          ))}
+
           <div data-menu-item>
             <button
               type="button"
@@ -188,8 +215,8 @@ export default function Nav({
             )}
           </div>
 
-          {navLinks.map((l) => (
-            <Link
+          {trailLinks.map((l) => (
+            <HashLink
               key={l.href}
               href={l.href}
               data-menu-item
@@ -197,7 +224,7 @@ export default function Nav({
               className="font-display text-4xl font-bold text-ink-100"
             >
               {l.label}
-            </Link>
+            </HashLink>
           ))}
           <Link
             href={deltrianHref}

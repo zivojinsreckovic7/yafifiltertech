@@ -19,7 +19,7 @@ export const sr = {
     ],
     ogLocale: "sr_RS",
     ogDescription:
-      "Regionalni distributer Deltrian programa filtera za Ex-Yu tržište. Rešenja za farmaciju, hotelijerstvo, auto-industriju i aerodrome.",
+      "Regionalni distributer Deltrian programa filtera za Ex-Yu tržište. Rešenja za farmaciju i bolnice, auto-industriju, hotelijerstvo i tešku industriju.",
     jsonLdDescription:
       "Industrijska filtracija vazduha i regionalni distributer Deltrian programa filtera za Ex-Yu tržište.",
     areaServed: [
@@ -37,7 +37,7 @@ export const sr = {
     industries: {
       title: "Industrije",
       description:
-        "Namenska rešenja filtracije vazduha za farmaceutsku industriju, hotelijerstvo, auto-industriju i aerodrome.",
+        "Namenska rešenja filtracije vazduha za farmaceutsku industriju i bolnice, auto-industriju i lakirnice, hotelijerstvo i poslovne objekte, tešku industriju i energetiku.",
     },
     contact: {
       title: "Kontakt",
@@ -52,9 +52,11 @@ export const sr = {
   },
 
   nav: {
+    home: "Naslovna",
     products: "Proizvodi",
     productCategories: "Kategorije filtera",
     allProducts: "Ceo program filtera →",
+    catalogues: "Katalozi",
     industries: "Industrije",
     about: "O nama",
     deltrian: "Deltrian program",
@@ -103,15 +105,17 @@ export const sr = {
 
   hero: {
     eyebrow: "Regionalni distributer — Deltrian program",
-    heading: "Filtracija vazduha koja štiti proces, ne samo prostor.",
-    lead: "Projektujemo i isporučujemo industrijske sisteme filtracije vazduha usklađene sa ISO 16890 standardom — za farmaciju, hotelijerstvo, auto-industriju i aerodrome širom Ex-Yu regiona.",
+    heading: "Svako ima pravo na čist vazduh.",
+    imageAlt:
+      "Žena zatvorenih očiju udiše čist vazduh pored otvorenog prozora, u majici sa logotipom Yafi Filtertech.",
+    lead: "Projektujemo i isporučujemo industrijske sisteme filtracije vazduha usklađene sa ISO 16890 standardom — za farmaciju i bolnice, auto-industriju, hotelijerstvo i tešku industriju širom Ex-Yu regiona.",
     ctaPrimary: "Zatražite ponudu",
     ctaSecondary: "Istražite Deltrian program",
     scroll: "Skrolujte",
     stats: {
       experience: "godina iskustva",
       projects: "realizovanih projekata",
-      standard: "ISO standard kvaliteta vazduha",
+      standard: "standard kvaliteta vazduha",
       markets: "tržišta u Ex-Yu regionu",
     },
   },
@@ -122,27 +126,31 @@ export const sr = {
     "GMP / ISO 14644",
     "Deltrian Partner Program",
     "Farmaceutska industrija",
+    "Auto-industrija i lakirnice",
     "Hotelijerstvo",
-    "Auto-industrija",
-    "Aerodromi",
+    "Teška industrija i energetika",
   ],
 
   pillars: {
     eyebrow: "O nama",
-    heading: "Industrijski partner, ne samo dobavljač filtera.",
-    lead: "Yafi Filtertech je regionalni distributer Deltrian programa filtera za Ex-Yu tržište. Radimo sa proizvodnim pogonima, zdravstvenim ustanovama, hotelima i infrastrukturnim objektima kojima je čist vazduh deo poslovnog standarda — ne dodatna stavka u budžetu.",
+    heading:
+      "Inženjerska preciznost i više od 25 godina iskustva u filtraciji vazduha.",
+    lead: "Sa više od dve i po decenije prisustva na tržištu, Yafi Filtertech je razvio proizvodne i distributivne kapacitete koji odgovaraju najstrožim evropskim standardima čistog vazduha. Kao domaći proizvođač i regionalni distributer Deltrian programa filtera za Ex-Yu tržište, pružamo kompletna rešenja za filtraciju — uz Eurovent sertifikat i energetsku efikasnost Deltrian filtera — i tako zaokružujemo sistem vazduha na jednom mestu.",
+    leadSecondary:
+      "Radimo sa proizvodnim pogonima, zdravstvenim ustanovama, hotelima i infrastrukturnim objektima kojima je čist vazduh deo poslovnog standarda — a ne dodatna stavka u budžetu.",
+    itemsIntro: "Naš pristup se zasniva na tri ključne vrednosti.",
     items: [
       {
-        title: "Ušteda energije",
-        desc: "Niži pad pritiska kroz filtersku mediju znači manje opterećenje ventilatora i merljivo nižu potrošnju energije HVAC sistema.",
+        title: "Sopstvena proizvodnja i kvalitetna rešenja",
+        desc: "Izrađujemo predfiltere i fine filtere (klase G2 do F9 / ISO 16890) u standardnim i nestandardnim dimenzijama — potpuno prilagođene dimenzijama i zahtevima vaših HVAC sistema.",
       },
       {
-        title: "ISO 16890 kvalitet vazduha",
-        desc: "Svaka preporuka je usklađena sa aktuelnim standardom klasifikacije filtera po stvarnoj efikasnosti zadržavanja čestica.",
+        title: "Globalni kvalitet uz lokalnu podršku",
+        desc: "Kroz partnerstvo sa američko-belgijskom kompanijom Deltrian donosimo na lokalno tržište vrhunsku evropsku tehnologiju filtracije za HVAC sisteme — EUROVENT sertifikat i energetsku efikasnost sa velikom uštedom energije, uz brzu isporuku, stabilne rokove i direktnu fabričku i tehničku podršku.",
       },
       {
-        title: "Bezbednost procesa",
-        desc: "Za farmaciju, prehranu i čiste prostore filtracija nije detalj — to je uslov za bezbedan i validovan proizvodni proces.",
+        title: "Stručna optimizacija sistema",
+        desc: "Ne postoje „univerzalni filteri“. Za svaki objekat procenjujemo protok vazduha i pad pritiska kako bismo pronašli idealan balans između maksimalne efikasnosti filtracije i minimalne potrošnje energije. Zato je pre dve godine i pokrenuta saradnja sa kompanijom Deltrian, koja je omogućila najviši nivo filtracije.",
       },
     ],
   },
@@ -203,8 +211,21 @@ export const sr = {
 
   testimonialsSection: {
     eyebrow: "Šta kažu klijenti",
-    heading: "Poverenje se gradi isporukom, ne obećanjima.",
+    /** Rendered as two lines: the second one drops to the muted ink. */
+    heading: "Poverenje se gradi isporukom,",
+    headingMuted: "ne obećanjima.",
+    lead: "Proizvodni pogoni, bolnice, hotelske grupe i lakirnice širom Ex-Yu regiona drže svoje sisteme na našim filterima.",
     ratingLabel: "prosečna ocena saradnje",
+    previous: "Prethodna izjava",
+    next: "Sledeća izjava",
+    goTo: (n: string) => `Prikaži izjavu ${n}`,
+  },
+
+  locationMap: {
+    eyebrow: "Gde se nalazimo",
+    heading: "Peščarska 10, Novi Beograd",
+    directions: "Otvorite u mapama →",
+    frameTitle: "Mapa lokacije Yafi Filtertech",
   },
 
   ctaSection: {

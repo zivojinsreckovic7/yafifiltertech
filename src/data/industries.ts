@@ -1,5 +1,12 @@
 import type { Locale } from "@/i18n/config";
 
+/*
+ * Card photography is Unsplash, free licence, no attribution required
+ * (unsplash.com/license). Photo ids, in case one needs replacing:
+ * farmaceutska-industrija k2H_b2AEqbg · auto-industrija Xbgu6L9YyAE ·
+ * hotelijerstvo Is2xP3QGb74 · teska-industrija-i-energetika io7dX_1EFCg
+ */
+
 export type Industry = {
   /** Locale-independent — the same URL segment serves every language. */
   slug: string;
@@ -13,7 +20,10 @@ export type Industry = {
   shortAcc: string;
   shortDat: string;
   teaser: string;
+  /** The filter types this sector runs on — the card's eyebrow line. */
   eyebrow: string;
+  /** Card artwork under `public/` — shared by both locales. */
+  image: string;
   challenge: string;
   solution: string;
   points: string[];
@@ -23,15 +33,16 @@ export type Industry = {
 const sr: Industry[] = [
   {
     slug: "farmaceutska-industrija",
-    name: "Farmaceutska industrija",
-    short: "Farmacija",
-    shortAcc: "farmaciju",
-    shortDat: "farmaciji",
+    name: "Farmaceutska industrija i bolnice",
+    short: "Farmacija i bolnice",
+    shortAcc: "farmaciju i bolnice",
+    shortDat: "farmaciji i bolnicama",
     teaser:
-      "HEPA/ULPA filtracija za čiste sobe i validovane proizvodne procese.",
-    eyebrow: "GMP / ISO 14644",
+      "HEPA/ULPA filtracija za čiste sobe, operacione sale i validovane proizvodne procese.",
+    eyebrow: "Čiste sobe · HEPA/ULPA",
+    image: "/industrije/farmaceutska-industrija.webp",
     challenge:
-      "Proizvodnja lekova i sterilnih preparata zahteva dokumentovanu, ponovljivu čistoću vazduha. Svako odstupanje od klase čistoće znači zaustavljen proces, gubitak šarže ili neusklađenost sa GMP regulativom.",
+      "Proizvodnja lekova i sterilnih preparata, kao i bolnički prostori — operacione sale, izolacione i intenzivne nege — zahtevaju dokumentovanu, ponovljivu čistoću vazduha. Svako odstupanje od klase čistoće znači zaustavljen proces, gubitak šarže ili neusklađenost sa GMP regulativom.",
     solution:
       "Projektujemo višestepene sisteme filtracije — od predfiltracije do HEPA/ULPA terminalnih filtera — usklađene sa ISO 14644 klasama čistih prostora i ISO 16890 standardom, sa punom dokumentacijom za validaciju.",
     points: [
@@ -42,82 +53,83 @@ const sr: Industry[] = [
     filters: ["hepa-ulpa-filteri", "rigidni-v-filteri", "vrecasti-filteri"],
   },
   {
-    slug: "hotelijerstvo",
-    name: "Hotelijerstvo",
-    short: "Hotelijerstvo",
-    shortAcc: "hotelijerstvo",
-    shortDat: "hotelijerstvu",
-    teaser:
-      "Kvalitet vazduha za goste uz energetski efikasan rad HVAC sistema.",
-    eyebrow: "Komfor i energetska efikasnost",
-    challenge:
-      "Gosti procenjuju kvalitet objekta i kroz vazduh koji udišu — mirise iz kuhinje, vlagu, prašinu. Istovremeno, HVAC sistemi predstavljaju jednu od najvećih stavki u računu za energiju.",
-    solution:
-      "Kombinujemo kasetne i džepaste filtere niskog pada pritiska sa filtracijom aktivnim ugljem za kontrolu mirisa, čime snižavamo opterećenje ventilacionih sistema i produžavamo interval održavanja.",
-    points: [
-      "Niži pad pritiska = manja potrošnja energije HVAC sistema",
-      "Kontrola mirisa u restoranima i zajedničkim prostorima",
-      "Diskretna ugradnja bez uticaja na goste",
-    ],
-    filters: ["kasetni-filteri", "filteri-mirisi-masnoce", "panelni-filteri"],
-  },
-  {
     slug: "auto-industrija",
-    name: "Auto-industrija",
+    name: "Auto-industrija i lakirnice",
     short: "Auto-industrija",
-    shortAcc: "auto-industriju",
-    shortDat: "auto-industriji",
-    teaser: "Filtracija za lakirnice, bojarske kabine i proizvodne pogone.",
-    eyebrow: "Procesi lakiranja i montaže",
+    shortAcc: "auto-industriju i lakirnice",
+    shortDat: "auto-industriji i lakirnicama",
+    teaser:
+      "Paint-stop i stropni filteri za lakirnice, bojarske kabine i proizvodne pogone.",
+    eyebrow: "Paint-stop · stropni filteri",
+    image: "/industrije/auto-industrija.webp",
     challenge:
       "Kvalitet farbe direktno zavisi od čistoće vazduha u kabini za lakiranje. Čestice prašine u pogonu uzrokuju škart, dodatnu doradu i zastoje u proizvodnji.",
     solution:
-      "Isporučujemo podne i plafonske filtere za bojarske kabine, kao i panelne i kompaktne filtere za opštu ventilaciju proizvodnih hala, sa fokusom na predvidljiv interval zamene.",
+      "Isporučujemo paint-stop podne filtere i stropne filtere za bojarske kabine, kao i panelne i rigidne filtere za opštu ventilaciju proizvodnih hala, sa fokusom na predvidljiv interval zamene.",
     points: [
       "Manje škarta zahvaljujući stabilnoj čistoći vazduha u kabini",
       "Filteri prilagođeni specifikaciji proizvođača kabine",
       "Planovi redovne zamene usklađeni sa proizvodnim linijama",
     ],
-    filters: [
-      "filteri-za-lakirnice",
-      "panelni-filteri",
-      "rigidni-v-filteri",
-    ],
+    filters: ["filteri-za-lakirnice", "panelni-filteri", "rigidni-v-filteri"],
   },
   {
-    slug: "aerodromi",
-    name: "Aerodromi",
-    short: "Aerodromi",
-    shortAcc: "aerodrome",
-    shortDat: "aerodromima",
+    slug: "hotelijerstvo",
+    name: "Hotelijerstvo i poslovni objekti",
+    short: "Hotelijerstvo",
+    shortAcc: "hotelijerstvo i poslovne objekte",
+    shortDat: "hotelijerstvu i poslovnim objektima",
     teaser:
-      "Sistemi visokog kapaciteta za neprekidan rad i velike protoke vazduha.",
-    eyebrow: "Kontinuiran rad, veliki protoci",
+      "Kasetni i vrećasti filteri za HVAC komore, uz energetski efikasan rad sistema.",
+    eyebrow: "HVAC komore · kasetni i vrećasti filteri",
+    image: "/industrije/hotelijerstvo.webp",
     challenge:
-      "Terminali rade 24/7 sa velikim brojem putnika i velikim protocima vazduha. Sistemi filtracije moraju da izdrže kontinuirano opterećenje bez kompromisa u kvalitetu vazduha.",
+      "Gosti i zaposleni procenjuju objekat i kroz vazduh koji udišu — mirise iz kuhinje, vlagu, prašinu. Istovremeno, HVAC sistemi predstavljaju jednu od najvećih stavki u računu za energiju.",
     solution:
-      "Preporučujemo robusne džepaste i kasetne sisteme visokog kapaciteta sa dugim vekom trajanja, projektovane da smanje frekvenciju servisa i operativni trošak na velikim objektima.",
+      "Kombinujemo kasetne i vrećaste filtere niskog pada pritiska u klima komorama sa filtracijom aktivnim ugljem za kontrolu mirisa, čime snižavamo opterećenje ventilacionih sistema i produžavamo interval održavanja.",
     points: [
-      "Visok kapacitet protoka uz stabilnu efikasnost",
-      "Duži interval zamene = manje zastoja u održavanju",
-      "Rešenja skalabilna za velike centralne sisteme",
+      "Niži pad pritiska = manja potrošnja energije HVAC sistema",
+      "Kontrola mirisa u restoranima i zajedničkim prostorima",
+      "Diskretna ugradnja bez uticaja na goste i zaposlene",
     ],
-    filters: ["vrecasti-filteri", "kasetni-filteri", "panelni-filteri"],
+    filters: ["kasetni-filteri", "vrecasti-filteri", "filteri-mirisi-masnoce"],
+  },
+  {
+    slug: "teska-industrija-i-energetika",
+    name: "Teška industrija i energetika",
+    short: "Teška industrija",
+    shortAcc: "tešku industriju i energetiku",
+    shortDat: "teškoj industriji i energetici",
+    teaser:
+      "Otpršivanje i predfiltracija za pogone sa visokim opterećenjem prašinom.",
+    eyebrow: "Otpršivanje · predfiltracija",
+    image: "/industrije/teska-industrija-i-energetika.webp",
+    challenge:
+      "Livnice, cementare, obrada metala i energetska postrojenja rade sa velikim količinama prašine i abrazivnih čestica. Bez ozbiljne predfiltracije, fini filteri se zapušavaju za nekoliko nedelja, ventilatori rade pod stalnim opterećenjem, a zastoji zbog održavanja se množe.",
+    solution:
+      "Filtraciju postavljamo u stepenima: perivi metalni i sintetički predfilteri hvataju grubu frakciju i produžavaju vek finih stepena, dok kasetni i vrećasti filteri drže vazduh u komorama i pogonskim prostorima u zadatoj klasi. Materijal biramo prema temperaturi, vlazi i abrazivnosti prašine u vašem procesu.",
+    points: [
+      "Predfiltracija koja višestruko produžava vek finih filtera",
+      "Perivi i visokotemperaturni materijali za teške uslove rada",
+      "Interval zamene planiran prema stvarnom opterećenju prašinom",
+    ],
+    filters: ["filter-materijali", "panelni-filteri", "vrecasti-filteri"],
   },
 ];
 
 const en: Industry[] = [
   {
     slug: "farmaceutska-industrija",
-    name: "Pharmaceutical industry",
-    short: "Pharmaceuticals",
-    shortAcc: "pharmaceutical production",
-    shortDat: "pharmaceutical production",
+    name: "Pharmaceutical industry and hospitals",
+    short: "Pharma and hospitals",
+    shortAcc: "pharmaceutical production and hospitals",
+    shortDat: "pharmaceutical production and hospitals",
     teaser:
-      "HEPA/ULPA filtration for cleanrooms and validated production processes.",
-    eyebrow: "GMP / ISO 14644",
+      "HEPA/ULPA filtration for cleanrooms, operating theatres and validated production processes.",
+    eyebrow: "Cleanrooms · HEPA/ULPA",
+    image: "/industrije/farmaceutska-industrija.webp",
     challenge:
-      "Manufacturing medicines and sterile preparations demands documented, repeatable air cleanliness. Any deviation from the cleanliness class means a halted process, a lost batch or non-compliance with GMP regulation.",
+      "Manufacturing medicines and sterile preparations — and hospital spaces such as operating theatres, isolation rooms and intensive care — demand documented, repeatable air cleanliness. Any deviation from the cleanliness class means a halted process, a lost batch or non-compliance with GMP regulation.",
     solution:
       "We design multi-stage filtration systems — from pre-filtration to terminal HEPA/ULPA filters — aligned with ISO 14644 cleanroom classes and the ISO 16890 standard, with full documentation for validation.",
     points: [
@@ -128,67 +140,67 @@ const en: Industry[] = [
     filters: ["hepa-ulpa-filteri", "rigidni-v-filteri", "vrecasti-filteri"],
   },
   {
-    slug: "hotelijerstvo",
-    name: "Hospitality",
-    short: "Hospitality",
-    shortAcc: "hospitality",
-    shortDat: "hospitality",
-    teaser:
-      "Air quality for guests alongside energy-efficient HVAC operation.",
-    eyebrow: "Comfort and energy efficiency",
-    challenge:
-      "Guests judge a property by the air they breathe too — kitchen odours, humidity, dust. At the same time, HVAC systems are one of the largest items on the energy bill.",
-    solution:
-      "We combine low pressure drop cassette and bag filters with activated carbon filtration for odour control, which lowers the load on ventilation systems and extends the maintenance interval.",
-    points: [
-      "Lower pressure drop = lower HVAC energy consumption",
-      "Odour control in restaurants and shared spaces",
-      "Discreet installation with no impact on guests",
-    ],
-    filters: ["kasetni-filteri", "filteri-mirisi-masnoce", "panelni-filteri"],
-  },
-  {
     slug: "auto-industrija",
-    name: "Automotive industry",
+    name: "Automotive industry and paint shops",
     short: "Automotive",
-    shortAcc: "the automotive industry",
-    shortDat: "the automotive industry",
-    teaser: "Filtration for paint shops, spray booths and production plants.",
-    eyebrow: "Coating and assembly processes",
+    shortAcc: "the automotive industry and paint shops",
+    shortDat: "the automotive industry and paint shops",
+    teaser:
+      "Paint-stop and ceiling filters for paint shops, spray booths and production plants.",
+    eyebrow: "Paint-stop · ceiling filters",
+    image: "/industrije/auto-industrija.webp",
     challenge:
       "Paint quality depends directly on the air cleanliness inside the spray booth. Dust particles on the shop floor cause rejects, rework and production downtime.",
     solution:
-      "We supply floor and ceiling filters for spray booths, as well as panel and compact filters for general ventilation of production halls, with a focus on a predictable replacement interval.",
+      "We supply paint-stop floor filters and ceiling filters for spray booths, as well as panel and rigid filters for general ventilation of production halls, with a focus on a predictable replacement interval.",
     points: [
       "Fewer rejects thanks to stable air cleanliness in the booth",
       "Filters matched to the booth manufacturer's specification",
       "Regular replacement plans aligned with production lines",
     ],
-    filters: [
-      "filteri-za-lakirnice",
-      "panelni-filteri",
-      "rigidni-v-filteri",
-    ],
+    filters: ["filteri-za-lakirnice", "panelni-filteri", "rigidni-v-filteri"],
   },
   {
-    slug: "aerodromi",
-    name: "Airports",
-    short: "Airports",
-    shortAcc: "airports",
-    shortDat: "airports",
+    slug: "hotelijerstvo",
+    name: "Hospitality and commercial buildings",
+    short: "Hospitality",
+    shortAcc: "hospitality and commercial buildings",
+    shortDat: "hospitality and commercial buildings",
     teaser:
-      "High-capacity systems for continuous operation and large air flows.",
-    eyebrow: "Continuous operation, large air flows",
+      "Cassette and bag filters for HVAC plant, alongside energy-efficient operation.",
+    eyebrow: "HVAC plant · cassette and bag filters",
+    image: "/industrije/hotelijerstvo.webp",
     challenge:
-      "Terminals run 24/7 with high passenger numbers and large air flows. Filtration systems have to withstand continuous load without compromising air quality.",
+      "Guests and staff judge a building by the air they breathe too — kitchen odours, humidity, dust. At the same time, HVAC systems are one of the largest items on the energy bill.",
     solution:
-      "We recommend robust high-capacity bag and cassette systems with a long service life, designed to reduce service frequency and operating cost on large facilities.",
+      "We combine low pressure drop cassette and bag filters in air handling units with activated carbon filtration for odour control, which lowers the load on ventilation systems and extends the maintenance interval.",
     points: [
-      "High flow capacity with stable efficiency",
-      "Longer replacement intervals = less maintenance downtime",
-      "Solutions that scale to large central systems",
+      "Lower pressure drop = lower HVAC energy consumption",
+      "Odour control in restaurants and shared spaces",
+      "Discreet installation with no impact on guests or staff",
     ],
-    filters: ["vrecasti-filteri", "kasetni-filteri", "panelni-filteri"],
+    filters: ["kasetni-filteri", "vrecasti-filteri", "filteri-mirisi-masnoce"],
+  },
+  {
+    slug: "teska-industrija-i-energetika",
+    name: "Heavy industry and energy",
+    short: "Heavy industry",
+    shortAcc: "heavy industry and energy",
+    shortDat: "heavy industry and energy",
+    teaser:
+      "Dust extraction and pre-filtration for plants carrying a heavy dust load.",
+    eyebrow: "Dust extraction · pre-filtration",
+    image: "/industrije/teska-industrija-i-energetika.webp",
+    challenge:
+      "Foundries, cement plants, metalworking and power generation run with large volumes of dust and abrasive particles. Without serious pre-filtration, fine filters clog within weeks, fans run under constant load, and maintenance downtime multiplies.",
+    solution:
+      "We stage the filtration: washable metal and synthetic pre-filters catch the coarse fraction and extend the life of the fine stages, while cassette and bag filters hold the air in plant rooms and production areas at the required class. Media are chosen for the temperature, humidity and abrasiveness of the dust in your process.",
+    points: [
+      "Pre-filtration that multiplies the life of the fine filters",
+      "Washable and high-temperature media for demanding conditions",
+      "Replacement intervals planned around the real dust load",
+    ],
+    filters: ["filter-materijali", "panelni-filteri", "vrecasti-filteri"],
   },
 ];
 

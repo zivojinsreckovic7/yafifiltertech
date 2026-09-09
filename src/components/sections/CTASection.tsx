@@ -2,6 +2,7 @@ import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import QuoteForm from "@/components/QuoteForm";
 import ContactRow from "@/components/ContactRow";
+import LocationMap from "@/components/LocationMap";
 import TrustSignals from "@/components/TrustSignals";
 import { addressLine, contact } from "@/data/contact";
 import { getProducts } from "@/data/products";
@@ -70,6 +71,8 @@ export default function CTASection({
           />
         </Reveal>
       </div>
+
+      <LocationMap locale={locale} dict={dict.locationMap} />
     </section>
   );
 }
