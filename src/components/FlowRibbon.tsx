@@ -312,6 +312,10 @@ function Ribbon() {
     window.addEventListener("resize", onScroll, { passive: true });
     return () => {
       if (s.raf) cancelAnimationFrame(s.raf);
+      // Must clear: `s` outlives this effect (StrictMode remounts it in dev,
+      // reusing the ref), and `onScroll` only schedules a frame when `raf` is
+      // 0 — a stale id left here would stop the ribbon following scroll.
+      s.raf = 0;
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
