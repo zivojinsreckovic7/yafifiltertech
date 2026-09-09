@@ -136,7 +136,7 @@ function HeroStats({
           className="grid grid-cols-2 gap-8 py-10 sm:grid-cols-4"
         >
           <StatCounter
-            value={25}
+            value={15}
             suffix="+"
             label={stats.experience}
             numberLocale={numberLocale}
