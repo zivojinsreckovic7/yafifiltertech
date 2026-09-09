@@ -156,12 +156,32 @@ function paintWash(
 }
 
 /**
+ * Mounts the ribbon from `lg` up only. On a phone or tablet the beam runs
+ * straight behind body copy, where it costs legibility, and the canvas wash
+ * plus its scroll-driven redraw is the most expensive thing on the page — so
+ * below that width it is never rendered, rather than hidden with CSS.
+ */
+export default function FlowRibbon() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setEnabled(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  return enabled ? <Ribbon /> : null;
+}
+
+/**
  * Decorative scroll-following aurora. A canvas wash (painted once) provides
  * the liquid color field; an SVG comet edge draws in with scroll on top of
  * it. No blur filters or CSS blend modes — Safari rasterizes those on the
  * CPU every frame.
  */
-export default function FlowRibbon() {
+function Ribbon() {
   const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const groupRef = useRef<SVGGElement>(null);
