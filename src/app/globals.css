@@ -148,10 +148,10 @@ html[data-loader-ready] .site-loader {
 }
 
 .site-loader__logo {
-  display: flex;
-  width: fit-content;
+  display: block;
+  height: 3.5rem;
+  width: auto;
   margin-inline: auto;
-  transform: translateY(0);
 }
 
 .site-loader__meter {

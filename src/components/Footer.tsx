@@ -36,7 +36,7 @@ export default function Footer({
       <div className="wrap relative py-16 md:py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <Reveal>
-            <Logo />
+            <Logo className="h-9 w-auto" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-400">
               {footer.description}
             </p>

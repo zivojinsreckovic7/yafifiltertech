@@ -73,12 +73,23 @@ export default function Nav({
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className="wrap flex h-20 items-center justify-between">
-          <Link href={localePath(locale, routes.home)} data-cursor="link">
-            <Logo />
+        <div className="wrap flex h-20 items-center justify-between gap-4">
+          {/* The wordmark is wide; on narrow phones the link gives way so the
+              controls never spill past the edge, and the image scales inside it. */}
+          <Link
+            href={localePath(locale, routes.home)}
+            data-cursor="link"
+            className="block min-w-0 shrink"
+          >
+            <Logo
+              className="block h-8 w-auto max-w-full object-contain object-left md:h-9"
+              eager
+            />
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          {/* The full row (wordmark + six links + controls) needs ~1150px, so
+              the compact header stays up through lg. */}
+          <nav className="hidden items-center gap-6 xl:flex 2xl:gap-8">
             {leadLinks.map((l) => (
               <HashLink
                 key={l.href}
@@ -125,7 +136,7 @@ export default function Nav({
             <button
               aria-label={open ? nav.closeMenu : nav.openMenu}
               onClick={() => setOpen((v) => !v)}
-              className="relative z-10 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+              className="relative z-10 flex h-10 w-10 flex-col items-center justify-center gap-1.5 xl:hidden"
             >
               <span
                 className={`h-px w-6 bg-ink-100 transition-transform duration-300 ${
@@ -143,7 +154,7 @@ export default function Nav({
       </header>
 
       <div
-        className={`fixed inset-0 z-40 overflow-y-auto bg-navy-950 transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-0 z-40 overflow-y-auto bg-navy-950 transition-transform duration-300 xl:hidden ${
           open ? "translate-y-0" : "-translate-y-full"
         }`}
         aria-hidden={!open}

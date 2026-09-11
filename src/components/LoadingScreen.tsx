@@ -110,7 +110,7 @@ export default function LoadingScreen({
       aria-label={aria}
     >
       <div className="site-loader__content">
-        <Logo className="site-loader__logo" markClassName="h-14 w-14" />
+        <Logo className="site-loader__logo" eager />
 
         <div className="site-loader__meter" aria-hidden="true">
           <div className="site-loader__track">

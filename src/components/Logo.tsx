@@ -1,48 +1,30 @@
-export function LogoMark({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect width="48" height="48" rx="10" fill="var(--navy-800)" />
-      <path
-        d="M9 12 L24 26 L39 12"
-        stroke="var(--ink-100)"
-        strokeWidth="3.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      <path
-        d="M24 26 L24 38"
-        stroke="var(--orange-500)"
-        strokeWidth="3.2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+import Image from "next/image";
 
+/**
+ * Brand wordmark. The asset is trimmed to the glyphs (1833×420, ~4.36:1), so
+ * a height utility alone sets the rendered size and the visible left edge
+ * lines up with the surrounding content.
+ *
+ * `width`/`height` carry the aspect ratio for layout reservation and size the
+ * 1x/2x srcset — 240px covers the largest slot (the loader) at 1x.
+ */
 export function Logo({
-  className = "",
-  markClassName = "h-9 w-9",
+  className = "h-9 w-auto",
+  eager = false,
 }: {
   className?: string;
-  markClassName?: string;
+  /** Above-the-fold instances (loader, nav) fetch at high priority. */
+  eager?: boolean;
 }) {
   return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
-      <LogoMark className={markClassName} />
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-base font-bold tracking-tight text-ink-100">
-          YAFI
-        </span>
-        <span className="text-[9px] font-semibold tracking-[0.28em] text-ink-400">
-          FILTERTECH
-        </span>
-      </span>
-    </span>
+    <Image
+      src="/yafi-filtertech-logo.webp"
+      alt="Yafi Filtertech"
+      width={240}
+      height={55}
+      loading={eager ? "eager" : "lazy"}
+      fetchPriority={eager ? "high" : undefined}
+      className={className}
+    />
   );
 }
