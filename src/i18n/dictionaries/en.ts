@@ -46,7 +46,7 @@ export const en: Dictionary = {
     deltrian: {
       title: "Deltrian filter range",
       description:
-        "Yafi Filtertech is the official regional distributor of the Deltrian filter range for the Ex-Yu market — a complete industrial air filtration portfolio.",
+        "Yafi Filtertech is the regional distributor of the Deltrian filter range for the Ex-Yu market — a complete industrial air filtration portfolio.",
     },
   },
 
@@ -164,10 +164,10 @@ export const en: Dictionary = {
 
   deltrianBanner: {
     eyebrow: "Exclusive partnership",
-    heading: "The Deltrian filter range — officially, for the entire Ex-Yu region.",
-    lead: "Yafi Filtertech is the official regional distributor of the Deltrian filter range. A complete industrial filtration portfolio, developed in line with European air quality standards, available directly through our team.",
+    heading: "The Deltrian filter range — for the entire Ex-Yu region.",
+    lead: "Yafi Filtertech is the regional distributor of the Deltrian filter range. A complete industrial filtration portfolio, developed in line with European air quality standards, available directly through our team.",
     bullets: [
-      "Official regional distributor",
+      "Regional distributor",
       "Complete filter range",
       "On-site technical support",
     ],

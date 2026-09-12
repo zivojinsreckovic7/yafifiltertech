@@ -47,7 +47,7 @@ export const sr = {
     deltrian: {
       title: "Deltrian program filtera",
       description:
-        "Yafi Filtertech je zvanični regionalni distributer Deltrian programa filtera za Ex-Yu tržište — kompletna paleta industrijske filtracije vazduha.",
+        "Yafi Filtertech je regionalni distributer Deltrian programa filtera za Ex-Yu tržište — kompletna paleta industrijske filtracije vazduha.",
     },
   },
 
@@ -167,10 +167,10 @@ export const sr = {
 
   deltrianBanner: {
     eyebrow: "Ekskluzivno partnerstvo",
-    heading: "Deltrian program filtera — zvanično, za ceo Ex-Yu region.",
-    lead: "Yafi Filtertech je zvanični regionalni distributer Deltrian programa filtera. Kompletna paleta industrijske filtracije, razvijena u skladu sa evropskim standardima kvaliteta vazduha, dostupna direktno kroz naš tim.",
+    heading: "Deltrian program filtera — za ceo Ex-Yu region.",
+    lead: "Yafi Filtertech je regionalni distributer Deltrian programa filtera. Kompletna paleta industrijske filtracije, razvijena u skladu sa evropskim standardima kvaliteta vazduha, dostupna direktno kroz naš tim.",
     bullets: [
-      "Zvaničan regionalni distributer",
+      "Regionalni distributer",
       "Kompletan program filtera",
       "Tehnička podrška na terenu",
     ],
