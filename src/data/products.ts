@@ -71,6 +71,12 @@ export type ProductCategory = {
   /** Category page heading, including the YAFI range code. Falls back to `name`. */
   title?: string;
   class: string;
+  /**
+   * Overview-card photo, path under `public/`. One representative variant
+   * per range; the square white-background shots sit on a white plate, so a
+   * card without one keeps the same footprint with a watermark instead.
+   */
+  image?: string;
   /** One-line copy for the overview card. */
   description: string;
   /** Category page lead paragraph. Falls back to `description`. */
@@ -1752,6 +1758,7 @@ const sr: ProductCategory[] = [
     nameAcc: "filterske materijale",
     title: "Filterski materijali – YAFI FM",
     class: "Rolne i ploče, EU2 – F9",
+    image: "/yafiproducts/filter-materijali/Filteri-od-sintetickih-vlakana.webp",
     description:
       "Filterska medija u rolnama i pločama — sintetička, staklena vlakna i podne medije za sopstvenu konfekciju i zamenu uložaka.",
     intro:
@@ -2092,6 +2099,7 @@ const sr: ProductCategory[] = [
     name: "Panelni filteri – YAFI PF",
     nameAcc: "panelne filtere",
     class: "G2 – M5, poliester",
+    image: "/yafiproducts/panelni-filteri/predfilter-metalnog-okvira-i-ravne-povrsine.webp",
     description:
       "Prvi stepen zaštite ventilacionih sistema. Zadržavaju krupnije čestice i produžavaju vek trajanja narednih filterskih stepeni.",
     intro:
@@ -2448,6 +2456,7 @@ const sr: ProductCategory[] = [
     nameAcc: "kasetne filtere",
     title: "Kasetni filteri – YAFI KF",
     class: "G3 – F9, poliester i mini plit",
+    image: "/yafiproducts/kasetni-filteri/predfilter-sa-metalnim-okvirom.webp",
     description:
       "Kompaktna konstrukcija sa velikom filtracionom površinom i niskim padom pritiska — direktan uticaj na potrošnju energije.",
     intro:
@@ -2817,6 +2826,7 @@ const sr: ProductCategory[] = [
     nameAcc: "vrećaste filtere",
     title: "Vrećasti filteri – YAFI VF",
     class: "G3 – F9, poliester i polipropilen",
+    image: "/yafiproducts/vrecasti-filteri/Vrecasti-filter-za-finu-prasinu-metalni-okvir-F7.webp",
     description:
       "Multi-vrećasta konstrukcija za velike protoke vazduha uz dugotrajnu efikasnost, standard u industrijskim sistemima.",
     intro:
@@ -3224,6 +3234,7 @@ const sr: ProductCategory[] = [
     name: "Rigidni V filteri – YAFI RF",
     nameAcc: "rigidne V filtere",
     class: "F6 – F9, staklena i celulozna vlakna",
+    image: "/yafiproducts/rigidni-v-filteri/Rigidni-Vrecasti-Filter-Plasticni-Okvir-4V-Standard.webp",
     description:
       "Rigidna V konstrukcija sa mini-plisiranom medijom visoke gustine — maksimalna filtraciona površina u ograničenom prostoru ugradnje.",
     intro:
@@ -3893,6 +3904,7 @@ const sr: ProductCategory[] = [
     nameAcc: "apsolutne HEPA filtere",
     title: "Apsolutni filteri – HEPA – YAFI AF",
     class: "EN 1822, E10 – H14",
+    image: "/yafiproducts/apsolutni-filteri/1/Apsolutni-HEPA-Filteri-MDF-Okvir-78mm.webp",
     description:
       "Krajnji stepen filtracije za validovane čiste prostore. Zadržavaju čestice submikronskih dimenzija sa visokom pouzdanošću.",
     intro:
@@ -4170,6 +4182,7 @@ const sr: ProductCategory[] = [
     nameAcc: "filtere za uklanjanje mirisa i masnoće",
     title: "Filteri za masne pare – YAFI MF",
     class: "Aktivni ugalj i masni filteri",
+    image: "/yafiproducts/filteri-za-uklanjanje-mirisa-i-masnoce/Kertridzi-sa-aktivnim-ugljem.webp",
     description:
       "Aktivni ugalj za gasovite polutante i mirise, i masni filteri za kuhinjske nape — tamo gde mehanička filtracija nije dovoljna.",
     intro:
@@ -4703,6 +4716,7 @@ const sr: ProductCategory[] = [
     name: "Filteri za lakirnice",
     nameAcc: "filtere za lakirnice",
     class: "Podni, plafonski i paint-stop",
+    image: "/yafiproducts/filteri-za-lakirnice/filteri-za-lakirnice.webp",
     description:
       "Podni, plafonski i paint-stop filteri za zadržavanje čestica boje u procesima lakiranja u auto-industriji i metalnoj industriji.",
     intro:
@@ -4738,6 +4752,7 @@ const sr: ProductCategory[] = [
     name: "Ramovi za filtere",
     nameAcc: "ramove za filtere",
     class: "Nosivi i zatezni sistemi",
+    image: "/yafiproducts/ramovi-za-filtere/ramovi-za-filtere.webp",
     description:
       "Nosivi ramovi, zatezni okviri i kućišta koja obezbeđuju zaptivanje filtera — bez propuštanja vazduha oko uloška.",
     intro:
@@ -4832,6 +4847,7 @@ const en: ProductCategory[] = [
     nameAcc: "filter media",
     title: "Filter media – YAFI FM",
     class: "Rolls and pads, EU2 – F9",
+    image: "/yafiproducts/filter-materijali/Filteri-od-sintetickih-vlakana.webp",
     description:
       "Filter media in rolls and pads — synthetic, glass fibre and floor media for in-house fabrication and insert replacement.",
     intro:
@@ -5144,6 +5160,7 @@ const en: ProductCategory[] = [
     name: "Panel filters – YAFI PF",
     nameAcc: "panel filters",
     class: "G2 – M5, polyester",
+    image: "/yafiproducts/panelni-filteri/predfilter-metalnog-okvira-i-ravne-povrsine.webp",
     description:
       "The first line of protection for ventilation systems. They capture coarser particles and extend the service life of the filter stages that follow.",
     intro:
@@ -5497,6 +5514,7 @@ const en: ProductCategory[] = [
     nameAcc: "cassette filters",
     title: "Cassette filters – YAFI KF",
     class: "G3 – F9, polyester and mini-pleat",
+    image: "/yafiproducts/kasetni-filteri/predfilter-sa-metalnim-okvirom.webp",
     description:
       "A compact construction with a large filtration area and a low pressure drop — with a direct effect on energy consumption.",
     intro:
@@ -5866,6 +5884,7 @@ const en: ProductCategory[] = [
     nameAcc: "bag filters",
     title: "Bag filters – YAFI VF",
     class: "G3 – F9, polyester and polypropylene",
+    image: "/yafiproducts/vrecasti-filteri/Vrecasti-filter-za-finu-prasinu-metalni-okvir-F7.webp",
     description:
       "A multi-pocket construction for high air flows with long-lasting efficiency — the standard in industrial systems.",
     intro:
@@ -6275,6 +6294,7 @@ const en: ProductCategory[] = [
     name: "Rigid V-cell filters – YAFI RF",
     nameAcc: "rigid V-cell filters",
     class: "F6 – F9, glass and cellulose fibre",
+    image: "/yafiproducts/rigidni-v-filteri/Rigidni-Vrecasti-Filter-Plasticni-Okvir-4V-Standard.webp",
     description:
       "A rigid V-cell construction with high-density mini-pleat media — the maximum filtration area within a limited installation depth.",
     intro:
@@ -6897,6 +6917,7 @@ const en: ProductCategory[] = [
     nameAcc: "absolute HEPA filters",
     title: "Absolute filters – HEPA – YAFI AF",
     class: "EN 1822, E10 – H14",
+    image: "/yafiproducts/apsolutni-filteri/1/Apsolutni-HEPA-Filteri-MDF-Okvir-78mm.webp",
     description:
       "The final filtration stage for validated clean environments. They capture submicron particles with high reliability.",
     intro:
@@ -7174,6 +7195,7 @@ const en: ProductCategory[] = [
     nameAcc: "odour and grease removal filters",
     title: "Grease vapour filters – YAFI MF",
     class: "Activated carbon and grease filters",
+    image: "/yafiproducts/filteri-za-uklanjanje-mirisa-i-masnoce/Kertridzi-sa-aktivnim-ugljem.webp",
     description:
       "Activated carbon for gaseous pollutants and odours, and grease filters for kitchen extraction hoods — where mechanical filtration alone is not enough.",
     intro:
@@ -7698,6 +7720,7 @@ const en: ProductCategory[] = [
     name: "Paint shop filters",
     nameAcc: "paint shop filters",
     class: "Floor, ceiling and paint-stop",
+    image: "/yafiproducts/filteri-za-lakirnice/filteri-za-lakirnice.webp",
     description:
       "Floor, ceiling and paint-stop filters that capture paint particles in coating processes across the automotive and metal industries.",
     intro:
@@ -7732,6 +7755,7 @@ const en: ProductCategory[] = [
     name: "Filter frames",
     nameAcc: "filter frames",
     class: "Holding and clamping systems",
+    image: "/yafiproducts/ramovi-za-filtere/ramovi-za-filtere.webp",
     description:
       "Holding frames, clamping frames and housings that seal the filter in place — so no air bypasses the insert.",
     intro:
