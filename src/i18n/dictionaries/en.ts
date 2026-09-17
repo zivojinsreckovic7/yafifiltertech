@@ -48,6 +48,16 @@ export const en: Dictionary = {
       description:
         "Yafi Filtertech is the regional distributor of the Deltrian filter range for the Ex-Yu market — a complete industrial air filtration portfolio.",
     },
+    about: {
+      title: "About us",
+      description:
+        "Belgrade-based manufacturer of made-to-measure air filters and regional distributor of the Deltrian range. How we work, where you'll find us and what clients say.",
+    },
+    catalogues: {
+      title: "Catalogues",
+      description:
+        "Download the Deltrian catalogue “Filtration, solutions and products 2026” and the technical documentation for the Yafi Filtertech filter range.",
+    },
   },
 
   nav: {
@@ -106,7 +116,7 @@ export const en: Dictionary = {
     heading: "Everyone has a right to clean air.",
     imageAlt:
       "A woman with her eyes closed breathing clean air by an open window, wearing a Yafi Filtertech shirt.",
-    lead: "We design and supply industrial air filtration systems compliant with ISO 16890 — for pharmaceutical production and hospitals, automotive plants, hospitality and heavy industry across the Ex-Yu region.",
+    lead: "We combine our own made-to-measure filter manufacturing with a range of certified Deltrian systems. The full spectrum of air filtration for chambers in pharmaceutical, automotive and heavy industry across the Ex-Yu region.",
     ctaPrimary: "Request a quote",
     ctaSecondary: "Explore the Deltrian range",
     scroll: "Scroll",
@@ -174,9 +184,27 @@ export const en: Dictionary = {
     cta: "Open the Deltrian range →",
   },
 
+  regionSection: {
+    eyebrow: "Ex-Yu region",
+    heading: "One partner for the whole region.",
+    lead: "From Belgrade we supply and support customers in six countries across the Ex-Yu region — with our own made-to-measure filters and the Deltrian range.",
+    hub: "Headquarters — Belgrade",
+    mapLabel:
+      "Map of the Ex-Yu region with the markets we serve highlighted: Serbia, Montenegro, Bosnia and Herzegovina, Slovenia, Croatia and North Macedonia.",
+    countries: {
+      rs: "Serbia",
+      me: "Montenegro",
+      ba: "Bosnia and Herzegovina",
+      si: "Slovenia",
+      hr: "Croatia",
+      mk: "North Macedonia",
+    },
+  },
+
   industriesSection: {
     eyebrow: "Solutions by industry",
     heading: "Dedicated solutions for sectors where clean air is not optional.",
+    facilitiesIntro: "The types of facility we equip",
   },
 
   industryCard: {
@@ -334,6 +362,30 @@ export const en: Dictionary = {
       `Tell us more about the facility and the process — we prepare a proposal tailored to ${industry} within 24 hours.`,
   },
 
+  cataloguesPage: {
+    eyebrow: "Catalogues",
+    heading: "Catalogues and technical documentation.",
+    lead: "In one place: the official Deltrian catalogue, available now, and the catalogues we are preparing — the YAFI range and technical sheets by filter category.",
+    placeholdersEyebrow: "In preparation",
+    placeholdersHeading: "Catalogues coming soon.",
+    placeholdersLead:
+      "Documentation is published as it is ready. Until then, we send technical sheets for any filter type on request.",
+    placeholderBadge: "Coming soon",
+    /** PLACEHOLDER — see the note on the Serbian dictionary. */
+    placeholders: [
+      { label: "Catalogue 02", name: "Catalogue name" },
+      { label: "Catalogue 03", name: "Catalogue name" },
+      { label: "Catalogue 04", name: "Catalogue name" },
+      { label: "Catalogue 05", name: "Catalogue name" },
+      { label: "Catalogue 06", name: "Catalogue name" },
+      { label: "Catalogue 07", name: "Catalogue name" },
+    ],
+    ctaTitle: "Need documentation that isn't published yet?",
+    ctaText:
+      "Tell us the filter type or category you are interested in — we send technical sheets and specifications on request, within 24 hours.",
+    ctaAction: "Request documentation →",
+  },
+
   contactPage: {
     eyebrow: "Contact",
     heading: "Let's talk about your ventilation system.",
@@ -342,6 +394,86 @@ export const en: Dictionary = {
     whyHeading: "A reply with a concrete proposal, not a generic catalogue.",
     whyText:
       "Every enquiry goes through a short review of the facility and the process before we recommend a filter class and type — so the quote you receive reflects real conditions, not just a price list.",
+  },
+
+  aboutPage: {
+    eyebrow: "About us",
+    heading: "The air you never notice is our job.",
+    imageAlt:
+      "Glass facade of an office building seen from below, reflecting sky and clouds.",
+    lead: "Yafi Filtertech is a Belgrade-based air filter manufacturer and the regional distributor of the Deltrian range. We work for plants, hospitals, hotels and buildings where air quality decides the process, the product and the people.",
+    ctaPrimary: "Request a quote",
+    ctaSecondary: "See the filter range",
+    story: {
+      eyebrow: "Our story",
+      heading: "From a workshop for made-to-measure filters to a partner for the whole region.",
+      paragraphs: [
+        "We started where catalogues stop — with the filters HVAC systems needed in sizes nobody had. In-house production of pre-filters and fine filters to order is still the foundation of everything we do.",
+        "As the number of sites grew, so did the need for higher filtration classes and documented performance. The partnership with Deltrian brought a Eurovent-certified range, from pre-filters to HEPA class, and the ability to close the whole air system in one place.",
+        "Today we work with clients in six countries across the region, and every enquiry still starts with the same question: what does the system actually need — not what is in stock.",
+      ],
+      facts: [
+        { value: "6", label: "countries we work in" },
+        { value: "G2–F9", label: "classes from our own production" },
+        { value: "H14", label: "highest HEPA class in the range" },
+      ],
+      images: {
+        cleanroom: "Worker in a protective suit in a pharmaceutical cleanroom.",
+        drawing: "Hands drawing on a technical drawing next to a laptop.",
+        site: "Engineers in hard hats in front of an industrial plant.",
+      },
+    },
+    principles: {
+      eyebrow: "How we work",
+      heading: "Four rules we don't bend.",
+      lead: "The same rules apply to an order for ten filters and to a project for an entire factory.",
+      items: [
+        {
+          title: "We measure, we don't guess.",
+          desc: "Airflow, pressure drop and filtration class are set by the system, not by eye. That is why the quote you receive matches the real conditions on site.",
+        },
+        {
+          title: "Made to measure is the standard, not the exception.",
+          desc: "A non-standard opening is no reason to compromise on filtration class. The filter is made to fit the system — never the other way round.",
+        },
+        {
+          title: "Energy is part of the equation.",
+          desc: "A lower pressure drop means less fan work. When we choose the type and class of filter, we count kilowatts, not just microns.",
+        },
+        {
+          title: "A filter is part of the system, not a consumable.",
+          desc: "Replacement interval, documentation and a service plan come with every delivery — because the air is only clean while the filter is within its term.",
+        },
+      ],
+      imageAlt:
+        "A worker's hands in blue overalls measuring a metal part with a caliper.",
+      badge: "Made to measure",
+    },
+    places: {
+      eyebrow: "Where you'll find us",
+      heading: "In the workshop, on site and along the supply chain.",
+      lead: "Three places where air quality is decided — and where our team is present.",
+      items: [
+        {
+          label: "Workshop",
+          title: "Made-to-measure filters, from Belgrade",
+          desc: "Pre-filters and fine filters in classes G2–F9 (ISO 16890), in standard and non-standard dimensions, for any HVAC system.",
+          imageAlt: "Gloved worker steadying a roll of filter media.",
+        },
+        {
+          label: "On site",
+          title: "Measuring, installation, commissioning",
+          desc: "A walk-through of the system, airflow and pressure-drop measurements and technical support during installation — in person, not over the phone.",
+          imageAlt: "Worker in a hi-vis vest on a lift below ceiling services.",
+        },
+        {
+          label: "Supply",
+          title: "Continuity for the whole region",
+          desc: "Standard sizes and the Deltrian range arrive without breaks in the supply chain, in all six countries we work in.",
+          imageAlt: "Forklift moving through a warehouse of pallet racking.",
+        },
+      ],
+    },
   },
 
   deltrianPage: {
@@ -366,23 +498,67 @@ export const en: Dictionary = {
         desc: "The range is developed in line with current European air quality standards, including the ISO 16890 classification.",
       },
     ],
-    rangeEyebrow: "Filter range",
-    rangeHeading: "What the Deltrian range covers.",
-    rangeLead:
-      "A complete filter portfolio for industrial and commercial ventilation, available through Yafi Filtertech as the regional distributor.",
-    /** PLACEHOLDER — see the note on the Serbian dictionary. */
-    rangeGroups: [
-      { class: "Deltrian · group 01", name: "Filter group name" },
-      { class: "Deltrian · group 02", name: "Filter group name" },
-      { class: "Deltrian · group 03", name: "Filter group name" },
-      { class: "Deltrian · group 04", name: "Filter group name" },
-      { class: "Deltrian · group 05", name: "Filter group name" },
-      { class: "Deltrian · group 06", name: "Filter group name" },
-    ],
-    rangeGroupBadge: "Coming soon",
-    rangeGroupsNote:
-      "The Deltrian range breakdown is being prepared. For the YAFI filter range, see our product catalogue.",
-    rangeGroupsLink: "See the YAFI filter range",
+    gallery: {
+      eyebrow: "From the Deltrian range",
+      heading: "Filters we supply from the Deltrian range.",
+      lead: "A few filter types from the range — from roll media for pre-filtration to absolute HEPA filters and ATEX versions.",
+      credit: "Photos: deltrian.com",
+      items: {
+        vrecasti: "Bag (pocket) filters",
+        kompaktni: "Compact V-bank filters",
+        hepa: "Absolute HEPA filters",
+        panelni: "Panel filters and filter cells",
+        patronski: "Cartridge filters",
+        molekularni: "Molecular filters (activated carbon)",
+        atex: "ATEX filters",
+        rolne: "Roll filter media",
+      },
+    },
+    certifications: {
+      eyebrow: "Certifications & standards",
+      heading: "Quality backed by independent certification.",
+      lead: "Deltrian filters are tested and certified to European and international standards — the performance we quote is measured, not estimated.",
+      learnMore: "Learn more",
+      note: "These are just some of the many certificates Deltrian holds.",
+      allLink: "See all Deltrian certifications",
+      items: {
+        eurovent: {
+          title: "Eurovent Certified Performance",
+          desc: "Independent verification that a filter's declared performance (filtration efficiency, pressure drop, energy class) matches the values measured in tests carried out to standardised EN/ISO methods.",
+        },
+        atex: {
+          title: "ATEX certification",
+          desc: "Certification for products intended to operate in potentially explosive atmospheres (gases or dust combined with air, electrical discharge or heat). It guarantees the filter runs safely in those conditions, which matters most in the pharmaceutical and food industries.",
+        },
+        "iso-16890": {
+          title: "ISO 16890 certification",
+          desc: "The international standard for rating air filter efficiency, introduced in 2018 to replace the old EN 779. It classifies filters by how well they capture particles of different sizes (ePM1, ePM2.5, ePM10, Coarse), tying filtration directly to air quality and health.",
+        },
+        "pfas-free": {
+          title: "PFAS FREE",
+          desc: "A label confirming the product contains no PFAS compounds (the so-called “forever chemicals”), persistent fluorinated substances linked to harmful effects on health and the environment.",
+        },
+      },
+    },
+    catalogue: {
+      eyebrow: "Catalogue 2026",
+      heading: "The whole Deltrian range, in one document.",
+      lead: "The official Deltrian catalogue “Filtration, solutions and products 2026” — 218 pages of products, sectors and standards, from ISO Coarse pre-filtration to absolute and molecular filtration.",
+      meta: ["PDF", "7.4 MB", "218 pages", "English"],
+      download: "Download the catalogue",
+      open: "Open in browser",
+      contentsLabel: "From the contents",
+      pageAbbr: "p.",
+      contents: [
+        { title: "ISO Coarse pre-filters", page: 64 },
+        { title: "Fine filtration", page: 91 },
+        { title: "Absolute filtration", page: 136 },
+        { title: "Molecular filtration", page: 167 },
+        { title: "Boxes and mounting systems", page: 184 },
+        { title: "ATEX filters", page: 191 },
+      ],
+      coverAlt: "Cover of the Deltrian catalogue “Filtration, solutions and products 2026”.",
+    },
     ctaTitle: "Request a quote for the Deltrian filter range.",
     ctaText:
       "Tell us which facility and ventilation system needs covering — we prepare a proposal from the Deltrian range within 24 hours.",

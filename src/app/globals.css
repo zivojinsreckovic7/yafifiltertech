@@ -88,6 +88,7 @@
   --font-sans: var(--font-inter);
 
   --animate-marquee: marquee 32s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 32s linear infinite;
 }
 
 @keyframes marquee {
@@ -96,6 +97,14 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
@@ -365,118 +374,41 @@ html[data-loader-ready] .site-loader.is-exiting {
     );
 }
 
-/* Pleated air filter rendered with CSS 3D — one sawtooth-gradient plane plus
-   thin edge faces, so the whole panel is a handful of composited layers. */
+/* The Deltrian filter photo (a cutout) sits where the dust crosses over;
+   it floats on a transform only — no drop-shadow filter (see the Safari note
+   above .grain), the grounding comes from a radial-gradient glow behind it. */
 .hero-filter {
   position: absolute;
   top: 50%;
   right: 7%;
-  width: min(26rem, 36vw);
-  aspect-ratio: 3 / 4;
+  width: min(28rem, 38vw);
+  aspect-ratio: 1;
   transform: translateY(-52%);
-  perspective: 1100px;
 }
 
-.hero-filter__panel {
+.hero-filter__glow {
   position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transform: rotateY(-34deg) rotateX(7deg);
-  animation: filter-sway 14s ease-in-out infinite;
-}
-
-@keyframes filter-sway {
-  50% {
-    transform: rotateY(-27deg) rotateX(5deg);
-  }
-}
-
-.hero-filter__media,
-.hero-filter__back {
-  position: absolute;
-  inset: 0;
-  /* Sawtooth: lit pleat face falling to a dark fold, hard reset per period */
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.09),
-      transparent 26%,
-      rgba(0, 0, 0, 0.18)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--orange-300) 68%, transparent) 0px,
-      color-mix(in srgb, var(--orange-600) 34%, transparent) 12px,
-      rgba(0, 0, 0, 0.5) 13px,
-      color-mix(in srgb, var(--orange-500) 26%, transparent) 15px,
-      color-mix(in srgb, var(--orange-400) 46%, transparent) 26px
-    );
-  opacity: 0.8;
-}
-
-.hero-filter__back {
-  transform: translateZ(-26px);
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
-    repeating-linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--navy-500) 60%, transparent) 0px,
-      color-mix(in srgb, var(--navy-700) 70%, transparent) 12px,
-      rgba(0, 0, 0, 0.6) 13px,
-      color-mix(in srgb, var(--navy-600) 55%, transparent) 26px
-    );
-  opacity: 0.8;
-}
-
-.hero-filter__edge {
-  position: absolute;
-  background: linear-gradient(
-    180deg,
-    var(--navy-600),
-    var(--navy-800) 60%,
-    var(--navy-900)
+  inset: -16% -22%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--orange-500) 22%, transparent),
+    color-mix(in srgb, var(--orange-500) 8%, transparent) 55%,
+    transparent
   );
-  backface-visibility: hidden;
 }
 
-.hero-filter__edge--left,
-.hero-filter__edge--right {
-  top: 0;
-  width: 26px;
-  height: 100%;
-}
-
-.hero-filter__edge--left {
-  left: 0;
-  transform-origin: left center;
-  transform: rotateY(-90deg);
-}
-
-.hero-filter__edge--right {
-  right: 0;
-  transform-origin: right center;
-  transform: rotateY(90deg);
-}
-
-.hero-filter__edge--top {
-  top: 0;
-  left: 0;
+.hero-filter__photo {
+  position: relative;
+  display: block;
   width: 100%;
-  height: 26px;
-  transform-origin: center top;
-  transform: rotateX(-90deg);
-  background: linear-gradient(90deg, var(--navy-700), var(--navy-600));
+  height: auto;
+  animation: filter-float 7s ease-in-out infinite;
 }
 
-.hero-filter__frame {
-  position: absolute;
-  inset: -2px;
-  border: 2px solid color-mix(in srgb, var(--navy-400) 55%, transparent);
-  border-radius: 2px;
-  transform: translateZ(1px);
-  box-shadow:
-    0 0 60px color-mix(in srgb, var(--orange-500) 14%, transparent),
-    inset 0 0 30px rgba(0, 0, 0, 0.35);
+@keyframes filter-float {
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .hero-airflow__particles {
@@ -496,6 +428,46 @@ html[data-loader-ready] .site-loader.is-exiting {
   background: var(--orange-400);
   opacity: 0;
   animation: hero-flow var(--dur) linear var(--d) infinite;
+}
+
+/* Outranks the `span` rule above so the streak keeps its own shape and path. */
+.hero-airflow__particles .hero-airflow__streak {
+  position: absolute;
+  left: 100%;
+  top: var(--y);
+  width: var(--w);
+  height: 2px;
+  border-radius: 999px;
+  /* Bright leading edge on the left (the direction of travel), tail fading
+     out to the right. */
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--orange-300) 90%, transparent),
+    color-mix(in srgb, var(--orange-400) 45%, transparent) 40%,
+    transparent
+  );
+  opacity: 0;
+  animation: hero-streak var(--dur) linear var(--d) infinite;
+}
+
+@keyframes hero-streak {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--o);
+  }
+  50% {
+    opacity: var(--o);
+  }
+  70% {
+    opacity: calc(var(--o) * 0.3);
+  }
+  100% {
+    transform: translate3d(calc(var(--t) * -1), -4px, 0);
+    opacity: 0;
+  }
 }
 
 @keyframes hero-flow {
@@ -531,14 +503,6 @@ html[data-loader-ready] .site-loader.is-exiting {
     radial-gradient(55% 60% at 58% 46%, rgba(42, 84, 136, 0.14), transparent 68%);
 }
 
-:root[data-theme="light"] .hero-filter__media {
-  opacity: 0.85;
-}
-
-:root[data-theme="light"] .hero-filter__frame {
-  box-shadow: 0 0 60px color-mix(in srgb, var(--orange-500) 10%, transparent);
-}
-
 @media (max-width: 767px) {
   .hero-filter {
     right: -6%;
@@ -556,8 +520,12 @@ html[data-loader-ready] .site-loader.is-exiting {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-filter__panel {
+  .hero-filter__photo {
     animation: none;
+  }
+
+  .hero-airflow__particles .hero-airflow__streak {
+    display: none;
   }
 
   .hero-airflow__particles span {
@@ -618,6 +586,11 @@ html[data-loader-ready] .site-loader.is-exiting {
 .btn-ghost:hover {
   border-color: var(--orange-400);
   color: var(--orange-300);
+}
+/* Card-footer size: same pill, less air. */
+.btn-sm {
+  padding: 0.6rem 1.15rem;
+  font-size: 0.8125rem;
 }
 }
 
@@ -882,8 +855,310 @@ html[data-reveal-ready] [data-reveal-group][data-reveal-instant] > [data-reveal]
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue::after,
-  .animate-marquee {
+  .animate-marquee,
+  .animate-marquee-reverse {
     animation: none;
+  }
+}
+
+/*
+ * Photo marquee (Deltrian gallery): two rows of prints drifting past each
+ * other, paused while the pointer is over the band so a tile can be read.
+ * Tiles carry a resting tilt and scatter from --tilt/--lift and straighten
+ * on hover.
+ */
+.photo-marquee:hover .animate-marquee,
+.photo-marquee:hover .animate-marquee-reverse {
+  animation-play-state: paused;
+}
+.photo-marquee__tile {
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0px));
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.6s ease;
+}
+.photo-marquee__tile:hover {
+  transform: rotate(0deg) translateY(calc(var(--lift, 0px) - 6px)) scale(1.03);
+  box-shadow: 0 24px 48px -20px rgba(0, 10, 22, 0.7);
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-marquee__tile,
+  .photo-marquee__tile:hover {
+    transform: none;
+  }
+}
+
+/*
+ * Catalogue stack (Deltrian page): the cover in front of two chapter pages,
+ * fanned like prints on a desk. Each page sets its own resting --r/--x/--y;
+ * hovering the stack fans the pages out and lifts the cover.
+ */
+.book-stack {
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+.book-stack__page {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 58%;
+  aspect-ratio: 595 / 842;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  transform-origin: 50% 92%;
+  transform: rotate(var(--r, 0deg)) translate(var(--x, 0), var(--y, 0));
+  box-shadow: 0 30px 60px -28px rgba(0, 10, 22, 0.85);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.book-stack:hover .book-stack__page {
+  transform: rotate(calc(var(--r, 0deg) * 1.7))
+    translate(calc(var(--x, 0px) * 1.7), calc(var(--y, 0px) * 1.2));
+}
+.book-stack:hover .book-stack__page--cover {
+  transform: translateY(-3%) scale(1.03);
+}
+@media (prefers-reduced-motion: reduce) {
+  .book-stack__page,
+  .book-stack:hover .book-stack__page {
+    transition: none;
+    transform: rotate(var(--r, 0deg)) translate(var(--x, 0), var(--y, 0));
+  }
+}
+
+/*
+ * Home-page region map. Neighbours sit faintly underneath; once the block is
+ * revealed the served countries fill in one after another, arcs draw out of
+ * Belgrade to each capital, and the hub keeps a slow pulse going. Opacity,
+ * transforms and stroke-dashoffset only — no filters (see the Safari note
+ * above .grain). Without JS the final state below stands.
+ */
+.region-map {
+  position: relative;
+}
+
+.region-map__glow {
+  position: absolute;
+  inset: 8% 4%;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--orange-500) 14%, transparent),
+    color-mix(in srgb, var(--orange-500) 5%, transparent) 55%,
+    transparent
+  );
+}
+
+.region-map__svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Same viewBox and box as the map below it, on its own compositing layer so
+   the per-frame repaints stay inside it. */
+.region-map__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.region-map__ctx path {
+  fill: var(--navy-800);
+  fill-opacity: 0.6;
+  stroke: var(--navy-700);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.region-map__land path {
+  fill: var(--orange-500);
+  fill-opacity: 0.72;
+  stroke: var(--navy-950);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition:
+    fill 0.25s ease,
+    fill-opacity 0.25s ease;
+}
+
+.region-map__land path[data-active] {
+  fill: var(--orange-400);
+  fill-opacity: 1;
+}
+
+.region-map__arc {
+  fill: none;
+  stroke: var(--orange-400);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.75;
+}
+
+/* Short dashes marching along each arc — a second stroke over the drawn one.
+   The ambient animations (this, the ripples, the list's pulse) run only while
+   the block is on screen; see `.region[data-inview]`. */
+.region-map__flow {
+  fill: none;
+  stroke: var(--orange-300);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-dasharray: 2 14;
+  opacity: 0.9;
+  animation: region-flow 1.8s linear infinite paused;
+}
+
+@keyframes region-flow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+.region-map__pin {
+  fill: var(--ink-100);
+  stroke: var(--navy-950);
+  stroke-width: 1.5;
+}
+
+.region-map__hub {
+  fill: var(--orange-300);
+  stroke: var(--navy-950);
+  stroke-width: 1.5;
+}
+
+.region-map__ripple {
+  fill: none;
+  stroke: var(--orange-400);
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: region-ripple 3s cubic-bezier(0.2, 0.6, 0.3, 1) infinite paused;
+}
+
+.region-map__ripple--late {
+  animation-delay: 1.5s;
+}
+
+@keyframes region-ripple {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(4.5);
+    opacity: 0;
+  }
+}
+
+/* Country name beside the capital, shown for the hovered country only. The
+   dark halo (paint-order) keeps it legible over the orange fill. */
+.region-map__labels text {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink-100);
+  stroke: var(--navy-950);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.region-map__labels text[data-active] {
+  opacity: 1;
+}
+
+/* Matching pulse on the "headquarters" line in the list. */
+.region-hub-ping {
+  animation: region-hub-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite paused;
+}
+
+.region[data-inview] .region-map__flow,
+.region[data-inview] .region-map__ripple,
+.region[data-inview] .region-hub-ping {
+  animation-play-state: running;
+}
+
+@keyframes region-hub-ping {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Entrance, staggered by --i: countries, then arcs, then pins and pulse. */
+html[data-reveal-ready] .region-map__land path {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 90ms),
+    fill 0.25s ease,
+    fill-opacity 0.25s ease;
+}
+
+html[data-reveal-ready] .region-map__arc {
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.22, 1, 0.36, 1)
+    calc(0.5s + var(--i) * 110ms);
+}
+
+html[data-reveal-ready] .region-map__flow,
+html[data-reveal-ready] .region-map__pin,
+html[data-reveal-ready] .region-map__pulse {
+  opacity: 0;
+  transition: opacity 0.5s ease calc(1.3s + var(--i, 0) * 110ms);
+}
+
+html[data-reveal-ready] .region-map.is-revealed .region-map__land path,
+html[data-reveal-ready] .region-map.is-revealed .region-map__pin,
+html[data-reveal-ready] .region-map.is-revealed .region-map__pulse {
+  opacity: 1;
+}
+
+html[data-reveal-ready] .region-map.is-revealed .region-map__arc {
+  stroke-dashoffset: 0;
+}
+
+html[data-reveal-ready] .region-map.is-revealed .region-map__flow {
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .region-map__flow,
+  .region-map__ripple,
+  .region-hub-ping {
+    animation: none;
+  }
+
+  .region-map__ripple,
+  .region-hub-ping {
+    opacity: 0;
+  }
+
+  html[data-reveal-ready] .region-map__land path,
+  html[data-reveal-ready] .region-map__pin,
+  html[data-reveal-ready] .region-map__pulse {
+    opacity: 1;
+    transition: none;
+  }
+
+  html[data-reveal-ready] .region-map__arc {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  html[data-reveal-ready] .region-map__flow {
+    opacity: 0.9;
+    transition: none;
   }
 }
 
@@ -938,6 +1213,13 @@ html[data-reveal-ready] [data-reveal-group][data-reveal-instant] > [data-reveal]
 }
 .group-tab[aria-selected="true"] .group-tab__count {
   color: var(--orange-400);
+}
+
+/* Deltrian wordmark in the nav: the asset is white on transparent, so the
+   light theme inverts it to read on the near-white header. A static filter
+   on a ~120px image is cheap; it is not a live blur. */
+:root[data-theme="light"] .deltrian-mark {
+  filter: invert(1);
 }
 
 /* Nav dropdown (product catalogue) */

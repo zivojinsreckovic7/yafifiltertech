@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import HeroAirflow from "@/components/HeroAirflow";
 import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
-import PleatIcon from "@/components/PleatIcon";
 import { MagneticLink } from "@/components/Magnetic";
 import TrustSignals from "@/components/TrustSignals";
 import CTABanner from "@/components/CTABanner";
+import CertificationsSection from "@/components/sections/CertificationsSection";
+import DeltrianGallery from "@/components/sections/DeltrianGallery";
+import DeltrianCatalogue from "@/components/sections/DeltrianCatalogue";
+import { DeltrianLogo } from "@/components/DeltrianLogo";
 import { routes } from "@/data/nav";
 import { localePath, resolveLocale } from "@/i18n/config";
 import { alternatesFor, getDictionary } from "@/i18n/dictionaries";
@@ -61,7 +63,16 @@ export default async function DeltrianPage({
 
         <div className="wrap relative z-10 flex flex-1 flex-col justify-center pt-28">
           <div className="max-w-2xl">
-            <span className="eyebrow flex items-center gap-2">
+            {/* The brand itself leads the page, so there is no doubt whose
+                range this is; the eyebrow beneath names our role. */}
+            <Reveal>
+              <DeltrianLogo
+                alt="Deltrian"
+                className="h-9 w-auto sm:h-11"
+                eager
+              />
+            </Reveal>
+            <span className="eyebrow mt-7 flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
               {page.eyebrow}
             </span>
@@ -94,6 +105,12 @@ export default async function DeltrianPage({
         </div>
       </section>
 
+      <CertificationsSection dict={dict} />
+
+      <DeltrianGallery dict={dict} />
+
+      <DeltrianCatalogue dict={dict} />
+
       <section className="py-28 md:py-36">
         <div className="wrap">
           <span className="eyebrow">{page.whyEyebrow}</span>
@@ -123,66 +140,6 @@ export default async function DeltrianPage({
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="program" className="scroll-mt-24 py-28 md:py-36 bg-navy-900/30">
-        <div className="wrap">
-          <span className="eyebrow">{page.rangeEyebrow}</span>
-          <SplitHeading
-            as="h2"
-            className="mt-4 max-w-2xl font-display text-3xl font-bold leading-tight text-ink-100 md:text-4xl"
-          >
-            {page.rangeHeading}
-          </SplitHeading>
-          <Reveal delay={0.15} className="mt-6 max-w-lg">
-            <p className="text-base leading-relaxed text-ink-400">
-              {page.rangeLead}
-            </p>
-          </Reveal>
-
-          {/*
-            Placeholder cards for the Deltrian groups. This grid used to render
-            `getProducts(locale)` — the YAFI catalogue — which belongs to Yafi
-            Filtertech itself and lives on `/proizvodi`, not here. Cards are
-            inert until the real groups arrive; turn them back into `<Link>`s
-            once each group has a page of its own.
-          */}
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {page.rangeGroups.map((group, i) => (
-              <Reveal key={group.class} delay={(i % 4) * 0.06}>
-                <div className="flex h-full flex-col justify-between rounded-2xl border border-dashed border-navy-700/70 bg-navy-950/30 p-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <PleatIcon className="h-8 w-8 opacity-40" />
-                    <span className="rounded-full border border-navy-700/70 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-ink-400">
-                      {page.rangeGroupBadge}
-                    </span>
-                  </div>
-                  <div className="mt-6">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-orange-400/60">
-                      {group.class}
-                    </span>
-                    <h3 className="mt-2 font-display text-base font-bold text-ink-400">
-                      {group.name}
-                    </h3>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.2} className="mt-10 max-w-xl">
-            <p className="text-sm leading-relaxed text-ink-400">
-              {page.rangeGroupsNote}{" "}
-              <Link
-                href={localePath(locale, routes.products)}
-                data-cursor="link"
-                className="font-semibold text-orange-400 transition-colors hover:text-orange-300"
-              >
-                {page.rangeGroupsLink} →
-              </Link>
-            </p>
-          </Reveal>
         </div>
       </section>
 

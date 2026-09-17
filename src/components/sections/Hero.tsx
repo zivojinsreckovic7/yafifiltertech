@@ -29,7 +29,14 @@ export default function Hero({
       >
         <div className="wrap flex flex-1 flex-col">
           <div className="on-dark relative isolate flex min-h-[26rem] flex-1 flex-col justify-center overflow-hidden rounded-[1.5rem] shadow-[0_50px_120px_-60px_rgba(0,10,22,0.75)] ring-1 ring-white/10 md:rounded-[2rem]">
-            <HeroParallax alt={hero.imageAlt} />
+            {/* A narrow frame can only hold one subject: it takes the daylit
+                window (legible under the scrim), while wide frames keep the
+                whole room with the portrait clear of the copy on the left. */}
+            <HeroParallax
+              src="/naslovna1.webp"
+              alt={hero.imageAlt}
+              className="object-cover object-[42%_50%] md:object-[50%_32%]"
+            />
 
             {/* Darkening scrim: heavy under the copy, thinning toward the
               portrait on the right so she is not scrubbed out. */}

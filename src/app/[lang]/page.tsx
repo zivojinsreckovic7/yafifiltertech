@@ -4,6 +4,7 @@ import TrustBand from "@/components/TrustBand";
 import Pillars from "@/components/sections/Pillars";
 import ProductsSection from "@/components/sections/ProductsSection";
 import DeltrianBanner from "@/components/sections/DeltrianBanner";
+import RegionSection from "@/components/sections/RegionSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
@@ -40,6 +41,7 @@ export default async function Home({
           <Pillars dict={dict} />
           <ProductsSection locale={locale} dict={dict} />
           <DeltrianBanner locale={locale} dict={dict} />
+          <RegionSection dict={dict} />
           <IndustriesSection locale={locale} dict={dict} />
           <ProcessSection dict={dict} />
           <TestimonialsSection locale={locale} dict={dict} />

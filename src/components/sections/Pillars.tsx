@@ -6,7 +6,7 @@ export default function Pillars({ dict }: { dict: Dictionary }) {
   const { pillars } = dict;
 
   return (
-    <section id="o-nama" className="relative py-28 md:py-36 scroll-mt-24">
+    <section className="relative py-28 md:py-36">
       <div className="wrap">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.05fr]">
           <div>

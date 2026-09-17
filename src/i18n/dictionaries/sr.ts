@@ -49,6 +49,16 @@ export const sr = {
       description:
         "Yafi Filtertech je regionalni distributer Deltrian programa filtera za Ex-Yu tržište — kompletna paleta industrijske filtracije vazduha.",
     },
+    about: {
+      title: "O nama",
+      description:
+        "Beogradski proizvođač filtera za vazduh po meri i regionalni distributer Deltrian programa. Kako radimo, gde nas srećete i šta kažu klijenti.",
+    },
+    catalogues: {
+      title: "Katalozi",
+      description:
+        "Preuzmite Deltrian katalog „Filtration, solutions and products 2026“ i tehničku dokumentaciju programa filtera Yafi Filtertech.",
+    },
   },
 
   nav: {
@@ -108,7 +118,7 @@ export const sr = {
     heading: "Svako ima pravo na čist vazduh.",
     imageAlt:
       "Žena zatvorenih očiju udiše čist vazduh pored otvorenog prozora, u majici sa logotipom Yafi Filtertech.",
-    lead: "Projektujemo i isporučujemo industrijske sisteme filtracije vazduha usklađene sa ISO 16890 standardom — za farmaciju i bolnice, auto-industriju, hotelijerstvo i tešku industriju širom Ex-Yu regiona.",
+    lead: "Spajamo sopstvenu proizvodnju filtera po meri i ponudu sertifikovanih Deltrian sistema. Kompletan spektar filtracije vazduha za komore u farmaciji, auto-industriji i teškoj industriji širom Ex-Yu regiona.",
     ctaPrimary: "Zatražite ponudu",
     ctaSecondary: "Istražite Deltrian program",
     scroll: "Skrolujte",
@@ -177,9 +187,27 @@ export const sr = {
     cta: "Otvorite Deltrian program →",
   },
 
+  regionSection: {
+    eyebrow: "Ex-Yu region",
+    heading: "Jedan partner za ceo region.",
+    lead: "Iz Beograda snabdevamo i tehnički pratimo klijente u šest država Ex-Yu regiona — sopstvenom proizvodnjom filtera po meri i Deltrian programom.",
+    hub: "Sedište — Beograd",
+    mapLabel:
+      "Mapa Ex-Yu regiona sa označenim tržištima: Srbija, Crna Gora, Bosna i Hercegovina, Slovenija, Hrvatska i Severna Makedonija.",
+    countries: {
+      rs: "Srbija",
+      me: "Crna Gora",
+      ba: "Bosna i Hercegovina",
+      si: "Slovenija",
+      hr: "Hrvatska",
+      mk: "Severna Makedonija",
+    },
+  },
+
   industriesSection: {
     eyebrow: "Rešenja po industrijama",
     heading: "Namenska rešenja za niše kojima čist vazduh nije opcija.",
+    facilitiesIntro: "Tipovi objekata koje opremamo",
   },
 
   industryCard: {
@@ -337,6 +365,34 @@ export const sr = {
       `Recite nam više o objektu i procesu — pripremamo predlog rešenja prilagođen ${industry}, u roku od 24 časa.`,
   },
 
+  cataloguesPage: {
+    eyebrow: "Katalozi",
+    heading: "Katalozi i tehnička dokumentacija.",
+    lead: "Na jednom mestu: zvanični Deltrian katalog, dostupan odmah, i katalozi koje pripremamo — YAFI program i tehnički listovi po kategorijama filtera.",
+    placeholdersEyebrow: "U pripremi",
+    placeholdersHeading: "Katalozi koji uskoro stižu.",
+    placeholdersLead:
+      "Dokumentacija se objavljuje kako bude spremna. Do tada, za bilo koji tip filtera šaljemo tehničke listove na zahtev.",
+    placeholderBadge: "Uskoro",
+    /**
+     * PLACEHOLDER — čekaju se pravi katalozi. Kada stignu, zameniti unose
+     * ispod i u `katalozi/page.tsx` kartice pretvoriti u prave kartice za
+     * preuzimanje (po uzoru na `DeltrianCatalogue`).
+     */
+    placeholders: [
+      { label: "Katalog 02", name: "Naziv kataloga" },
+      { label: "Katalog 03", name: "Naziv kataloga" },
+      { label: "Katalog 04", name: "Naziv kataloga" },
+      { label: "Katalog 05", name: "Naziv kataloga" },
+      { label: "Katalog 06", name: "Naziv kataloga" },
+      { label: "Katalog 07", name: "Naziv kataloga" },
+    ],
+    ctaTitle: "Treba vam dokumentacija koja još nije objavljena?",
+    ctaText:
+      "Pošaljite nam tip filtera ili kategoriju koja vas zanima — tehničke listove i specifikacije dostavljamo na zahtev, u roku od 24 časa.",
+    ctaAction: "Zatražite dokumentaciju →",
+  },
+
   contactPage: {
     eyebrow: "Kontakt",
     heading: "Razgovarajmo o vašem sistemu ventilacije.",
@@ -345,6 +401,87 @@ export const sr = {
     whyHeading: "Odgovor sa konkretnim predlogom, ne generičkim katalogom.",
     whyText:
       "Svaki upit prolazi kroz kratku analizu objekta i procesa pre nego što predložimo klasu i tip filtera — tako da ponuda koju dobijete odgovara stvarnim uslovima, ne samo cenovniku.",
+  },
+
+  aboutPage: {
+    eyebrow: "O nama",
+    heading: "Vazduh koji ne primećujete je naš posao.",
+    imageAlt:
+      "Staklena fasada poslovne zgrade snimljena odozdo, sa odrazom neba i oblaka.",
+    lead: "Yafi Filtertech je beogradski proizvođač filtera za vazduh i regionalni distributer Deltrian programa. Radimo za pogone, bolnice, hotele i objekte u kojima kvalitet vazduha odlučuje o procesu, proizvodu i ljudima.",
+    ctaPrimary: "Zatražite ponudu",
+    ctaSecondary: "Pogledajte program filtera",
+    story: {
+      eyebrow: "Naša priča",
+      heading: "Od radionice za filtere po meri do partnera za ceo region.",
+      paragraphs: [
+        "Počeli smo tamo gde katalozi staju — sa filterima koje su HVAC sistemi tražili u dimenzijama koje niko nije imao. Sopstvena proizvodnja predfiltera i finih filtera po meri i danas je osnova svega što radimo.",
+        "Sa brojem objekata rasla je i potreba za višim klasama filtracije i dokumentovanim performansama. Partnerstvo sa kompanijom Deltrian donelo je Eurovent sertifikovan program, od predfiltera do HEPA klase, i mogućnost da ceo sistem vazduha zaokružimo na jednom mestu.",
+        "Danas radimo sa klijentima u šest država regiona, a svaki upit i dalje počinje istim pitanjem: šta sistemu zaista treba — a ne šta je na lageru.",
+      ],
+      facts: [
+        { value: "6", label: "država u kojima radimo" },
+        { value: "G2–F9", label: "klase iz sopstvene proizvodnje" },
+        { value: "H14", label: "najviša HEPA klasa u programu" },
+      ],
+      images: {
+        cleanroom: "Radnik u zaštitnom odelu u čistoj sobi farmaceutskog pogona.",
+        drawing: "Ruke crtaju po tehničkom crtežu pored laptopa.",
+        site: "Inženjeri sa šlemovima ispred industrijskog postrojenja.",
+      },
+    },
+    principles: {
+      eyebrow: "Kako radimo",
+      heading: "Četiri pravila koja ne menjamo.",
+      lead: "Ista pravila važe za upit od deset filtera i za projekat cele fabrike.",
+      items: [
+        {
+          title: "Merimo, ne procenjujemo.",
+          desc: "Protok, pad pritiska i klasa filtracije određuju se prema sistemu, ne od oka. Zato ponuda koju dobijete odgovara stvarnim uslovima na objektu.",
+        },
+        {
+          title: "Dimenzija po meri je standard, ne izuzetak.",
+          desc: "Nestandardni otvor nije razlog za kompromis u klasi filtracije. Filter se pravi prema sistemu — nikad obrnuto.",
+        },
+        {
+          title: "Energija je deo računa.",
+          desc: "Niži pad pritiska znači manje rada ventilatora. Kada biramo tip i klasu filtera, računamo i kilovate, ne samo mikrone.",
+        },
+        {
+          title: "Filter je deo sistema, ne potrošni artikal.",
+          desc: "Interval zamene, dokumentacija i plan servisa idu uz svaku isporuku — jer je vazduh čist samo dok je filter u roku.",
+        },
+      ],
+      imageAlt:
+        "Ruke radnika u plavom radnom odelu mere metalni deo pomičnim merilom.",
+      badge: "Proizvodnja po meri",
+    },
+    places: {
+      eyebrow: "Gde nas srećete",
+      heading: "U radionici, na objektu i u lancu isporuke.",
+      lead: "Tri mesta na kojima se rešava kvalitet vazduha — i na kojima je naš tim prisutan.",
+      items: [
+        {
+          label: "Radionica",
+          title: "Filteri po meri, iz Beograda",
+          desc: "Predfilteri i fini filteri klase G2–F9 (ISO 16890), u standardnim i nestandardnim dimenzijama, za svaki HVAC sistem.",
+          imageAlt: "Radnik sa rukavicama pridržava rolnu filter materijala.",
+        },
+        {
+          label: "Objekat",
+          title: "Merenje, ugradnja, puštanje u rad",
+          desc: "Obilazak sistema, merenje protoka i pada pritiska i tehnička podrška pri ugradnji — na licu mesta, ne telefonom.",
+          imageAlt:
+            "Radnik u reflektujućem prsluku na platformi ispod instalacija na plafonu.",
+        },
+        {
+          label: "Isporuka",
+          title: "Kontinuitet za ceo region",
+          desc: "Standardne dimenzije i Deltrian program stižu bez prekida u lancu snabdevanja, u svih šest država u kojima radimo.",
+          imageAlt: "Viljuškar prolazi kroz magacin sa paletnim regalima.",
+        },
+      ],
+    },
   },
 
   deltrianPage: {
@@ -369,28 +506,73 @@ export const sr = {
         desc: "Program je razvijen u skladu sa aktuelnim evropskim standardima kvaliteta vazduha, uključujući ISO 16890 klasifikaciju.",
       },
     ],
-    rangeEyebrow: "Program filtera",
-    rangeHeading: "Šta obuhvata Deltrian program.",
-    rangeLead:
-      "Kompletna paleta filtera za industrijsku i komercijalnu ventilaciju, dostupna kroz Yafi Filtertech kao regionalnog distributera.",
+    /** Fotografije su Deltrian-ove (deltrian.com); vidi `data/deltrianFilters.ts`. */
+    gallery: {
+      eyebrow: "Iz Deltrian programa",
+      heading: "Filteri koje isporučujemo iz Deltrian programa.",
+      lead: "Nekoliko tipova filtera iz proizvodnog programa — od predfiltracije u rolni do apsolutnih HEPA filtera i ATEX izvedbi.",
+      credit: "Fotografije: deltrian.com",
+      items: {
+        vrecasti: "Vrećasti (džepasti) filteri",
+        kompaktni: "Kompaktni V-filteri",
+        hepa: "Apsolutni HEPA filteri",
+        panelni: "Panelni filteri i filter ćelije",
+        patronski: "Patronski filteri",
+        molekularni: "Molekularni filteri (aktivni ugalj)",
+        atex: "ATEX filteri",
+        rolne: "Filter materijali u rolni",
+      },
+    },
     /**
-     * PLACEHOLDER — čeka se zvanična podela Deltrian programa. Ovde NE idu
-     * YAFI grupe filtera: one su Yafi Filtertech sopstveni katalog i žive na
-     * `/proizvodi`. Kada stignu prave grupe, zameniti unose ispod i u
-     * `deltrian/page.tsx` kartice vratiti na `<Link>` ka njihovim stranicama.
+     * Izbor sertifikata — tekstove je dao klijent. Redosled i linkovi su u
+     * `data/certifications.ts`; ovde stoje samo naslov i opis po slug-u.
      */
-    rangeGroups: [
-      { class: "Deltrian · grupa 01", name: "Naziv grupe filtera" },
-      { class: "Deltrian · grupa 02", name: "Naziv grupe filtera" },
-      { class: "Deltrian · grupa 03", name: "Naziv grupe filtera" },
-      { class: "Deltrian · grupa 04", name: "Naziv grupe filtera" },
-      { class: "Deltrian · grupa 05", name: "Naziv grupe filtera" },
-      { class: "Deltrian · grupa 06", name: "Naziv grupe filtera" },
-    ],
-    rangeGroupBadge: "Uskoro",
-    rangeGroupsNote:
-      "Podela Deltrian programa se trenutno priprema. Za YAFI program filtera pogledajte naš katalog proizvoda.",
-    rangeGroupsLink: "Pogledajte YAFI program filtera",
+    certifications: {
+      eyebrow: "Sertifikati i standardi",
+      heading: "Kvalitet potvrđen nezavisnim sertifikatima.",
+      lead: "Deltrian filteri se testiraju i sertifikuju po evropskim i međunarodnim standardima — performanse koje deklarišemo su izmerene, ne procenjene.",
+      learnMore: "Saznajte više",
+      note: "Ovo su samo neki od mnogobrojnih sertifikata koje Deltrian poseduje.",
+      allLink: "Pogledajte sve Deltrian sertifikate",
+      items: {
+        eurovent: {
+          title: "Eurovent Certified Performance",
+          desc: "Nezavisna verifikacija koja garantuje da deklarisane performanse filtera (efikasnost filtracije, pad pritiska, energetska klasa) odgovaraju izmerenim vrednostima, testiranim po standardizovanim EN/ISO metodama.",
+        },
+        atex: {
+          title: "ATEX sertifikacija",
+          desc: "Sertifikacija za proizvode namenjene radu u atmosferama sa rizikom od eksplozije (prisustvo gasova ili prašine u kombinaciji sa vazduhom, električnim pražnjenjem ili toplotom). Garantuje bezbedan rad filtera u takvim uslovima, posebno u farmaceutskoj i prehrambenoj industriji.",
+        },
+        "iso-16890": {
+          title: "ISO 16890 sertifikacija",
+          desc: "Međunarodni standard za ocenu efikasnosti filtera vazduha, uveden 2018. godine kao zamena za stari EN 779 standard. Klasifikuje filtere prema sposobnosti zadržavanja čestica različitih veličina (ePM1, ePM2.5, ePM10, Coarse), povezujući filtraciju direktno sa kvalitetom vazduha i zdravljem.",
+        },
+        "pfas-free": {
+          title: "PFAS FREE",
+          desc: "Oznaka koja potvrđuje da proizvod ne sadrži PFAS jedinjenja (tzv. „večne hemikalije“), postojane fluorovane supstance koje se dovode u vezu sa negativnim uticajem na zdravlje i životnu sredinu.",
+        },
+      },
+    },
+    /** Zvanični Deltrian katalog — `public/documents/deltrian-ceo-katalog.pdf`. */
+    catalogue: {
+      eyebrow: "Katalog 2026",
+      heading: "Ceo Deltrian program, u jednom dokumentu.",
+      lead: "Zvanični Deltrian katalog „Filtration, solutions and products 2026“ — 218 strana proizvoda, sektora i standarda, od ISO Coarse predfiltracije do apsolutne i molekularne filtracije.",
+      meta: ["PDF", "7,4 MB", "218 strana", "Engleski"],
+      download: "Preuzmite katalog",
+      open: "Otvorite u pregledaču",
+      contentsLabel: "Iz sadržaja",
+      pageAbbr: "str.",
+      contents: [
+        { title: "ISO Coarse predfilteri", page: 64 },
+        { title: "Fina filtracija", page: 91 },
+        { title: "Apsolutna filtracija", page: 136 },
+        { title: "Molekularna filtracija", page: 167 },
+        { title: "Kutije i montažni sistemi", page: 184 },
+        { title: "ATEX filteri", page: 191 },
+      ],
+      coverAlt: "Naslovna strana Deltrian kataloga „Filtration, solutions and products 2026“.",
+    },
     ctaTitle: "Zatražite ponudu za Deltrian program filtera.",
     ctaText:
       "Recite nam koji objekat i sistem ventilacije treba pokriti — pripremamo predlog rešenja iz Deltrian programa u roku od 24 časa.",

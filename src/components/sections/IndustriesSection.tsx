@@ -1,6 +1,7 @@
 import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import IndustryCard from "@/components/IndustryCard";
+import FacilityGrid from "@/components/FacilityGrid";
 import { getIndustries } from "@/data/industries";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -31,6 +32,10 @@ export default function IndustriesSection({
               <IndustryCard industry={ind} locale={locale} dict={dict} />
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-16 md:mt-20">
+          <FacilityGrid locale={locale} intro={section.facilitiesIntro} />
         </div>
       </div>
     </section>

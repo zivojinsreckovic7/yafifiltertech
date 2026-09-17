@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Drives the hero's scroll parallax and renders the photo layer it moves.
+ * Shared by every page with a photo hero; the section it lives in is `#hero`.
  *
  * Three layers travel at three speeds. The panel itself is pushed back down as
  * the page scrolls, so it clears at roughly half speed and the opaque content
@@ -14,7 +15,17 @@ import { useEffect, useRef } from "react";
  * `--hero-progress` on the section, so CSS owns the styling and this owns the
  * number.
  */
-export default function HeroParallax({ alt }: { alt: string }) {
+export default function HeroParallax({
+  src,
+  alt,
+  className = "object-cover",
+}: {
+  /** The photo under `public/`, filling the frame. */
+  src: string;
+  alt: string;
+  /** Object-fit/position classes — where the frame should crop the photo. */
+  className?: string;
+}) {
   const layerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,17 +89,7 @@ export default function HeroParallax({ alt }: { alt: string }) {
       ref={layerRef}
       className="absolute inset-x-0 top-0 -z-10 h-[124%] will-change-transform"
     >
-      <Image
-        src="/naslovna1.webp"
-        alt={alt}
-        fill
-        priority
-        sizes="100vw"
-        /* A narrow frame can only hold one subject: it takes the daylit window
-           (legible under the scrim), while wide frames keep the whole room with
-           the portrait clear of the copy on the left. */
-        className="object-cover object-[42%_50%] md:object-[50%_32%]"
-      />
+      <Image src={src} alt={alt} fill priority sizes="100vw" className={className} />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import HashLink from "./HashLink";
+import { DeltrianLogo } from "./DeltrianLogo";
 import { Logo } from "./Logo";
 import { MagneticLink } from "./Magnetic";
 import ThemeToggle from "./ThemeToggle";
@@ -28,14 +29,13 @@ export default function Nav({
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
 
-  /** Main menu order: Naslovna | O nama | Proizvodi | Katalozi | Industrije | Deltrian. */
+  /** Main menu order: Naslovna | O nama | Proizvodi | Katalozi | Deltrian (logo). */
   const leadLinks = [
     { href: localePath(locale, routes.home), label: nav.home },
     { href: localePath(locale, routes.about), label: nav.about },
   ];
   const trailLinks = [
     { href: localePath(locale, routes.catalogues), label: nav.catalogues },
-    { href: localePath(locale, routes.industries), label: nav.industries },
   ];
   const productsHref = localePath(locale, routes.products);
   const deltrianHref = localePath(locale, routes.deltrian);
@@ -87,7 +87,7 @@ export default function Nav({
             />
           </Link>
 
-          {/* The full row (wordmark + six links + controls) needs ~1150px, so
+          {/* The full row (wordmark + five links + controls) needs ~1100px, so
               the compact header stays up through lg. */}
           <nav className="hidden items-center gap-6 xl:flex 2xl:gap-8">
             {leadLinks.map((l) => (
@@ -115,12 +115,13 @@ export default function Nav({
                 {l.label}
               </HashLink>
             ))}
+            {/* The Deltrian page is linked by its wordmark rather than a label. */}
             <Link
               href={deltrianHref}
-              className="group flex items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/10 px-4 py-1.5 text-sm font-semibold text-orange-300 transition-colors hover:border-orange-400 hover:bg-orange-500/20"
+              data-cursor="link"
+              className="flex items-center opacity-90 transition-opacity hover:opacity-100"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-              {nav.deltrian}
+              <DeltrianLogo alt={nav.deltrian} className="h-3.5 w-auto" eager />
             </Link>
           </nav>
 
@@ -241,9 +242,9 @@ export default function Nav({
             href={deltrianHref}
             data-menu-item
             onClick={closeMenu}
-            className="font-display text-4xl font-bold text-orange-400"
+            className="flex w-fit items-center py-1"
           >
-            {nav.deltrian}
+            <DeltrianLogo alt={nav.deltrian} className="h-6 w-auto" />
           </Link>
           <Link
             href={contactHref}

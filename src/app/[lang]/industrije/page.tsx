@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import IndustryCard from "@/components/IndustryCard";
+import FacilityGrid from "@/components/FacilityGrid";
 import CTABanner from "@/components/CTABanner";
 import { getIndustries } from "@/data/industries";
 import { routes } from "@/data/nav";
@@ -53,6 +54,13 @@ export default async function IndustrijePage({
               <IndustryCard industry={ind} locale={locale} dict={dict} />
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-16 md:mt-20">
+          <FacilityGrid
+            locale={locale}
+            intro={dict.industriesSection.facilitiesIntro}
+          />
         </div>
 
         <div className="mt-20">

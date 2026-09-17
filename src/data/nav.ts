@@ -7,7 +7,7 @@ export const routes = {
   products: "/proizvodi",
   catalogues: "/katalozi",
   industries: "/industrije",
-  about: "/#o-nama",
+  about: "/o-nama",
   deltrian: "/deltrian",
   contact: "/kontakt",
 } as const;

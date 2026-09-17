@@ -7,7 +7,7 @@ import type { ComponentProps, MouseEvent, ReactNode } from "react";
  * A `Link` to an in-page anchor that still works on a repeat click.
  *
  * Navigating to the URL you are already on is a no-op for the router, so once
- * `/#o-nama` is in the address bar the link stops scrolling — you click it,
+ * `/#kontakt` is in the address bar the link stops scrolling — you click it,
  * having scrolled away, and nothing happens. Only in that case does this take
  * over and scroll; every other click is an ordinary `Link` navigation.
  */

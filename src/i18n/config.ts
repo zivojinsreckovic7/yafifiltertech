@@ -42,8 +42,8 @@ export function resolveLocale(value: string): Locale {
 }
 
 /**
- * Turns a locale-agnostic path (`/proizvodi`, `/#o-nama`) into the real href
- * for `locale`. Hashes survive the prefixing: `/#o-nama` → `/en#o-nama`.
+ * Turns a locale-agnostic path (`/proizvodi`, `/#kontakt`) into the real href
+ * for `locale`. Hashes survive the prefixing: `/#kontakt` → `/en#kontakt`.
  */
 export function localePath(locale: Locale, path: string): string {
   const hashAt = path.indexOf("#");
