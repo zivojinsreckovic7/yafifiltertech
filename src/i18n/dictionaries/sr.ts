@@ -18,6 +18,8 @@ export const sr = {
       "ISO 16890",
     ],
     ogLocale: "sr_RS",
+    /** The one line under the wordmark on the social share card. */
+    ogImageTagline: "Industrijska filtracija vazduha",
     ogDescription:
       "Regionalni distributer Deltrian programa filtera za Ex-Yu tržište. Rešenja za farmaciju i bolnice, auto-industriju, hotelijerstvo i tešku industriju.",
     jsonLdDescription:

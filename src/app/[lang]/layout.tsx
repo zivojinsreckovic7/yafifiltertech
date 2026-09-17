@@ -29,6 +29,19 @@ const inter = Inter({
   display: "swap",
 });
 
+/**
+ * Base for canonical, hreflang and social image URLs. Vercel exposes the
+ * project's production hostname — the `*.vercel.app` one until a custom
+ * domain is attached, then the shortest custom domain — so share previews of
+ * the deployment link resolve against the host that actually serves the
+ * site, and flip to `yafi.co.rs` on their own once the domain moves over.
+ */
+const siteUrl = new URL(
+  process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://yafi.co.rs"
+);
+
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
@@ -42,7 +55,7 @@ export async function generateMetadata({
   const dict = getDictionary(locale);
 
   return {
-    metadataBase: new URL("https://yafi.co.rs"),
+    metadataBase: siteUrl,
     title: {
       default: dict.meta.siteTitle,
       template: dict.meta.titleTemplate,

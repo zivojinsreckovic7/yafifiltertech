@@ -17,6 +17,7 @@ export const en: Dictionary = {
       "ISO 16890",
     ],
     ogLocale: "en_GB",
+    ogImageTagline: "Industrial air filtration",
     ogDescription:
       "Regional distributor of the Deltrian filter range for the Ex-Yu market. Solutions for pharmaceutical production and hospitals, automotive plants, hospitality and heavy industry.",
     jsonLdDescription:
