@@ -256,6 +256,7 @@ export const sr = {
     heading: "Peščarska 10, Novi Beograd",
     directions: "Otvorite u mapama →",
     frameTitle: "Mapa lokacije Yafi Filtertech",
+    activate: "Kliknite na mapu za pomeranje i zumiranje",
   },
 
   ctaSection: {

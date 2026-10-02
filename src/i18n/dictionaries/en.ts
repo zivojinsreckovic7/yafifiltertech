@@ -252,6 +252,7 @@ export const en: Dictionary = {
     heading: "Peščarska 10, Novi Beograd",
     directions: "Open in maps →",
     frameTitle: "Map of the Yafi Filtertech location",
+    activate: "Click the map to pan and zoom",
   },
 
   ctaSection: {

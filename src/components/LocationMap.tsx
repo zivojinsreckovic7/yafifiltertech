@@ -1,3 +1,4 @@
+import MapFrame from "@/components/MapFrame";
 import Reveal from "@/components/Reveal";
 import { addressLine, mapDirectionsHref, mapEmbedSrc } from "@/data/contact";
 import type { Locale } from "@/i18n/config";
@@ -39,12 +40,10 @@ export default function LocationMap({
         delay={0.1}
         className="mt-8 overflow-hidden rounded-2xl border border-navy-700/70"
       >
-        <iframe
+        <MapFrame
           src={mapEmbedSrc()}
           title={dict.frameTitle}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="block h-[320px] w-full border-0 md:h-[420px]"
+          hint={dict.activate}
         />
       </Reveal>
     </div>
