@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 /**
- * Brand wordmark. The asset is trimmed to the glyphs (1833×420, ~4.36:1), so
+ * Brand wordmark. The asset is trimmed to the glyphs (492×206, ~2.39:1), so
  * a height utility alone sets the rendered size and the visible left edge
  * lines up with the surrounding content.
  *
@@ -21,7 +21,7 @@ export function Logo({
       src="/yafi-filtertech-logo.webp"
       alt="Yafi Filtertech"
       width={240}
-      height={55}
+      height={100}
       loading={eager ? "eager" : "lazy"}
       fetchPriority={eager ? "high" : undefined}
       className={className}
