@@ -103,10 +103,23 @@ export default function Footer({
           </Reveal>
         </div>
 
-        <Reveal className="mt-16 flex flex-col gap-4 border-t border-navy-800 pt-8 text-xs text-ink-400 md:flex-row md:items-center md:justify-between">
+        {/* Not a Reveal: the agency credit must never sit at opacity 0, even
+            for a renderer that never scrolls the footer into view. */}
+        <div className="mt-16 flex flex-col gap-4 border-t border-navy-800 pt-8 text-xs text-ink-400 md:flex-row md:items-center md:justify-between">
           <p>{footer.rights(new Date().getFullYear())}</p>
           <p>{footer.tagline}</p>
-        </Reveal>
+          <p>
+            {footer.credit}{" "}
+            <a
+              href="https://snaperdigital.com"
+              target="_blank"
+              rel="noopener"
+              className="font-semibold text-ink-200 transition-colors hover:text-orange-300"
+            >
+              Snaper Digital
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

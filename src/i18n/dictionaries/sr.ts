@@ -298,6 +298,7 @@ export const sr = {
     regionValue: "Srbija · Ex-Yu region",
     rights: (year: number) => `© ${year} Yafi Filtertech. Sva prava zadržana.`,
     tagline: "Industrijska filtracija vazduha · ISO 16890",
+    credit: "Sajt dizajnirao i izradio",
   },
 
   productsPage: {

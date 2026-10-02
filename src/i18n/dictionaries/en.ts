@@ -294,6 +294,7 @@ export const en: Dictionary = {
     regionValue: "Serbia · Ex-Yu region",
     rights: (year: number) => `© ${year} Yafi Filtertech. All rights reserved.`,
     tagline: "Industrial air filtration · ISO 16890",
+    credit: "Website designed and developed by",
   },
 
   productsPage: {
