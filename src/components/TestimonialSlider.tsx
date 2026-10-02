@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Testimonial } from "@/data/testimonials";
 
@@ -106,21 +105,11 @@ export default function TestimonialSlider({
                 {t.quote}
                 {quoteMarks.close}
               </blockquote>
-              <figcaption className="mt-8 flex items-center gap-4">
-                <Image
-                  src={t.avatar}
-                  alt=""
-                  width={56}
-                  height={56}
-                  className="h-14 w-14 shrink-0 rounded-full object-cover ring-1 ring-white/20"
-                  draggable={false}
-                />
-                <span className="text-sm">
-                  <span className="block font-semibold text-ink-100">
-                    {t.name}
-                  </span>
-                  <span className="mt-0.5 block text-ink-400">{t.role}</span>
+              <figcaption className="mt-8 text-sm">
+                <span className="block font-semibold text-ink-100">
+                  {t.name}
                 </span>
+                <span className="mt-0.5 block text-ink-400">{t.role}</span>
               </figcaption>
             </figure>
           ))}

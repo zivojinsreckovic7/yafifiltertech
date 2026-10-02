@@ -1,6 +1,5 @@
 import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
-import TestimonialFaces from "@/components/TestimonialFaces";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import { getTestimonials, rating } from "@/data/testimonials";
 import type { Locale } from "@/i18n/config";
@@ -19,25 +18,8 @@ export default function TestimonialsSection({
   return (
     <section className="relative py-24 md:py-32">
       <div className="wrap">
-        <div className="relative overflow-hidden rounded-[1.75rem] border border-navy-700/70 bg-navy-900 pt-10 md:rounded-[2.5rem] md:pt-14">
-          {/* Faint columns dropping through the crowd, fading out before the
-              copy — the grid line token, so it flips with the theme. */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-[560px]"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(to right, transparent 0 155px, var(--grid-line) 155px 156px)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, transparent 8%, black 45%, transparent 96%)",
-              maskImage:
-                "linear-gradient(to bottom, transparent 8%, black 45%, transparent 96%)",
-            }}
-          />
-
-          <TestimonialFaces />
-
-          <div className="relative px-6 pb-14 text-center sm:px-10 md:pb-20">
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-navy-700/70 bg-navy-900 md:rounded-[2.5rem]">
+          <div className="relative px-6 py-14 text-center sm:px-10 md:py-20">
             <Reveal className="flex justify-center">
               <span className="rounded-full border border-navy-700 bg-navy-800/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-orange-400">
                 {section.eyebrow}
