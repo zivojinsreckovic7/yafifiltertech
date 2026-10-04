@@ -82,7 +82,7 @@ export default function Nav({
             className="block min-w-0 shrink"
           >
             <Logo
-              className="block h-8 w-auto max-w-full object-contain object-left md:h-9"
+              className="block h-10 w-auto max-w-full object-contain object-left md:h-11"
               eager
             />
           </Link>

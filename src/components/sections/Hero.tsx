@@ -29,13 +29,13 @@ export default function Hero({
       >
         <div className="wrap flex flex-1 flex-col">
           <div className="on-dark relative isolate flex min-h-[26rem] flex-1 flex-col justify-center overflow-hidden rounded-[1.5rem] shadow-[0_50px_120px_-60px_rgba(0,10,22,0.75)] ring-1 ring-white/10 md:rounded-[2rem]">
-            {/* A narrow frame can only hold one subject: it takes the daylit
-                window (legible under the scrim), while wide frames keep the
-                whole room with the portrait clear of the copy on the left. */}
+            {/* A narrow (phone/tablet) frame can only hold one subject: it
+                takes the woman on the right of the photo, while wide frames
+                keep the whole room with the portrait clear of the copy. */}
             <HeroParallax
               src="/naslovna1.webp"
               alt={hero.imageAlt}
-              className="object-cover object-[42%_50%] md:object-[50%_32%]"
+              className="object-cover object-[80%_50%] lg:object-[50%_32%]"
             />
 
             {/* Darkening scrim: heavy under the copy, thinning toward the
@@ -47,11 +47,13 @@ export default function Hero({
                   "linear-gradient(90deg, rgba(var(--veil-rgb),0.94) 0%, rgba(var(--veil-rgb),0.86) 34%, rgba(var(--veil-rgb),0.6) 62%, rgba(var(--veil-rgb),0.42) 100%)",
               }}
             />
+            {/* On phones the copy sits over her face, so the veil stays just
+                dark enough for the text and lets the portrait show through. */}
             <div
               className="pointer-events-none absolute inset-0 z-0 md:hidden"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(var(--veil-rgb),0.9) 0%, rgba(var(--veil-rgb),0.82) 52%, rgba(var(--veil-rgb),0.58) 100%)",
+                  "linear-gradient(180deg, rgba(var(--veil-rgb),0.62) 0%, rgba(var(--veil-rgb),0.72) 48%, rgba(var(--veil-rgb),0.58) 100%)",
               }}
             />
 
