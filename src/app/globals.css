@@ -927,6 +927,61 @@ html[data-reveal-ready] [data-reveal-group][data-reveal-instant] > [data-reveal]
 }
 
 /*
+ * Category catalogue card (catalogues page): the cover and first product
+ * sheet stand in front of the section's opener photo, cut off by the frame
+ * like brochures in a rack. Hovering the card lifts them and fans the sheet
+ * out from behind the cover; each page sets its resting --r/--x.
+ */
+.catalogue-card__photo {
+  transform: scale(1.04);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.catalogue-card:hover .catalogue-card__photo {
+  transform: scale(1.1);
+}
+.catalogue-card__stack {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 46%;
+  aspect-ratio: 595 / 842;
+  transform: translate(-50%, 34%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.catalogue-card__page {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  transform-origin: 50% 100%;
+  transform: rotate(var(--r, 0deg)) translateX(var(--x, 0));
+  box-shadow: 0 24px 48px -18px rgba(0, 10, 22, 0.85);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.catalogue-card:hover .catalogue-card__stack {
+  transform: translate(-50%, 22%);
+}
+.catalogue-card:hover .catalogue-card__page {
+  transform: rotate(calc(var(--r, 0deg) * 1.8)) translateX(calc(var(--x, 0px) * 1.8));
+}
+@media (prefers-reduced-motion: reduce) {
+  .catalogue-card__photo,
+  .catalogue-card__stack,
+  .catalogue-card__page {
+    transition: none;
+  }
+  .catalogue-card:hover .catalogue-card__photo {
+    transform: scale(1.04);
+  }
+  .catalogue-card:hover .catalogue-card__stack {
+    transform: translate(-50%, 34%);
+  }
+  .catalogue-card:hover .catalogue-card__page {
+    transform: rotate(var(--r, 0deg)) translateX(var(--x, 0));
+  }
+}
+
+/*
  * Home-page region map. Neighbours sit faintly underneath; once the block is
  * revealed the served countries fill in one after another, arcs draw out of
  * Belgrade to each capital, and the hub keeps a slow pulse going. Opacity,

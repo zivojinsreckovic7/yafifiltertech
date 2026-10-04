@@ -57,7 +57,7 @@ export const en: Dictionary = {
     catalogues: {
       title: "Catalogues",
       description:
-        "Download the Deltrian catalogue “Filtration, solutions and products 2026” and the technical documentation for the Yafi Filtertech filter range.",
+        "Download the YAFI product catalogue, a catalogue for every filter category — from filter materials to HEPA filters and frames — and the official Deltrian catalogue 2026.",
     },
   },
 
@@ -368,24 +368,36 @@ export const en: Dictionary = {
   cataloguesPage: {
     eyebrow: "Catalogues",
     heading: "Catalogues and technical documentation.",
-    lead: "In one place: the official Deltrian catalogue, available now, and the catalogues we are preparing — the YAFI range and technical sheets by filter category.",
-    placeholdersEyebrow: "In preparation",
-    placeholdersHeading: "Catalogues coming soon.",
-    placeholdersLead:
-      "Documentation is published as it is ready. Until then, we send technical sheets for any filter type on request.",
-    placeholderBadge: "Coming soon",
-    /** PLACEHOLDER — see the note on the Serbian dictionary. */
-    placeholders: [
-      { label: "Catalogue 02", name: "Catalogue name" },
-      { label: "Catalogue 03", name: "Catalogue name" },
-      { label: "Catalogue 04", name: "Catalogue name" },
-      { label: "Catalogue 05", name: "Catalogue name" },
-      { label: "Catalogue 06", name: "Catalogue name" },
-      { label: "Catalogue 07", name: "Catalogue name" },
-    ],
-    ctaTitle: "Need documentation that isn't published yet?",
+    lead: "The complete YAFI product catalogue, a separate catalogue for every filter category and the official Deltrian catalogue — in one place, as PDF downloads.",
+    languageNote: "The YAFI catalogues on this page are in English.",
+    /** Written in the other language on purpose — it is for its readers. */
+    otherLanguage: "Katalozi na srpskom",
+    pageAbbr: "p.",
+    pages: (n: number) => `${n} ${n === 1 ? "page" : "pages"}`,
+    full: {
+      eyebrow: "Product catalogue",
+      heading: "The whole YAFI range, in one catalogue.",
+      lead: "All eight filter categories in one document — descriptions, special features, technical tables and product codes, from filter materials to HEPA filters and frames.",
+      download: "Download the catalogue",
+      open: "Open in browser",
+      contentsLabel: "Contents — opens the catalogue on that page",
+      coverAlt: "Cover of the YAFI product catalogue.",
+    },
+    sectionsEyebrow: "By category",
+    sectionsHeading: "A catalogue for every filter category.",
+    sectionsLead:
+      "When you only need one product group: the same technical sheets as the complete catalogue, split by category into smaller files.",
+    card: {
+      download: "Download",
+      open: "Open",
+      downloadLabel: (title: string, size: string) =>
+        `Download the “${title}” catalogue (PDF, ${size})`,
+      openLabel: (title: string) => `Open the “${title}” catalogue in a new tab`,
+      products: "Products in this category",
+    },
+    ctaTitle: "Need documentation that isn't in the catalogues?",
     ctaText:
-      "Tell us the filter type or category you are interested in — we send technical sheets and specifications on request, within 24 hours.",
+      "Tell us the filter type or category you are interested in — we send technical sheets, certificates and specifications on request, within 24 hours.",
     ctaAction: "Request documentation →",
   },
 

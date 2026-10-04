@@ -1,3 +1,10 @@
+/** "1 strana", "3 strane", "13 strana" — counts of 2–4 take "strane". */
+function pageWord(n: number) {
+  const ones = n % 10;
+  const tens = n % 100;
+  return ones >= 2 && ones <= 4 && (tens < 12 || tens > 14) ? "strane" : "strana";
+}
+
 /**
  * Serbian copy — the source of truth for the site's content and for the
  * `Dictionary` shape every other locale has to satisfy.
@@ -59,7 +66,7 @@ export const sr = {
     catalogues: {
       title: "Katalozi",
       description:
-        "Preuzmite Deltrian katalog „Filtration, solutions and products 2026“ i tehničku dokumentaciju programa filtera Yafi Filtertech.",
+        "Preuzmite YAFI katalog proizvoda, kataloge za svaku kategoriju filtera — od filterskih materijala do HEPA filtera i ramova — i zvanični Deltrian katalog 2026.",
     },
   },
 
@@ -372,28 +379,36 @@ export const sr = {
   cataloguesPage: {
     eyebrow: "Katalozi",
     heading: "Katalozi i tehnička dokumentacija.",
-    lead: "Na jednom mestu: zvanični Deltrian katalog, dostupan odmah, i katalozi koje pripremamo — YAFI program i tehnički listovi po kategorijama filtera.",
-    placeholdersEyebrow: "U pripremi",
-    placeholdersHeading: "Katalozi koji uskoro stižu.",
-    placeholdersLead:
-      "Dokumentacija se objavljuje kako bude spremna. Do tada, za bilo koji tip filtera šaljemo tehničke listove na zahtev.",
-    placeholderBadge: "Uskoro",
-    /**
-     * PLACEHOLDER — čekaju se pravi katalozi. Kada stignu, zameniti unose
-     * ispod i u `katalozi/page.tsx` kartice pretvoriti u prave kartice za
-     * preuzimanje (po uzoru na `DeltrianCatalogue`).
-     */
-    placeholders: [
-      { label: "Katalog 02", name: "Naziv kataloga" },
-      { label: "Katalog 03", name: "Naziv kataloga" },
-      { label: "Katalog 04", name: "Naziv kataloga" },
-      { label: "Katalog 05", name: "Naziv kataloga" },
-      { label: "Katalog 06", name: "Naziv kataloga" },
-      { label: "Katalog 07", name: "Naziv kataloga" },
-    ],
-    ctaTitle: "Treba vam dokumentacija koja još nije objavljena?",
+    lead: "Kompletan YAFI katalog proizvoda, poseban katalog za svaku kategoriju filtera i zvanični Deltrian katalog — na jednom mestu, za preuzimanje u PDF formatu.",
+    languageNote: "YAFI katalozi na ovoj stranici su na srpskom jeziku.",
+    /** Written in the other language on purpose — it is for its readers. */
+    otherLanguage: "Catalogues in English",
+    pageAbbr: "str.",
+    pages: (n: number) => `${n} ${pageWord(n)}`,
+    full: {
+      eyebrow: "Katalog proizvoda",
+      heading: "Ceo YAFI program, u jednom katalogu.",
+      lead: "Svih osam kategorija filtera u jednom dokumentu — opisi, posebne osobine, tehničke tabele i oznake proizvoda, od filterskih materijala do HEPA filtera i ramova.",
+      download: "Preuzmite katalog",
+      open: "Otvorite u pregledaču",
+      contentsLabel: "Sadržaj — otvara katalog na toj strani",
+      coverAlt: "Naslovna strana YAFI kataloga proizvoda.",
+    },
+    sectionsEyebrow: "Po kategorijama",
+    sectionsHeading: "Katalog za svaku kategoriju filtera.",
+    sectionsLead:
+      "Kada vam treba samo jedna grupa proizvoda: isti tehnički listovi kao u kompletnom katalogu, izdvojeni po kategorijama u manje fajlove.",
+    card: {
+      download: "Preuzmite",
+      open: "Otvorite",
+      downloadLabel: (title: string, size: string) =>
+        `Preuzmite katalog „${title}“ (PDF, ${size})`,
+      openLabel: (title: string) => `Otvorite katalog „${title}“ u novoj kartici`,
+      products: "Proizvodi u ovoj kategoriji",
+    },
+    ctaTitle: "Treba vam dokumentacija koja nije u katalozima?",
     ctaText:
-      "Pošaljite nam tip filtera ili kategoriju koja vas zanima — tehničke listove i specifikacije dostavljamo na zahtev, u roku od 24 časa.",
+      "Pošaljite nam tip filtera ili kategoriju koja vas zanima — tehničke listove, sertifikate i specifikacije dostavljamo na zahtev, u roku od 24 časa.",
     ctaAction: "Zatražite dokumentaciju →",
   },
 
