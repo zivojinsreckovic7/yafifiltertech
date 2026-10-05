@@ -23,7 +23,9 @@ export type DeltrianFilter = {
 
 export const deltrianFilters: DeltrianFilter[] = [
   { slug: "vrecasti", image: "/deltrian/filteri/vrecasti.webp" },
-  { slug: "kompaktni", image: "/deltrian/filteri/kompaktni.webp" },
+  // Deltrian's shot with the left (mesh-faced) filter swapped for the RPV ESN
+  // from the page hero; the untouched original is kompaktni.webp.
+  { slug: "kompaktni", image: "/deltrian/filteri/kompaktni-rpv-esn.webp" },
   { slug: "hepa", image: "/deltrian/filteri/hepa.webp" },
   { slug: "panelni", image: "/deltrian/filteri/panelni.webp" },
   { slug: "patronski", image: "/deltrian/filteri/patronski.webp" },
