@@ -158,8 +158,10 @@ html[data-loader-ready] .site-loader {
 
 .site-loader__logo {
   display: block;
-  height: 4.5rem;
+  height: 9rem;
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
   margin-inline: auto;
 }
 

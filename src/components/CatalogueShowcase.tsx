@@ -47,7 +47,7 @@ export default function CatalogueShowcase({
   id?: string;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 py-28 md:py-36">
+    <section id={id} className="scroll-mt-28 md:scroll-mt-32 py-28 md:py-36">
       <div className="wrap">
         {/* A plain panel: reveals nested inside a `Reveal` never fire (see
             RevealManager), so each block inside reveals on its own. */}

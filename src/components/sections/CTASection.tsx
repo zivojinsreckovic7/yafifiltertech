@@ -20,7 +20,7 @@ export default function CTASection({
   const rows = dict.contactRows;
 
   return (
-    <section id="kontakt" className="relative overflow-hidden py-28 md:py-36 scroll-mt-24">
+    <section id="kontakt" className="relative overflow-hidden py-28 md:py-36 scroll-mt-28 md:scroll-mt-32">
       <div
         className="pointer-events-none absolute -right-80 top-1/4 -mt-48 h-[44rem] w-[44rem]"
         style={{

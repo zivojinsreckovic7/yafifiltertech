@@ -22,7 +22,7 @@ export default function ProductCard({
       href={localePath(locale, productPath(product.slug))}
       id={product.slug}
       data-cursor="link"
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-navy-700/70 bg-navy-900/60 p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-orange-500/50 hover:bg-navy-800/80 scroll-mt-32"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-navy-700/70 bg-navy-900/60 p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-orange-500/50 hover:bg-navy-800/80 scroll-mt-36 md:scroll-mt-40"
     >
       <div className="card-grid-line pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 

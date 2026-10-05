@@ -73,7 +73,7 @@ export default function Nav({
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className="wrap flex h-20 items-center justify-between gap-4">
+        <div className="wrap flex h-24 items-center justify-between gap-4 md:h-28">
           {/* The wordmark is wide; on narrow phones the link gives way so the
               controls never spill past the edge, and the image scales inside it. */}
           <Link
@@ -82,7 +82,7 @@ export default function Nav({
             className="block min-w-0 shrink"
           >
             <Logo
-              className="block h-10 w-auto max-w-full object-contain object-left md:h-11"
+              className="block h-20 w-auto max-w-full object-contain object-left md:h-22"
               eager
             />
           </Link>
@@ -160,7 +160,7 @@ export default function Nav({
         }`}
         aria-hidden={!open}
       >
-        <div className="wrap flex min-h-full flex-col justify-center gap-6 py-28">
+        <div className="wrap flex min-h-full flex-col justify-center gap-6 py-32 md:py-36">
           {leadLinks.map((l) => (
             <HashLink
               key={l.href}

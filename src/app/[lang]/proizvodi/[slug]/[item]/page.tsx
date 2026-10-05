@@ -71,7 +71,7 @@ export default async function ProductItemPage({
   const siblings = getSiblingItems(locale, slug, itemSlug);
 
   return (
-    <div className="pt-32">
+    <div className="pt-36 md:pt-40">
       <section className="wrap pb-16 md:pb-20">
         <nav aria-label="breadcrumb" className="text-sm text-ink-400">
           <ol className="flex flex-wrap items-center gap-2">
@@ -110,7 +110,7 @@ export default async function ProductItemPage({
 
         <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left: media. Sticks while the copy column scrolls on desktop. */}
-          <Reveal className="lg:sticky lg:top-28 lg:self-start">
+          <Reveal className="lg:sticky lg:top-36 lg:self-start">
             <ProductMedia
               src={item.image}
               alt={item.name}

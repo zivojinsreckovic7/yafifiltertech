@@ -6,7 +6,7 @@ import Image from "next/image";
  * lines up with the surrounding content.
  *
  * `width`/`height` carry the aspect ratio for layout reservation and size the
- * 1x/2x srcset — 240px covers the largest slot (the loader) at 1x.
+ * 1x/2x srcset — 344px covers the largest slot (the loader) at 1x.
  */
 export function Logo({
   className = "h-9 w-auto",
@@ -20,8 +20,8 @@ export function Logo({
     <Image
       src="/yafi-filtertech-logo.webp"
       alt="Yafi Filtertech"
-      width={240}
-      height={100}
+      width={344}
+      height={144}
       loading={eager ? "eager" : "lazy"}
       fetchPriority={eager ? "high" : undefined}
       className={className}

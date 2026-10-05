@@ -27,7 +27,7 @@ export default function DeltrianGallery({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="program"
-      className="relative scroll-mt-24 overflow-hidden bg-navy-900/30 py-24 md:py-32"
+      className="relative scroll-mt-28 md:scroll-mt-32 overflow-hidden bg-navy-900/30 py-24 md:py-32"
     >
       {/* Warm ground glow behind the band — a radial gradient, not a blur. */}
       <div

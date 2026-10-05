@@ -61,7 +61,7 @@ export default async function DeltrianPage({
           }}
         />
 
-        <div className="wrap relative z-10 flex flex-1 flex-col justify-center pt-28">
+        <div className="wrap relative z-10 flex flex-1 flex-col justify-center pt-32 md:pt-36">
           <div className="max-w-2xl">
             {/* The brand itself leads the page, so there is no doubt whose
                 range this is; the eyebrow beneath names our role. */}

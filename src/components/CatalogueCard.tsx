@@ -32,7 +32,7 @@ export default function CatalogueCard({
   return (
     <article
       id={catalogue.slug}
-      className="catalogue-card group relative flex h-full w-full scroll-mt-32 flex-col overflow-hidden rounded-2xl border border-navy-700/70 bg-navy-900/60 transition-[transform,border-color,background-color] duration-500 hover:-translate-y-1.5 hover:border-orange-500/50 hover:bg-navy-800/80"
+      className="catalogue-card group relative flex h-full w-full scroll-mt-36 md:scroll-mt-40 flex-col overflow-hidden rounded-2xl border border-navy-700/70 bg-navy-900/60 transition-[transform,border-color,background-color] duration-500 hover:-translate-y-1.5 hover:border-orange-500/50 hover:bg-navy-800/80"
     >
       {/* Photo and pages are decorative — the title says what this is. */}
       <div

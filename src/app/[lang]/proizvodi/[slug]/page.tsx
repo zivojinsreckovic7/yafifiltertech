@@ -104,7 +104,7 @@ export default async function ProductCategoryPage({
   const related = getProducts(locale).filter((c) => c.slug !== slug);
 
   return (
-    <div className="pt-32">
+    <div className="pt-36 md:pt-40">
       <section className="wrap pb-16">
         <Link
           href={localePath(locale, routes.products)}

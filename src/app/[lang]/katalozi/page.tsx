@@ -52,7 +52,7 @@ export default async function KataloziPage({
   const otherLocale = locales.find((l) => l !== locale) ?? locale;
 
   return (
-    <div className="pt-32">
+    <div className="pt-36 md:pt-40">
       <section className="wrap">
         <span className="eyebrow">{page.eyebrow}</span>
         <SplitHeading
@@ -118,7 +118,7 @@ export default async function KataloziPage({
 
       <section
         id="po-kategorijama"
-        className="scroll-mt-24 bg-navy-900/30 py-28 md:py-36"
+        className="scroll-mt-28 md:scroll-mt-32 bg-navy-900/30 py-28 md:py-36"
       >
         <div className="wrap">
           <span className="eyebrow">{page.sectionsEyebrow}</span>

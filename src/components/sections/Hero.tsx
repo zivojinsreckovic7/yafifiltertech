@@ -25,7 +25,7 @@ export default function Hero({
           instead would mean clipping the panel on short viewports. */}
       <section
         id="hero"
-        className="relative z-0 flex min-h-[100svh] flex-col pb-10 pt-24 will-change-transform md:pt-28"
+        className="relative z-0 flex min-h-[100svh] flex-col pb-10 pt-28 will-change-transform md:pt-36"
       >
         <div className="wrap flex flex-1 flex-col">
           <div className="on-dark relative isolate flex min-h-[26rem] flex-1 flex-col justify-center overflow-hidden rounded-[1.5rem] shadow-[0_50px_120px_-60px_rgba(0,10,22,0.75)] ring-1 ring-white/10 md:rounded-[2rem]">
