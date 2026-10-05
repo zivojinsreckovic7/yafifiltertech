@@ -379,13 +379,59 @@ html[data-loader-ready] .site-loader.is-exiting {
 /* The Deltrian filter photo (a cutout) sits where the dust crosses over;
    it floats on a transform only — no drop-shadow filter (see the Safari note
    above .grain), the grounding comes from a radial-gradient glow behind it. */
-.hero-filter {
+.hero-filter,
+.hero-filter-frame {
   position: absolute;
   top: 50%;
   right: 7%;
   width: min(28rem, 38vw);
   aspect-ratio: 1;
   transform: translateY(-52%);
+}
+
+/* With a roomy right column, centre the filter on the copy beside it (which
+   sits 4.5rem low, half of the section's md:pt-36) and pull it in from the
+   edge. Narrower, the tag would land on the eyebrow. */
+@media (min-width: 1280px) {
+  .hero-filter,
+  .hero-filter-frame {
+    top: calc(50% + 4.5rem);
+    right: 12%;
+    transform: translateY(-50%);
+  }
+}
+
+/* The filter's name tag sits beside the photo. The airflow layer is under the
+   page veil, so the tag rides in its own frame above it with the same box. */
+.hero-filter-frame {
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Right edge stops just short of the filter, which starts ~10% into its cutout. */
+.hero-filter-tag {
+  position: absolute;
+  top: 7%;
+  right: calc(90% + 1rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+
+/* Energy-class arrow, after the EU label it borrows from. */
+.hero-filter-tag__class {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 1.05rem 0.3rem 0.6rem;
+  background: #1f9d4c;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1;
+  clip-path: polygon(0 0, calc(100% - 0.6rem) 0, 100% 50%, calc(100% - 0.6rem) 100%, 0 100%);
+  border-radius: 0.25rem 0 0 0.25rem;
 }
 
 .hero-filter__glow {

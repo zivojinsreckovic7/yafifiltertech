@@ -76,17 +76,18 @@ export default function HeroAirflow({
         ))}
       </div>
 
-      {/* The Deltrian V-bank filter the dust flows into: a cutout photo,
-          floated gently on a warm ground glow. */}
+      {/* The Deltrian RPV ESN V-bank filter the dust flows into: a cutout
+          photo, floated gently on a warm ground glow. Its name tag is drawn by
+          the page above the veil (see .hero-filter-frame). */}
       <div className="hero-filter">
         <span className="hero-filter__glow" />
         {/* Rendered at min(28rem, 38vw) (62vw below md, see .hero-filter), so
-            `sizes` keeps the srcset width-based instead of 1x/2x of 1254. */}
+            `sizes` keeps the srcset width-based instead of 1x/2x of 420. */}
         <Image
-          src="/deltrian-filter-hero.webp"
+          src="/deltrian-rpv-esn-hero.webp"
           alt=""
-          width={1254}
-          height={1254}
+          width={420}
+          height={420}
           sizes="(max-width: 767px) 62vw, (max-width: 1178px) 38vw, 448px"
           priority
           className="hero-filter__photo"

@@ -61,6 +61,17 @@ export default async function DeltrianPage({
           }}
         />
 
+        {/* Below lg the photo sits behind the copy, so the tag waits for a
+            clear right column. */}
+        <div className="hero-filter-frame hidden lg:block">
+          <Reveal delay={0.5} className="hero-filter-tag">
+            <span className="font-display text-2xl font-bold tracking-tight text-ink-100">
+              RPV ESN
+            </span>
+            <span className="hero-filter-tag__class">A+</span>
+          </Reveal>
+        </div>
+
         <div className="wrap relative z-10 flex flex-1 flex-col justify-center pt-32 md:pt-36">
           <div className="max-w-2xl">
             {/* The brand itself leads the page, so there is no doubt whose
