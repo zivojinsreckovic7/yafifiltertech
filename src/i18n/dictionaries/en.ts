@@ -117,7 +117,7 @@ export const en: Dictionary = {
     heading: "Everyone has a right to clean air.",
     imageAlt:
       "A woman with her eyes closed breathing clean air by an open window, wearing a Yafi Filtertech shirt.",
-    lead: "We combine our own made-to-measure filter manufacturing with a range of certified Deltrian systems. The full spectrum of air filtration for chambers in pharmaceutical, automotive and heavy industry across the Ex-Yu region.",
+    lead: "We combine our own made-to-measure filter manufacturing with a range of certified Deltrian systems. The full spectrum of air filtration for office buildings, shopping malls, hotels, pharmaceuticals, hospitals, the automotive industry and other commercial and public buildings across the Ex-Yu region.",
     ctaPrimary: "Request a quote",
     ctaSecondary: "Explore the Deltrian range",
     scroll: "Scroll",

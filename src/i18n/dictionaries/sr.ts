@@ -127,7 +127,7 @@ export const sr = {
     heading: "Svako ima pravo na čist vazduh.",
     imageAlt:
       "Žena zatvorenih očiju udiše čist vazduh pored otvorenog prozora, u majici sa logotipom Yafi Filtertech.",
-    lead: "Spajamo sopstvenu proizvodnju filtera po meri i ponudu sertifikovanih Deltrian sistema. Kompletan spektar filtracije vazduha za komore u farmaciji, auto-industriji i teškoj industriji širom Ex-Yu regiona.",
+    lead: "Spajamo sopstvenu proizvodnju filtera po meri i ponudu sertifikovanih Deltrian sistema. Kompletan spektar filtracije vazduha za poslovne zgrade, šoping molove, hotele, farmaciju, bolnice, automobilsku industriju i ostale komercijalne i javne objekte širom Ex-Yu regiona.",
     ctaPrimary: "Zatražite ponudu",
     ctaSecondary: "Istražite Deltrian program",
     scroll: "Skrolujte",
