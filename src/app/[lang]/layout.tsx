@@ -34,6 +34,11 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
+// `src/proxy.ts` skips paths with a file extension, so `/old-page.php` or
+// `/favicon.ico` reach `[lang]` as the "locale". Without this they would
+// render the homepage with a 200 — a soft 404 to search engines.
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
