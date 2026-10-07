@@ -9,6 +9,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import { alternatesFor, getDictionary } from "@/i18n/dictionaries";
 import { localePath, locales, localeTags, resolveLocale } from "@/i18n/config";
 import { contact } from "@/data/contact";
+import { siteUrl } from "@/data/site";
 import { getProducts } from "@/data/products";
 import { productPath } from "@/data/nav";
 
@@ -28,19 +29,6 @@ const inter = Inter({
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
-
-/**
- * Base for canonical, hreflang and social image URLs. Vercel exposes the
- * project's production hostname — the `*.vercel.app` one until a custom
- * domain is attached, then the shortest custom domain — so share previews of
- * the deployment link resolve against the host that actually serves the
- * site, and flip to `yafi.co.rs` on their own once the domain moves over.
- */
-const siteUrl = new URL(
-  process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "https://yafi.co.rs"
-);
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -92,7 +80,7 @@ export default async function RootLayout({
     "@type": "LocalBusiness",
     name: "Yafi Filtertech",
     description: dict.meta.jsonLdDescription,
-    url: "https://yafi.co.rs",
+    url: siteUrl.href,
     email: contact.email,
     telephone: contact.phones.map((phone) => phone.tel),
     areaServed: dict.meta.areaServed,
