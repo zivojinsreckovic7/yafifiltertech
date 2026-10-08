@@ -67,7 +67,8 @@ export default function CTASection({
         <Reveal delay={0.1}>
           <QuoteForm
             dict={dict.quoteForm}
-            productNames={getProducts(locale).map((p) => p.name)}
+            locale={locale}
+            products={getProducts(locale).map(({ slug, name }) => ({ slug, name }))}
           />
         </Reveal>
       </div>

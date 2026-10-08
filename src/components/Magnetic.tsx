@@ -24,16 +24,19 @@ export function MagneticButton({
   className = "",
   children,
   type = "button",
+  disabled,
 }: {
   onClick?: () => void;
   className?: string;
   children: React.ReactNode;
   type?: "button" | "submit";
+  disabled?: boolean;
 }) {
   return (
     <button
       type={type}
       onClick={onClick}
+      disabled={disabled}
       className={`magnetic btn ${className}`}
     >
       {children}

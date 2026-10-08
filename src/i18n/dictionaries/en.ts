@@ -280,6 +280,9 @@ export const en: Dictionary = {
     message: "Message",
     messagePlaceholder:
       "Describe the facility, air flow or your current ventilation system...",
+    invalidText: "Please check your email address and the other fields, then try again.",
+    errorText:
+      "Your enquiry wasn't sent. Please try again or email us directly at",
     sending: "Sending...",
     submit: "Send enquiry",
     note: "We reply within 24 hours on business days. By sending this enquiry you agree that we may contact you to prepare a quote.",

@@ -291,6 +291,9 @@ export const sr = {
     message: "Poruka",
     messagePlaceholder:
       "Opišite objekat, protok vazduha ili trenutni sistem ventilacije...",
+    invalidText: "Proverite email adresu i ostala polja, pa pokušajte ponovo.",
+    errorText:
+      "Upit nije poslat. Pokušajte ponovo ili nam pišite direktno na",
     sending: "Slanje...",
     submit: "Pošaljite upit",
     note: "Odgovaramo u roku od 24 časa radnim danima. Slanjem upita saglasni ste da vas kontaktiramo radi pripreme ponude.",
