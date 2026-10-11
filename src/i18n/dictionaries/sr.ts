@@ -68,6 +68,16 @@ export const sr = {
       description:
         "Preuzmite YAFI katalog proizvoda, kataloge za svaku kategoriju filtera — od filterskih materijala do HEPA filtera i ramova — i zvanični Deltrian katalog 2026.",
     },
+    privacy: {
+      title: "Politika privatnosti",
+      description:
+        "Koje podatke o ličnosti Yafi Filtertech prikuplja preko sajta i forme za upit, zašto, koliko dugo ih čuva i kako možete ostvariti svoja prava.",
+    },
+    terms: {
+      title: "Uslovi korišćenja",
+      description:
+        "Uslovi korišćenja sajta Yafi Filtertech: namena sajta, informacije o proizvodima, katalozi, autorska prava i odgovornost.",
+    },
   },
 
   nav: {
@@ -298,7 +308,9 @@ export const sr = {
       "Upit nije poslat. Pokušajte ponovo ili nam pišite direktno na",
     sending: "Slanje...",
     submit: "Pošaljite upit",
-    note: "Odgovaramo u roku od 24 časa radnim danima. Slanjem upita saglasni ste da vas kontaktiramo radi pripreme ponude.",
+    note: "Odgovaramo u roku od 24 časa radnim danima.",
+    privacyNote: "Podatke iz upita koristimo samo za odgovor i pripremu ponude — više u",
+    privacyLink: "Politici privatnosti",
   },
 
   footer: {
@@ -311,6 +323,16 @@ export const sr = {
     rights: (year: number) => `© ${year} Yafi Filtertech. Sva prava zadržana.`,
     tagline: "Industrijska filtracija vazduha · ISO 16890",
     credit: "Sajt dizajnirao i izradio",
+    legalHeading: "Pravne informacije",
+    registry: "Registar privrednih subjekata (APR)",
+    registrationNumber: "MB",
+    taxId: "PIB",
+  },
+
+  legalPage: {
+    eyebrow: "Pravne informacije",
+    updated: "Poslednja izmena",
+    contents: "Sadržaj",
   },
 
   productsPage: {

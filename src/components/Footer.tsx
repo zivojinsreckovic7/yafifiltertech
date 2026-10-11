@@ -2,7 +2,7 @@ import Link from "next/link";
 import HashLink from "./HashLink";
 import { Logo } from "./Logo";
 import Reveal from "./Reveal";
-import { addressLine, contact } from "@/data/contact";
+import { addressLine, company, contact } from "@/data/contact";
 import { getIndustries } from "@/data/industries";
 import { industryPath, routes } from "@/data/nav";
 import { localePath, type Locale } from "@/i18n/config";
@@ -119,6 +119,29 @@ export default function Footer({
               Snaper Digital
             </a>
           </p>
+        </div>
+
+        {/* The Companies Act wants the legal name, seat, register, MB and PIB
+            on the company's website; the street address is in the column above. */}
+        <div className="mt-4 flex flex-col gap-4 text-xs text-ink-400 md:flex-row md:items-center md:justify-between">
+          <p>
+            {company.name}, {contact.city} · {footer.registry} · {footer.registrationNumber}{" "}
+            {company.registrationNumber} · {footer.taxId} {company.taxId}
+          </p>
+          <nav aria-label={footer.legalHeading}>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              <li>
+                <Link href={localePath(locale, routes.privacy)} className="hover:text-orange-300">
+                  {dict.meta.privacy.title}
+                </Link>
+              </li>
+              <li>
+                <Link href={localePath(locale, routes.terms)} className="hover:text-orange-300">
+                  {dict.meta.terms.title}
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

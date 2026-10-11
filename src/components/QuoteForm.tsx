@@ -1,12 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { startTransition, useActionState, useState } from "react";
 import { MagneticButton } from "./Magnetic";
 import Turnstile from "./Turnstile";
 import { sendQuote, type QuoteState } from "@/actions/quote";
 import { contact } from "@/data/contact";
+import { routes } from "@/data/nav";
 import { quoteLimits } from "@/data/quoteForm";
-import type { Locale } from "@/i18n/config";
+import { localePath, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/sr";
 
 const initialState: QuoteState = { status: "idle" };
@@ -142,7 +144,16 @@ export default function QuoteForm({
         >
           {pending ? dict.sending : dict.submit}
         </MagneticButton>
-        <p className="mt-4 text-xs text-ink-400">{dict.note}</p>
+        <p className="mt-4 text-xs leading-relaxed text-ink-400">
+          {dict.note} {dict.privacyNote}{" "}
+          <Link
+            href={localePath(locale, routes.privacy)}
+            className="underline underline-offset-2 hover:text-orange-300"
+          >
+            {dict.privacyLink}
+          </Link>
+          .
+        </p>
       </div>
     </form>
   );

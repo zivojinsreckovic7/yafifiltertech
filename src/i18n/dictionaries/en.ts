@@ -59,6 +59,16 @@ export const en: Dictionary = {
       description:
         "Download the YAFI product catalogue, a catalogue for every filter category — from filter materials to HEPA filters and frames — and the official Deltrian catalogue 2026.",
     },
+    privacy: {
+      title: "Privacy Policy",
+      description:
+        "What personal data Yafi Filtertech collects through its website and enquiry form, why, how long it is kept and how to exercise your rights.",
+    },
+    terms: {
+      title: "Terms of Use",
+      description:
+        "Terms of use for the Yafi Filtertech website: its purpose, product information, catalogues, copyright and liability.",
+    },
   },
 
   nav: {
@@ -287,7 +297,9 @@ export const en: Dictionary = {
       "Your enquiry wasn't sent. Please try again or email us directly at",
     sending: "Sending...",
     submit: "Send enquiry",
-    note: "We reply within 24 hours on business days. By sending this enquiry you agree that we may contact you to prepare a quote.",
+    note: "We reply within 24 hours on business days.",
+    privacyNote: "We use the details you send only to reply and prepare a quote — see our",
+    privacyLink: "Privacy Policy",
   },
 
   footer: {
@@ -300,6 +312,16 @@ export const en: Dictionary = {
     rights: (year: number) => `© ${year} Yafi Filtertech. All rights reserved.`,
     tagline: "Industrial air filtration · ISO 16890",
     credit: "Website designed and developed by",
+    legalHeading: "Legal information",
+    registry: "Serbian Business Registers Agency (APR)",
+    registrationNumber: "Reg. no.",
+    taxId: "Tax ID",
+  },
+
+  legalPage: {
+    eyebrow: "Legal information",
+    updated: "Last updated",
+    contents: "Contents",
   },
 
   productsPage: {

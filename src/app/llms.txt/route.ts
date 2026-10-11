@@ -96,6 +96,8 @@ export function GET() {
     "",
     link("Serbian homepage", absoluteUrl("/")),
     link("Sitemap", absoluteUrl("/sitemap.xml"), "every page in both languages"),
+    link(meta.privacy.title, page(routes.privacy), meta.privacy.description),
+    link(meta.terms.title, page(routes.terms), meta.terms.description),
     "",
   ];
 

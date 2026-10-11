@@ -8,7 +8,7 @@ import RevealManager from "@/components/RevealManager";
 import LoadingScreen from "@/components/LoadingScreen";
 import { alternatesFor, getDictionary } from "@/i18n/dictionaries";
 import { localePath, locales, localeTags, resolveLocale } from "@/i18n/config";
-import { contact } from "@/data/contact";
+import { company, contact } from "@/data/contact";
 import { siteUrl } from "@/data/site";
 import { getProducts } from "@/data/products";
 import { productPath } from "@/data/nav";
@@ -84,6 +84,8 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Yafi Filtertech",
+    legalName: company.name,
+    taxID: company.taxId,
     description: dict.meta.jsonLdDescription,
     url: siteUrl.href,
     email: contact.email,

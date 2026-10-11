@@ -18,6 +18,18 @@ export const contact = {
   coords: { lat: 44.7974807, lon: 20.3536111 },
 } as const;
 
+/**
+ * Registration details the Companies Act (Zakon o privrednim društvima, čl.
+ * 25) requires on the company's website, next to the seat above.
+ */
+export const company = {
+  name: "Yafi Filtertech doo",
+  /** Matični broj in the APR business register. */
+  registrationNumber: "21030317",
+  /** PIB. */
+  taxId: "108591119",
+} as const;
+
 const country: Record<Locale, string> = { sr: "Srbija", en: "Serbia" };
 
 /** The full postal address on one line. */

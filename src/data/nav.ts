@@ -10,6 +10,8 @@ export const routes = {
   about: "/o-nama",
   deltrian: "/deltrian",
   contact: "/kontakt",
+  privacy: "/politika-privatnosti",
+  terms: "/uslovi-koriscenja",
 } as const;
 
 export function industryPath(slug: string) {
