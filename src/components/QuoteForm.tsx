@@ -1,7 +1,8 @@
 "use client";
 
-import { startTransition, useActionState } from "react";
+import { startTransition, useActionState, useState } from "react";
 import { MagneticButton } from "./Magnetic";
+import Turnstile from "./Turnstile";
 import { sendQuote, type QuoteState } from "@/actions/quote";
 import { contact } from "@/data/contact";
 import { quoteLimits } from "@/data/quoteForm";
@@ -20,13 +21,17 @@ export default function QuoteForm({
   products: { slug: string; name: string }[];
 }) {
   const [state, formAction, pending] = useActionState(sendQuote, initialState);
+  const [attempt, setAttempt] = useState(0);
 
   // Submitting by hand keeps what the visitor typed when sending fails — a
   // form `action` clears the fields once it settles. Without JavaScript the
-  // form still posts straight to the same action.
+  // form still posts straight to the same action, but can't pass Turnstile.
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    // A Turnstile token passes only once: start a fresh check right away so
+    // it's ready if this attempt fails and the visitor sends again.
+    setAttempt((count) => count + 1);
     startTransition(() => formAction(formData));
   };
 
@@ -108,7 +113,8 @@ export default function QuoteForm({
       </label>
 
       <div className="sm:col-span-2">
-        {(state.status === "invalid" || state.status === "error") && (
+        <Turnstile key={attempt} locale={locale} />
+        {state.status !== "idle" && (
           <p
             role="alert"
             className="mb-5 rounded-lg border border-orange-500/40 bg-orange-500/10 px-4 py-3 text-sm leading-relaxed text-ink-100"
@@ -117,7 +123,7 @@ export default function QuoteForm({
               dict.invalidText
             ) : (
               <>
-                {dict.errorText}{" "}
+                {state.status === "unverified" ? dict.unverifiedText : dict.errorText}{" "}
                 <a
                   href={`mailto:${contact.email}`}
                   className="font-medium text-orange-400 underline underline-offset-2"

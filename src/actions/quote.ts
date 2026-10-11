@@ -7,8 +7,11 @@ import { quoteLimits, type QuoteField } from "@/data/quoteForm";
 import { defaultLocale, isLocale, localeNames } from "@/i18n/config";
 import { sr } from "@/i18n/dictionaries/sr";
 import { sendEmail } from "@/lib/resend";
+import { verifyTurnstile } from "@/lib/turnstile";
 
-export type QuoteState = { status: "idle" | "sent" | "invalid" | "error" };
+export type QuoteState = {
+  status: "idle" | "sent" | "invalid" | "unverified" | "error";
+};
 
 /** Sent from the domain verified in Resend; replies go to the visitor. */
 const sender = "YAFI sajt <upit@yafi.co.rs>";
@@ -19,6 +22,16 @@ const sender = "YAFI sajt <upit@yafi.co.rs>";
  * visitor's own address.
  */
 const emailPattern = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[^\s@<>()[\]\\,;:"]+$/;
+
+/** Cloudflare's documented ceiling for a Turnstile token. */
+const maxTokenLength = 2048;
+
+/**
+ * Links are what most form spam sells, and a genuine filter enquiry rarely
+ * needs one. Such enquiries are still delivered, marked in the subject so the
+ * office can filter or skim them.
+ */
+const linkPattern = /\bhttps?:\/\/|\bwww\./i;
 
 /**
  * At most `maxPerWindow` enquiries per IP per window. The count lives in the
@@ -119,8 +132,26 @@ export async function sendQuote(
   const ip =
     requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     requestHeaders.get("x-real-ip") ||
-    "unknown";
-  if (rateLimited(ip)) return { status: "error" };
+    null;
+  if (rateLimited(ip ?? "unknown")) return { status: "error" };
+
+  // Nothing is sent without a Turnstile token Cloudflare vouches for — which
+  // also stops scripts posting to this action directly, past the form. If
+  // Cloudflare can't be asked, the visitor is pointed to the office email.
+  const token = line(formData, "cf-turnstile-response");
+  try {
+    if (!token || token.length > maxTokenLength || !(await verifyTurnstile(token, ip))) {
+      return { status: "unverified" };
+    }
+  } catch (error) {
+    console.error("Turnstile check failed:", error);
+    return { status: "error" };
+  }
+
+  const hasLink = [fields.name, fields.company, fields.phone, fields.message].some(
+    (value) => linkPattern.test(value),
+  );
+  const spamNote = hasLink ? "Označeno kao moguć spam: upit sadrži link." : "";
 
   const labels = sr.quoteForm;
   const rows: [string, string][] = [
@@ -135,6 +166,7 @@ export async function sendQuote(
   const signoff = "Odgovorom na ovu poruku pišete direktno pošiljaocu upita.";
 
   const text = [
+    ...(spamNote ? [spamNote, ""] : []),
     ...filled.map(([label, value]) => `${label}: ${value}`),
     "",
     `${labels.message}:`,
@@ -146,7 +178,9 @@ export async function sendQuote(
 
   const cell = "padding:6px 16px 6px 0;vertical-align:top";
   const html = `<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#1a2330">
-<h2 style="font-size:18px;margin:0 0 16px">Novi upit sa sajta</h2>
+<h2 style="font-size:18px;margin:0 0 16px">Novi upit sa sajta</h2>${
+    spamNote ? `\n<p style="margin:0 0 16px;color:#b45309">${escapeHtml(spamNote)}</p>` : ""
+  }
 <table style="border-collapse:collapse">${filled
     .map(
       ([label, value]) =>
@@ -158,7 +192,7 @@ export async function sendQuote(
 <p style="margin:24px 0 0;font-size:12px;color:#5b6675">${escapeHtml(signoff)}</p>
 </div>`;
 
-  const subject = `Upit sa sajta: ${fields.name}${fields.company ? `, ${fields.company}` : ""}`;
+  const subject = `${hasLink ? "[Moguć spam] " : ""}Upit sa sajta: ${fields.name}${fields.company ? `, ${fields.company}` : ""}`;
 
   try {
     await sendEmail({

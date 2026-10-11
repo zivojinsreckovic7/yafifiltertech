@@ -1,23 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-
-type Theme = "dark" | "light";
-
-function subscribe(onChange: () => void) {
-  const observer = new MutationObserver(onChange);
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["data-theme"],
-  });
-  return () => observer.disconnect();
-}
-
-function getSnapshot(): Theme {
-  return document.documentElement.getAttribute("data-theme") === "light"
-    ? "light"
-    : "dark";
-}
+import { useTheme, type Theme } from "@/lib/useTheme";
 
 export default function ThemeToggle({
   toDark,
@@ -28,7 +11,7 @@ export default function ThemeToggle({
   toLight: string;
   className?: string;
 }) {
-  const theme = useSyncExternalStore(subscribe, getSnapshot, () => "dark" as Theme);
+  const theme = useTheme();
 
   const toggle = () => {
     const next: Theme = theme === "light" ? "dark" : "light";

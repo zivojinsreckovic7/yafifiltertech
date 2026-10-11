@@ -292,6 +292,8 @@ export const sr = {
     messagePlaceholder:
       "Opišite objekat, protok vazduha ili trenutni sistem ventilacije...",
     invalidText: "Proverite email adresu i ostala polja, pa pokušajte ponovo.",
+    unverifiedText:
+      "Bezbednosna provera nije završena. Sačekajte trenutak i pošaljite ponovo, ili nam pišite direktno na",
     errorText:
       "Upit nije poslat. Pokušajte ponovo ili nam pišite direktno na",
     sending: "Slanje...",

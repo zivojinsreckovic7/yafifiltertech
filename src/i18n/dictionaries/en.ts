@@ -281,6 +281,8 @@ export const en: Dictionary = {
     messagePlaceholder:
       "Describe the facility, air flow or your current ventilation system...",
     invalidText: "Please check your email address and the other fields, then try again.",
+    unverifiedText:
+      "The security check didn't finish. Please wait a moment and send again, or email us directly at",
     errorText:
       "Your enquiry wasn't sent. Please try again or email us directly at",
     sending: "Sending...",
