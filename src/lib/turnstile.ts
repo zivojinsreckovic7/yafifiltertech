@@ -21,6 +21,14 @@ export async function verifyTurnstile(token: string, ip: string | null) {
     throw new Error(`Turnstile answered ${response.status}: ${await response.text()}`);
   }
 
-  const result = (await response.json()) as { success?: boolean };
-  return result.success === true;
+  const result = (await response.json()) as {
+    success?: boolean;
+    "error-codes"?: string[];
+  };
+  if (result.success === true) return true;
+
+  // Bots and stale tokens land here, but so does a real visitor whose token
+  // came from a widget this secret doesn't belong to. The code tells which.
+  console.warn("Turnstile rejected a token:", result["error-codes"]?.join(", ") || "no reason given");
+  return false;
 }
